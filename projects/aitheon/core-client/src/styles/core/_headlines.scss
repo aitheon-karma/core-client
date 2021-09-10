@@ -1,0 +1,35 @@
+@import 'variables';
+
+h1, h2, h3, h4, h5 {
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 32px;
+	line-height: 40px;
+	letter-spacing: 2px;
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 30px;
+	letter-spacing: 1px;
+}
+
+h3 {
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+}
+
+h4 {
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0.3px;
+}
+
+h5 {
+	font-size: 12px;
+	line-height: 15px;
+	letter-spacing: 0.3px;
+}

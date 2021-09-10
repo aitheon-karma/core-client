@@ -1,0 +1,28 @@
+<form novalidate [formGroup]="bugReportForm" (ngSubmit)="onSubmit()">
+  <div class="bug-report">
+    <div class="bug-report__header">
+      <button class="bug-report__back" (click)="helperMode()"></button>
+      <h2 class="bug-report__title">Oh! Tell us and we will fix it ASAP!</h2>
+    </div>
+    <h3 class="bug-report__subtitle" [class.bug-report__hide]="submitted && bugReportForm.get('title').hasError('required')">Title</h3>
+    <h3 class="bug-report__subtitle bug-report__subtitle--error" *ngIf="submitted && bugReportForm.get('title').hasError('required')">Bug title is required</h3>
+    <div class="input-wrap input-wrap--contained input-wrap--small">
+      <input class="input-wrap__input" type="text" autocomplete="off" placeholder="Bug title" formControlName="title">
+    </div>
+    <h3 class="bug-report__subtitle" [class.bug-report__hide]="submitted && bugReportForm.get('text').hasError('required')">Description</h3>
+    <h3 class="bug-report__subtitle bug-report__subtitle--error" *ngIf="submitted && bugReportForm.get('text').hasError('required')">Bug description is required</h3>
+    <div class="bug-report__description">
+      <textarea class="bug-report__textarea" rows="8" type="text" autocomplete="off"
+        placeholder="Bug description" formControlName="text"></textarea>
+    </div>
+    <h3 class="bug-report__subtitle">Attachment</h3>
+    <ai-file-upload formControlName="images" [queeFile]='screenshotFile' [userId]="userId" [serviceKey]="serviceKey"></ai-file-upload>
+    <div class="row m-0 align-item-center justify-content-between">
+      <button class="bug-report__screen-btn btn btn-link my-2 pl-0" *ngIf="!isScreenshotAdded" (click)="downloadImage()">Add screen capture</button>
+      <ai-loading class="my-2" *ngIf="loadingScreenshot"></ai-loading>
+      <button class="bug-report__send-btn btn btn-primary btn-medium">send</button>
+    </div>
+  </div>
+</form>
+
+<ai-image-drawing [screenshotImg]='screenshotImg' [mode]="'bug'" (onSave)='onDrawingSave($event)' (onCancel)='onDrawCancel()' #imageDrawing></ai-image-drawing>

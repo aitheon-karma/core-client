@@ -1,0 +1,53 @@
+<div class="dock-container" [class.active]="isActive">
+  <div class="dock" clickOutside (clickOutside)="closeDockOnClickOutside()">
+    <div class="dock-guide" joyrideStep="services-icons">
+      <ul class="dock__item-list"
+          cdkDropList
+          (cdkDropListDropped)="drop($event)">
+        <li class="dock__item"
+            *ngFor="let service of services_selected"
+            [class.static]="isActive"
+            [ngClass]="{'hidden' : !isActive && !service }"
+            cdkDrag
+            [cdkDragDisabled]="!isActive || !service">
+          <div  *ngIf="service"
+                class="dock__item__wrap"
+                [class.disabled]="isActive"
+                style="position: relative"
+                cdkDragPlaceholder>
+            <a href="{{ service.url }}" >
+              <i  class="{{ 'service-icon ' + (service ?.iconClass ? service.iconClass : (service._id | slug)) }}"
+                  title="{{ service.name }}">
+              </i>
+            </a>
+            <span
+              class="dock__remove-icon"
+              *ngIf="isActive && (services_selected_id.length > 3)"
+              (click)="removeService(service._id)">
+            </span>
+          </div>
+          <div *ngIf="!service && isActive" class="dock__item dock__item--add" (click)="openSelect()">
+            <a class="dock__item-link"></a>
+          </div>
+        </li>
+        <li class="dock__item dock__item--more" (click)="toggleDock()">
+          <a class="dock__item-link">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="dock-select-container" *ngIf="isSelectOpen && isActive" clickOutside (clickOutside)="closeSelect()">
+  <ul class="dock-select">
+    <div class="row">
+      <li class="dock-select__item col-4" *ngFor="let service of services">
+        <div>
+          <i class="{{ 'service-icon ' + (service ?.iconClass ? service.iconClass : (service._id | slug)) }}" (click)="addService(service._id)"></i>
+          <label>{{ service.name }}</label>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>

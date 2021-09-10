@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <tabset>
+          <tab heading="Sliders">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <h1 class="h1 mb--24">Sliders</h1>
+                  <p class="body mb--0">Sliders allow users to make selections from a range of values.</p>
+                </div>
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <h3 class="h3 mb--16">Specs</h3>
+                  <p class="body mb--24">Sliders can have icons on both ends of the bar that reflect a range of values.</p>
+                  <figure class="img-wrap">
+                      <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 1.png"
+                        alt="Sliders can have icons on both ends of the bar that reflect a range of values.">
+                    </figure>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4 mb--48">
+                    <div class="ng5-slider">
+                        <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+                      </div>
+                </div>
+                <div class="col-4 mb--48">
+                    <div class="ng5-slider ng5-slider--icons ng5-slider--icons-left-right">
+                        <button class="icon icon--sound icon--dynamic icon--left"></button>
+                        <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+                        <button class="icon icon--mute icon--dynamic icon--right"></button>
+                      </div>
+                </div>
+                <div class="col-4 mb--48">
+                    <div class="ng5-slider ng5-slider--icons ng5-slider--icons-right">
+                        <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+                        <button class="icon icon--mute icon--dynamic icon--right"></button>
+                      </div>
+                </div>
+                <div class="col-4 mb--48">
+                    <div class="ng5-slider ng5-slider--icons ng5-slider--icons-left">
+                        <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+                        <button class="icon icon--sound icon--left icon--dynamic"></button>
+                      </div>
+                </div>
+                <div class="col-4 mb--48">
+                    <div class="ng5-slider">
+                        <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options5"></ng5-slider>
+                        <div class="ng5-slider__inputs">
+                          <div class="ng5-slider__input-wrap input-wrap input-wrap--contained input-wrap--small">
+                              <input class="ng5-slider__input input-wrap__input" type="number" [(ngModel)]="minValue" placeholder="From">
+                          </div>
+                          <div class="ng5-slider__input-wrap input-wrap input-wrap--contained input-wrap--small">
+                              <input class="ng5-slider__input input-wrap__input" type="number" [(ngModel)]="maxValue" placeholder="To">
+                          </div>
+                          <button class="ng5-slider__button button button--medium button--contained">ok</button>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

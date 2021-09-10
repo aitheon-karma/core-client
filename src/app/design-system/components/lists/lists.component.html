@@ -1,0 +1,419 @@
+<div class="row" click="parentClick()">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <tabset>
+          <tab heading="Lists">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <h1 class="h1 mb--24">Lists</h1>
+                  <p class="body mb--0">One of the most important UI elements used in all menus, navigation bars, lists,
+                    tables.</p>
+                </div>
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Text</h4>
+                  <div class="item item--text">font-style: Body</div>
+                </div>
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Icon + Text</h4>
+                  <div class="item item--icon-text"><span class="icon icon--shapes icon--size-16px"></span>Option Name
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Avatar + Text</h4>
+                  <p class="body mb--16">For a list with an avatar, we use 32px container. Because of this, the list
+                    height
+                    will increase.</p>
+                  <div class="item item--avatar-text">
+                    <div class="item__avatar">GG</div>
+                    font-style: Body
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Label</h4>
+                  <p class="body mb--16">For a list with a labels.</p>
+                  <div class="item item--label">
+                    <div class="item__label-marker"></div>
+                    Label text
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Icon + Text + Action</h4>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <p class="body mb--16">We have a type of list which used for nav bars. For this type we use a bigger
+                    icon
+                    before the text</p>
+                  <div class="item item--icon-text-action"><span class="icon icon--shapes icon--size-16px"></span>
+                    Option
+                    <button class="item__button"><span class="icon icon--arrow-drop-down"></span></button>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p class="body mb--16">This type of list can be used without action.</p>
+                  <div class="item item--icon-text-not-action">
+                    <span class="icon icon--shapes icon--size-16px"></span>
+                    Option Name
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Sublist</h4>
+                  <p class="body mb--16">This type of list creates only for sidebar navigation.</p>
+                  <div class="item item--sublist">Option Name</div>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">List with switcher</h4>
+                  <p class="body mb--16">Type of list which can be used on the settings page for turn on/off features
+                  </p>
+                  <div class="item item--switcher">
+                    Option Name
+                    <label class="switch">
+                      <input class="switch__input" name="switchExample" type="checkbox" tabindex="1">
+                      <span class="switch__toggle"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Title + subtitle</h4>
+                  <p class="body mb--16">Type of list which can be used on the settings page for turn on/off features
+                  </p>
+                  <div class="item item--subtitle">
+                    font-style: Body
+                    <span class="item__caption">font-style: Caption</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 bm--8">List for the Messenger</h3>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <p class="body mb--16">Special list type which created for the messenger. This list type has many
+                    configurations.</p>
+                  <div class="item item--mess">
+                    <div class="item__avatar">GG</div>
+                    <div class="item-text">
+                      Short message text which hide if man…
+                      <span class="item__caption">font-style: Caption</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p class="body mb--16">For the messenger we add some custom features to the list. Lke a pinned status
+                  </p>
+                  <div class="item item--mess-pin">
+                    <div class="item__avatar">GG</div>
+                    <div class="item-text">
+                      Short message text which hide if man…
+                      <span class="item__caption">font-style: Caption<button
+                          class="item__button icon icon--pin icon--size-16px"></button></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p class="body mb--16">We can add time of last inbox or outbox message</p>
+                  <div class="item item--mess-time">
+                    <div class="item__avatar">GG</div>
+                    <div class="item-text">
+                      <span class="title-time">font-style: Body<time class="item__time" datetime="">4:38
+                          pm</time></span>
+                      <span class="item__caption">Short message text which hide if man…</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p class="body mb--16">Unread Message Notification. <br>If the list is pinned, a notification label
+                    appears
+                    on top of the pin icon.</p>
+                  <div class="item item--mess-time-unread">
+                    <div class="item__avatar">GG</div>
+                    <div class="item-text">
+                      <span class="title-time">font-style: Body<time class="item__time" datetime="">4:38
+                          pm</time></span>
+                      <span class="item__caption">font-style: Caption<button class="item__button">99</button></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Building Lists">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <h1 class="h1 mb--24">Building Lists</h1>
+                </div>
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--16">Contact’s List</h4>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <ul class="contacts-list">
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <ul class="contacts-list">
+                    <li class="contacts-list__item" role="link" href="#">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item" role="link" href="#">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item" role="link" href="#">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item" role="link" href="#">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <ul class="contacts-list contacts-list--dropdown">
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                        <ng-select class="dropdown dropdown--dots" [items]="namesForDropdown" bindLabel="name"
+                          bindValue="name" [(ngModel)]="selectedName">
+                        </ng-select>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                        <button class="contacts-list__button"><span
+                            class="contacts-list__icon icon icon--more"></span></button>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                        <button class="contacts-list__button"><span
+                            class="contacts-list__icon icon icon--more"></span></button>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                        <button class="contacts-list__button"><span
+                            class="contacts-list__icon icon icon--more"></span></button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <ul class="contacts-list">
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                    <li class="contacts-list__item">
+                      <div class="contacts-list__img-wrap">
+                        <img class="contacts-list__img" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      <div class="contacts-list__info">
+                        <p class="contacts-list__name">Amarachi Nkechi</p>
+                        <p class="contacts-list__description">Ho Chi Minh City</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Bulleted List</h4>
+                  <p class="body mb--24">For the 1 level of list we use filled dots</p>
+                  <ul class="bull-list">
+                    <li class="bull-list__item">Item 1</li>
+                    <li class="bull-list__item">Item 2</li>
+                    <li class="bull-list__item">Item 3
+                      <ul class="bull-list__sub-list">
+                        <li class="bull-list__sub-item">Item 3.1</li>
+                        <li class="bull-list__sub-item">Item 3.2</li>
+                        <li class="bull-list__sub-item">Item 3.3</li>
+                      </ul>
+                    </li>
+                    <li class="bull-list__item">Item 4</li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Numbered List</h4>
+                  <p class="body mb--24">For the 2 level we use outlined dots without filling </p>
+                  <ul class="bull-list bull-list--num">
+                    <li class="bull-list__item">Item</li>
+                    <li class="bull-list__item">Item</li>
+                    <li class="bull-list__item">Item
+                      <ul class="bull-list bull-list--num">
+                        <li class="bull-list__sub-item">Item</li>
+                        <li class="bull-list__sub-item">Item</li>
+                        <li class="bull-list__sub-item">Item</li>
+                      </ul>
+                    </li>
+                    <li class="bull-list__item">Item</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

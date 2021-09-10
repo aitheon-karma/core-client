@@ -1,0 +1,441 @@
+.modal .fade .show .modal-mt{
+  margin-top: 40px !important;
+}
+.btn-font{
+  font-size: 12px;
+}
+.task {
+
+    &__sidebar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__sidebar-title {
+        font-size: 10px;
+        color: #7e7e7e;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__item {
+        cursor: pointer;
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 2px;
+
+        &:hover {
+            background: #454545;
+        }
+
+        &--active {
+            background: rgba(#DCBC65, 0.1) !important;
+        }
+    }
+
+    &__form-container {
+        min-height: 500px;
+        max-height: 660px;
+        padding: 1rem 1.5rem;
+        overflow-y: scroll;
+        border-left: 1px solid #454545;
+
+        &::-webkit-scrollbar-track {
+            background-color: #1f1f1f;
+        }
+        
+        &::-webkit-scrollbar {
+            width: 4px;
+            background-color: #1f1f1f;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: #454545;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid #454545;
+    }
+
+    &__button {
+        font-size: 12px !important;
+    }
+
+    .error-border {
+        border: 1px solid #e96058;
+    }
+}
+
+.form {
+  margin: 0 auto;
+  width: 100%;
+
+  &__bank-name {
+      position: relative;
+  }
+
+  &__bank-name-input {
+      background-color: #1a1a1a;
+      font-size: 2rem;
+      border-bottom: none;
+      font-family: inherit;
+
+      &::placeholder {
+          color: #454545
+      }
+  }
+  
+  &__type {
+      position: relative;
+      margin-top: 1.5rem;
+  }
+
+  &__dropdown {
+
+    &--date {
+        position: relative;
+        width: 100%;
+        height: 36px;
+        padding: 5px 15px;
+        border-radius: 2px;
+        background: #1e1e1e;
+
+            &:after {
+                position: absolute;
+                content: '';
+                background: url('/assets/img/icons/24-cont/events/date-24.svg') center center no-repeat;
+                background-size: contain;
+                width: 16px;
+                height: 16px;
+                top: 50%;
+                right: 12px;
+                transform: translateY(-50%);
+                pointer-events: none;
+            }
+        }        
+    }
+
+    &__date-input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+    }
+
+    &__mask {
+        width: 14%;
+        margin-top: 2px;
+    }
+
+    &__type-label {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    &__last-digits {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        input {
+            border-bottom: none;
+            width: 100%;
+            background-color: #1a1a1a;
+            font-size: 14px;
+
+            &::placeholder {
+                color: #454545
+            }
+        }
+    }
+
+    &__providers{
+        position: relative;
+    }
+
+    &__provider {
+        height: 7.25rem;
+        background: linear-gradient(-90deg, rgba(26, 26, 26, 0.6) 0%, rgb(43, 43, 43) 100%);
+        background-origin: border-box;
+        border-radius: 2px;
+        position: relative;
+        padding: 1.5rem;
+        border: 1px solid transparent;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--active {
+            border: 1px solid #dcbc65;
+        }
+
+        &--error {
+            border: 1px solid #e96058;
+        }
+        &-disabled {
+            cursor: default;
+        }
+    }
+
+    &__provider-checkbox {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+
+        input {
+            top: 0;
+            margin: 0;
+        }
+    }
+
+    &__provider-name {
+        font-size: 0.875rem;
+        font-weight: normal;
+        color: #fff;
+        letter-spacing: 0.2px;
+        margin-bottom: 0.5rem
+    }
+
+    &__provider-description {
+        color: rgb(126, 126, 126);
+        font-size: 0.75rem;
+        font-weight: normal;
+        letter-spacing: 0.3px;
+        width: 368px;
+    }
+
+    &__error {
+        position: absolute;
+        font-size: 12px;
+        color: #e96058;
+
+        &--name {
+            top: -12px;
+            left: 2px;
+        }
+
+        &--number {
+            top: 18px;
+            left: 2px;
+        }
+
+        &--dropdown {
+            top: 38px;
+            left: 250px;
+        }
+
+        &--operation {
+            left: 0;
+            bottom: 35px;
+        }
+    }
+}
+
+::ng-deep ngx-dropdown-container {
+
+    .ngx-dropdown-button {
+        border: 1px solid #454545 !important;
+        background: transparent !important;
+        width: 100%;
+    }
+}
+
+::ng-deep .form__type .error-dropdown {
+    .ngx-dropdown-container{
+        .ngx-dropdown-button {
+            border: 1px solid #e96058 !important;
+        }
+    }
+}
+
+.custom-placeholder {
+    content: "";
+    position: absolute;
+    right: 1px;
+    top: 40%;
+    width: 16px;
+    height: 16px;
+    // pointer-events: all;
+    transform: translateY(-45%);
+    color:#777;
+    font-size: 90%;
+  }
+
+  .axis {
+    // width: 113px;
+    width: 94px;
+    float: left;
+    margin-right: 6px;
+    margin-bottom: 15px;
+  }
+  
+  .entry-pose {
+    .content {
+     // margin: 10px;
+    }
+    label {
+      margin: 0px;
+    }
+  }
+
+  
+.input-wrap--ghost .input-wrap__input {
+    padding: 1px 34px 0 7px;
+    margin: 0;
+    font-size: 25px !important;
+    letter-spacing: 0px;
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  .p-20{
+    padding: 30px;
+  }
+.p-10{
+    padding: 0 20px 0 20px;
+}
+  .input-wrap,
+.input-wrap--ghost {
+  background: #1f1f1f;
+  border-radius: 1px;
+}
+.delete-button {
+    color: #dcbc65 !important;
+    font-weight: bold;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.input-wrap:hover{
+    box-shadow: 1px 4px 6px 2px #131212;
+    // box-shadow: 0 8px 16px 0 #131212, 0 6px 20px 0 #131212;
+    }
+    .input-wrap [type=number]:focus{
+    box-shadow: 1px 4px 6px 2px #131212 !important;
+    // box-shadow: 0 8px 16px 0 #131212, 0 6px 20px 0 #131212;
+    }
+  .btn.btn-primary:not(:disabled):not(.disabled):active, .btn.btn-warning:not(:disabled):not(.disabled):active, .btn.btn-default:not(:disabled):not(.disabled):active, .btn.btn-success:not(:disabled):not(.disabled):active {
+    background-color: transparent;
+    border: none;
+    color: #dcbc64;
+  }
+  .btn.btn-primary, .btn.btn-warning, .btn.btn-default, .btn.btn-success {
+    background-color: transparent;
+    border: none;
+    color: #dcbc64;
+    box-shadow: none;
+    height: 45px;
+  }
+
+
+.subSystem-form {
+    padding: 15px;
+    // width: 500px;
+    width: 557px;
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    background: #2b2b2b;
+    &__section1{
+    }
+    &__section{
+      margin-bottom: 60px;
+    }
+    &__remove {
+      position: absolute;
+      top: 1rem;
+      right: 0;
+      font-size: 12px;
+      color: #e96058;
+  
+      &:hover {
+        color: #e96058;
+      }
+    }
+  
+    &__hr {
+      margin: 1.5rem 0 1rem;
+      border-top: 1px solid #454545;
+    }
+  
+    &__radio {
+      margin-left: 2rem;
+  
+      &:first-child {
+        margin: 0;
+      }
+  
+      label {
+        margin: 0;
+      }
+    }
+  
+    &__flex-section {
+      display: flex;
+  
+      &--buttons {
+        justify-content: flex-end;
+      }
+    }
+  
+    &__name,
+    &__location,
+    &__type {
+      border: 1px solid transparent;
+    }
+  
+    &__error {
+      border: 1px solid #e96058;
+    }
+  
+    &__label {
+      margin-top: 1.5rem;
+      font-size: 12px;
+      color: #7e7e7e;
+    }
+  
+    &__double-inputs-section {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      width: 100%;
+    }
+  
+    &__ip-section {
+      position: relative;
+      width: 312px;
+      margin-right: 1.5rem;
+  
+      &:after {
+        position: absolute;
+        content: ":";
+        font-size: 14px;
+        color: #7e7e7e;
+        top: 65px;
+        right: -13px;
+        transform: translateY(-50%);
+      }
+    }
+  
+    &__buttons-section {
+      align-items: center;
+      justify-content: flex-end;
+    }
+  
+    &__cancel-button,
+    &__create-button {
+      font-size: 12px !important;
+    }
+  }

@@ -1,0 +1,84 @@
+<div class="helper-container">
+  <aside class="helper-sidebar">
+    <div class="helper-sidebar__navbar">
+      <h2 class="helper-sidebar__title" *ngIf="!isReportMode && !isRequestMode && !currentFaq">Hi! We are here to help you 👋</h2>
+      <i class="helper-sidebar__close" (click)="close()" *ngIf="opened"></i>
+    </div>
+    <div class="helper" *ngIf="!isReportMode && !isRequestMode && !currentFaq">
+      <div class="helper__main">
+        <div class="helper__section">
+          <div class="helper__section-text">Need help, found a bug or want to suggest an improvement?</div>
+          <div class="helper__section-section">
+            <button class="helper__section-btn btn btn-link pb--0 pl--0 pr--8" (click)="getLiveHelp()" joyrideStep="live-help"> Get live help</button>
+            <button class="helper__section-btn btn btn-link pb--0 pr--8 pl--8" (click)="reportMode()" joyrideStep="bug-report">Bug report</button>
+            <button class="helper__section-btn btn btn-link pb-0 pr--0 pl--8" (click)="requestMode()" joyrideStep="feature-request">Feature request</button>
+          </div>
+        </div>
+        <div class="helper__search search-wrap search-wrap__outlined"
+            [class.notEmptySearch]="search.value.length && searchFocused"
+            *ngIf="helpCenterContent && helpCenterContent.faqs"
+            [class.searchFocus]="searchFocus">
+          <input type="search"
+                 placeholder="Search FAQ"
+                 class="search-wrap__input"
+                 #search (input)="searchFocused = true"
+                 (blur)="onBlur(); searchFocus=false"
+                 [(ngModel)]="searchValue"
+                 (ngModelChange)="faqSearch($event)"
+                 (click)="searchFocused = true"
+                 (focus)="searchFocus = true">
+          <div class="search-wrap__button-clear" (click)="fun($event, search)"></div>
+        </div>
+        <h3 class="helper__subtitle" *ngIf="helpCenterContent && helpCenterContent.faqs">FAQ</h3>
+          <ul class="helper__faq-list" *ngIf="helpCenterContent && helpCenterContent.faqs">
+            <li class="helper__faq-item" (click)="currentFaq = faq" *ngFor="let faq of helpCenterContent.faqs">{{ faq.question }}</li>
+            <li class="helper__faq-empty" *ngIf="!helpCenterContent.faqs.length">No questions for this tab yet</li>
+          </ul>
+        <!-- <div class="helper__user-guide">
+          <span class="helper__user-guide-text">Did not find an answer to your question? Go to our <a  class="helper__user-guide-link" target="_blank" href="{{ helpCenterContent?.userGuides[0]?.guideLink }}">Guide Book</a> </span>
+        </div> -->
+        <!-- <h3 *ngIf="helpCenterContent && helpCenterContent.helpVideos.length" class="helper__subtitle">Watch service demo video (1 MIN)</h3>
+        <div *ngIf="helpCenterContent && helpCenterContent.helpVideos.length" class="helper__video-container" [class.helper__video-container--hide-icon]="controls">
+          <span class="helper__video-icon" (click)="videoClicked()"></span>
+          <video #videoPlayer class="helper__video" [controls]="controls" src="{{ helpCenterContent.helpVideos[0].video.url }}"></video>
+        </div> -->
+        <h3 class="helper__subtitle">Start guide tour</h3>
+        <div class="helper__guide-section">
+          <i class="helper__guide-icon"></i>
+          <div class="helper__guide-text">This is a fast way to get acquainted<br> with {{routeName || 'the service'}} step by step</div>
+          <button class="helper__guide-btn btn btn-link" (click)="guideMe()">Guide me</button>
+        </div>
+      </div>
+    </div>
+    <div class="helper__answers" *ngIf="currentFaq">
+        <div class="helper__answers-top">
+          <button class="helper__back" (click)="faqDetailBack()"></button>
+          <h2 class="helper__title">Help Center</h2>
+        </div>
+        <h2 class="helper__question">{{ currentFaq.question }}</h2>
+        <p class="helper__answer helper__answer--scroll" [innerHTML]=" currentFaq.answer | safe: 'html'">
+           <a *ngIf="currentFaq.readMoreLink" [href]="currentFaq.readMoreLink" class="helper__readmore" target="_blank">Read More</a>
+        </p>
+
+        <div class="helper__footer-container">
+
+        <div class="helper__footer">
+            <div class="helper__foo-text">Need help, find the bug or want to suggest an improvement?</div>
+            <div class="helper__foo-section">
+                <!-- this section is under development -->
+              <!-- <button class="helper__foo-btn btn btn-link pb-0 pl-0">Get the live help</button> -->
+              <button class="helper__foo-btn btn btn-link pb-0 px-1" (click)="reportMode()">Bug report</button>
+              <button class="helper__foo-btn btn btn-link pb-0 pr-0" (click)="requestMode()">Feature request</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <ai-bug-report-form *ngIf="isReportMode" (isReportMode)="isReportMode=$event" [errorLogs]='errorLogs'></ai-bug-report-form>
+    <ai-feature-request-form *ngIf="isRequestMode" (isRequestMode)="isRequestMode=$event"></ai-feature-request-form>
+  </aside>
+  <div class="helper-container__backdrop" (click)="close()" *ngIf="opened || currentFaq"></div>
+</div>
+
+
+

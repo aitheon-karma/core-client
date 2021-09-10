@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="20px" viewBox="0 0 15 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Color-&amp;-Typography_Dark-Copy" transform="translate(-867.000000, -2683.000000)">
+            <g id="Group-7" transform="translate(867.000000, 2683.000000)">
+                <path d="M1,0 L10.0437242,0 L15,5.10060947 L15,19 C15,19.5522847 14.5522847,20 14,20 L1,20 C0.44771525,20 6.76353751e-17,19.5522847 0,19 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z M1,1 L1,19 L14,19 L14,5.58046751 L9.51799188,1 L1,1 Z" id="Combined-Shape" fill="#454545"></path>
+                <polyline id="Line" stroke="#454545" stroke-linecap="square" points="9.51103166 0.5 9.51103166 6.5 14.5110317 6.5"></polyline>
+                <rect id="Rectangle" fill="#454545" x="7" y="10" width="1" height="5"></rect>
+                <rect id="Rectangle-Copy-13" fill="#454545" x="5" y="12" width="5" height="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

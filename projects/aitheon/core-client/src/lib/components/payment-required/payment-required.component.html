@@ -1,0 +1,17 @@
+<div class="modal fade payment-required" bsModal #paymentRequiredModal="bs-modal" [config]="{backdrop: 'static',ignoreBackdropClick: true}"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog modal-sm mt-5 pt-5">
+    <div class="modal-content">
+      <div class="modal-header payment-required__header">
+        <h4 class="payment-required__header-text" id="dialog-static-name" class="modal-title pull-left">Top Up Balance</h4>
+      </div>
+      <div class="modal-body payment-required__body">
+        <p class="payment-required__body-text-1">You don't have enough ACU.</p>
+        <p class="payment-required__body-text-2 mb-0">To continue using this service please purchase ACU by going to the payments</p>
+      </div>
+      <div class="modal-footer d-flex payment-required_footer">
+        <button class="btn btn-link payment-required__purchase-button p-0"  (click)="goToBilling()">Purchase ACU</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,240 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './core/core.scss';
+
+@import '~ngx-toastr/toastr.css';
+
+@import '~sweetalert2/dist/sweetalert2.min.css';
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+@import "~ngx-select-dropdown/dist/assets/style.css";
+
+
+.step-outlined {
+  background-color: #454545 !important;
+  box-shadow: 0px 0px 20px -1px rgba(#dcbc65,1);
+  transition: .15s ease-in-out;
+}
+
+bs-datepicker-container {
+  z-index: 12000000 !important;
+}
+
+.tooltip {
+  z-index: 120000000000 !important;
+}
+
+// start styling scrollbars //
+
+*::-webkit-scrollbar {
+  width: 4px !important;
+  background: $coal-gray !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: $gray-500 !important;
+  border-radius: 3px !important;
+}
+
+*::-webkit-scrollbar-corner {
+  background: $coal-gray !important;
+}
+
+// end styling scrollbars //
+body {
+  color: #ccc;
+}
+
+image-drawing {
+  flex-direction: column-reverse !important;
+
+  .toolbar {
+    align-items: flex-start !important;
+    width: 100% !important;
+
+    .tools {
+      flex-direction: row !important;
+      background: none !important;
+      box-shadow: none !important;
+      margin: 0 0 1.5rem 0 !important;
+      padding: 0 !important;
+
+      .row {
+        margin: 0 !important;
+
+        &:first-child {
+          justify-content: flex-start !important;
+          width: 200px !important;
+        }
+
+        &:last-child {
+          width: 260px;
+        }
+
+        i {
+          color: #7e7e7e !important;
+          border-radius: 0 !important;
+
+          &:first-child,
+          &:last-child {
+            border-right: 1px solid #454545 !important;
+          }
+        }
+
+        .material-icons {
+          font-size: 20px !important;
+        }
+
+        .size {
+          display: none !important;
+        }
+
+        .color {
+          width: 20px !important;
+          height: 20px !important;
+          border: 2px solid transparent !important;
+
+          &.selected {
+            border: 2px solid #dcbc65 !important;
+
+            &:after {
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
+
+    .buttons {
+      flex-direction: row-reverse !important;
+      margin: 0 !important;
+
+      a {
+        height: 36px !important;
+        font-size: 12px !important;
+        border-radius: 2px !important;
+        margin: 0 !important;
+      }
+
+      .btn-primary {
+        color: #1f1f1f !important;
+        background: #dcbc65 !important;
+      }
+
+      .btn-light {
+        background: none !important;
+        color: #dcbc65 !important;
+      }
+    }
+  }
+}
+
+.modal-auto {
+  min-width: 800px !important;
+  width: fit-content !important;
+  max-width: fit-content !important;
+}
+
+.cdk-drag-placeholder {
+  opacity: 1;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: .3s ease-in-out;
+}
+
+.cdk-drag {
+  transition: none;
+}
+
+.confirmModal {
+  z-index: 9999;
+}
+
+timepicker {
+
+  .bs-timepicker-field {
+    width: 54px;
+  }
+
+  .form-control {
+    border: 1px solid transparent;
+    border-radius: 2px;
+
+    &:hover {
+      border-color: #454545;
+    }
+
+    &:focus {
+      box-shadow: none;
+      border-color: #dcbc65;
+    }
+  }
+
+  .btn.btn-default {
+    height: 36px !important;
+    font-size: 12px !important;
+  }
+
+  &.error {
+    .form-control {
+      border-color: #e96058;
+    }
+  }
+}
+
+.ai-note {
+  .ck-label.ck-voice-label {
+    display: none !important;
+  }
+
+  .ck-editor__editable {
+    background: transparent !important;
+    padding: 0;
+    position: relative !important;
+    overflow-x: hidden;
+
+    p, i {
+      margin: 0 !important;
+      color: rgb(255, 255, 255);
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      line-height: 24px;
+      font-weight: normal !important;
+      text-decoration-line: underline;
+      text-decoration-style: dashed;
+      text-decoration-color: #7e7e7e;
+
+      &::-moz-selection,
+      &::selection {
+        background: #dcbc65;
+      }
+    }
+
+    i {
+      background: rgba(#7e7e7e, .4);
+      font-style: normal;
+      transition: all .2s;
+
+      &:hover {
+        background: rgba(#dcbc65, .4);
+      }
+    }
+  }
+
+  .ck.ck-content {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .ck.ck-editor__top {
+    display: none !important;
+  }
+}
+
+.highest-modal {
+  .modal {
+    z-index: 2147483647 !important;
+  }
+}

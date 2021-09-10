@@ -1,0 +1,1264 @@
+@import "./variables";
+
+.btn {
+  font-weight: 600 !important;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 2px;
+
+  &.btn-link {
+    color: $primary-gold;
+
+    &:hover {
+      color: $primary-gold;
+    }
+  }
+
+  &.btn-primary,
+  &.btn-warning,
+  &.btn-default,
+  &.btn-success {
+    background: $primary-gold;
+    border: 1px solid $primary-gold;
+    box-shadow: none;
+    color: $black;
+    height: 45px;
+
+    &:hover {
+      background-color: $secondary-gold;
+      border: 1px solid $secondary-gold;
+    }
+
+    &:active {
+      background-color: $primary-gold;
+      border: 1px solid $primary-gold;
+      box-shadow: none;
+      color: $black;
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      background-color: $primary-gold;
+      border: 1px solid $primary-gold;
+      box-shadow: none;
+      color: $black;
+
+      &:active,
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    &:disabled {
+      background-color: $gray-200;
+      border: 1px solid $gray-200;
+      color: $gray-500;
+    }
+  }
+
+  &.btn-warning {
+  }
+
+  &.btn-success {
+  }
+
+  &.btn-medium {
+    height: 36px !important;
+    padding: 0 15px;
+
+    &.btn-outline {
+      padding: 10px;
+    }
+  }
+
+  &.btn-outline {
+    background: transparent;
+    border: 1px solid $gray-600;
+    color: $primary-gold;
+    box-shadow: none;
+    height: 45px;
+
+    &:hover {
+      border: 1px solid $primary-gold;
+    }
+
+    &:active {
+      border: 1px solid #ae9550;
+      color: #ae9550;
+
+      &.btn-medium {
+        border: 1px solid #ae9550 !important;
+      }
+    }
+
+    &:disabled {
+      border: 1px solid $gray-200;
+      box-shadow: none;
+      color: $gray-500;
+    }
+  }
+
+  &--categories {
+    width: 160px;
+    padding-left: 35px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: url("/assets/img/icons/buttons/categories_button.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 16px;
+      height: 16px;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:disabled {
+      &:before {
+        background: url("/assets/img/icons/buttons/categories_button-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &.btn-outline {
+      &:before {
+        background: url("/assets/img/icons/buttons/categories_button-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      &:disabled {
+        &:before {
+          background: url("/assets/img/icons/buttons/categories_button-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
+  &--cart-huge,
+  &--huge {
+    width: 250px;
+    padding: 0 15px;
+  }
+
+  &--cart-huge {
+    padding: 0 0 0 20px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: url("/assets/img/icons/buttons/cart-black.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 16px;
+      height: 16px;
+      left: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:disabled {
+      &:before {
+        background: url("/assets/img/icons/buttons/cart-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &.btn-outline {
+      &:before {
+        background: url("/assets/img/icons/buttons/cart-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      &:disabled {
+        &:before {
+          background: url("/assets/img/icons/buttons/cart-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
+  &--cart {
+    padding: 0 0 0 20px !important;
+    width: 90px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: url("/assets/img/icons/buttons/cart-black.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 16px;
+      height: 16px;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:disabled {
+      &:before {
+        background: url("/assets/img/icons/buttons/cart-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &.btn-outline {
+      &:before {
+        background: url("/assets/img/icons/buttons/cart-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      &:disabled {
+        &:before {
+          background: url("/assets/img/icons/buttons/cart-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
+  &--add-item {
+    width: 180px;
+    padding-left: 35px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: url("/assets/img/icons/buttons/add-gold.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 14px;
+      height: 14px;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:disabled {
+      &:before {
+        background: url("/assets/img/icons/buttons/add_button-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  &--view-grid,
+  &--view-list {
+    width: 36px;
+    padding: 0 !important;
+
+    &:active,
+    &.active {
+      border: 1px solid $primary-gold;
+      background-color: $primary-gold;
+      color: $white;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &--view-grid {
+    &:before {
+      background: url("/assets/img/icons/buttons/view-grid-button-gold.svg");
+      background-size: contain;
+    }
+
+    &:active,
+    &.active {
+      &:before {
+        background: url("/assets/img/icons/buttons/view-grid-button-white.svg");
+        background-size: contain;
+      }
+    }
+  }
+
+  &--view-list {
+    &:before {
+      background: url("/assets/img/icons/buttons/view-list-button-gold.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &:active,
+    &.active {
+      &:before {
+        background: url("/assets/img/icons/buttons/view-list-button-white.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  &--create {
+    width: 120px;
+    padding-left: 20px !important;
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: url("/assets/img/icons/buttons/add-gold.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 12px;
+      height: 12px;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &--cancel {
+    border: 1px solid transparent !important;
+
+    &:hover {
+      border: 1px solid $primary-gold !important;
+    }
+
+    &:active {
+      border: 1px solid $primary-gold !important;
+      color: $primary-gold;
+    }
+  }
+
+  &.btn-ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    box-shadow: none;
+
+    &:hover {
+      background-color: $gray-400;
+    }
+
+    &:active {
+      &.btn--like {
+        &:before {
+          background: url("/assets/img/icons/buttons/like-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--cart {
+        &:before {
+          background: url("/assets/img/icons/buttons/cart-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--attachment {
+        &:before {
+          background: url("/assets/img/icons/buttons/attachment-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--emoji {
+        &:before {
+          background: url("/assets/img/icons/buttons/emoji-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--sand {
+        &:before {
+          background: url("/assets/img/icons/buttons/sand-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--add {
+        &:before {
+          background: url("/assets/img/icons/buttons/add-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    &:disabled {
+      &:hover {
+        background-color: transparent;
+      }
+
+      &.btn--like {
+        &:before {
+          background: url("/assets/img/icons/buttons/like-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--cart {
+        &:before {
+          background: url("/assets/img/icons/buttons/cart-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--attachment {
+        &:before {
+          background: url("/assets/img/icons/buttons/attachment-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--emoji {
+        &:before {
+          background: url("/assets/img/icons/buttons/emoji-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--sand {
+        &:before {
+          background: url("/assets/img/icons/buttons/sand-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--add {
+        &:before {
+          background: url("/assets/img/icons/buttons/add-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    &.btn--like {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/like-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 16px;
+        height: 16px;
+        left: 50%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--cart {
+      padding: 0 !important;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/cart-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 19px;
+        height: 18px;
+        left: 46%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--attachment {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/attachment-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 8px;
+        height: 18px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--emoji {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/emoji-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 16px;
+        height: 16px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--sand {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/sand-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 16px;
+        height: 16px;
+        left: 55%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--add {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/add-gold.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 18px;
+        height: 18px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &.btn-ball-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: none;
+    background-color: $primary-gold;
+    padding: 0;
+
+    &:hover {
+      background-color: $secondary-gold;
+    }
+
+    &:active {
+      background-color: $primary-gold;
+    }
+
+    &:disabled {
+      background-color: $gray-200;
+
+      &.btn--add {
+        &:before {
+          background: url("/assets/img/icons/buttons/add-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--add-user {
+        &:before {
+          background: url("/assets/img/icons/buttons/add-user-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--new-feed {
+        &:before {
+          background: url("/assets/img/icons/buttons/new-feed-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--new-article {
+        &:before {
+          background: url("/assets/img/icons/buttons/new-article-gray.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    &.btn--add {
+      padding: 0 !important;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/add-black.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 8px;
+        height: 8px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--add-user {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/add-user-black.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 12px;
+        height: 12px;
+        left: 55%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--new-feed {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/new-feed-black.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 10px;
+        height: 10px;
+        left: 52%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--new-article {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/new-article-black.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 12px;
+        height: 8px;
+        left: 52%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &.btn-ball-transparent {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0;
+
+    &:hover {
+      background-color: $gray-400;
+
+      &.btn--search {
+        &:before {
+          background: url("/assets/img/icons/buttons/search-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--notification {
+        &:before {
+          background: url("/assets/img/icons/buttons/notification-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--menu {
+        &:before {
+          background: url("/assets/img/icons/buttons/menu-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--more {
+        &:before {
+          background: url("/assets/img/icons/buttons/more-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--add-file {
+        &:before {
+          background: url("/assets/img/icons/buttons/add-file-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--hint {
+        background-color: transparent;
+
+        &:before {
+          background: url("/assets/img/icons/buttons/hint-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--views {
+        &:before {
+          background: url("/assets/img/icons/buttons/views-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--comments {
+        &:before {
+          background: url("/assets/img/icons/buttons/comments-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--share {
+        &:before {
+          background: url("/assets/img/icons/buttons/share-gold.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    &:active {
+      background-color: $gray-400;
+
+      &.btn--search {
+        &:before {
+          background: url("/assets/img/icons/buttons/search-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--notification {
+        &:before {
+          background: url("/assets/img/icons/buttons/notification-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--menu {
+        &:before {
+          background: url("/assets/img/icons/buttons/menu-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--more {
+        &:before {
+          background: url("/assets/img/icons/buttons/more-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--add-file {
+        &:before {
+          background: url("/assets/img/icons/buttons/add-file-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--views {
+        &:before {
+          background: url("/assets/img/icons/buttons/views-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--comments {
+        &:before {
+          background: url("/assets/img/icons/buttons/comments-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--share {
+        &:before {
+          background: url("/assets/img/icons/buttons/share-gold-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    &:disabled {
+      background-color: transparent !important;
+
+      &.btn--search {
+        &:before {
+          background: url("/assets/img/icons/buttons/search-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--notification {
+        &:before {
+          background: url("/assets/img/icons/buttons/notification-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--menu {
+        &:before {
+          background: url("/assets/img/icons/buttons/menu-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--more {
+        &:before {
+          background: url("/assets/img/icons/buttons/more-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--add-file {
+        &:before {
+          background: url("/assets/img/icons/buttons/add-file-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--views {
+        &:before {
+          background: url("/assets/img/icons/buttons/views-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--comments {
+        &:before {
+          background: url("/assets/img/icons/buttons/comments-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.btn--share {
+        &:before {
+          background: url("/assets/img/icons/buttons/share-gray-2.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    &.btn--search {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/search-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 14px;
+        height: 14px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--notification {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/notification-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 12px;
+        height: 14px;
+        left: 50%;
+        top: 49%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--menu {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/menu-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 14px;
+        height: 14px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--more {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/more-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 14px;
+        height: 4px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--add-file {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/add-file-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 10px;
+        height: 14px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--views {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/views-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 14px;
+        height: 8px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--comments {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/comments-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 14px;
+        height: 12px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--share {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/share-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 14px;
+        height: 14px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--hint {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/hint-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--user-avatar {
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/buttons/user-avatar-gray.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 14px;
+        height: 14px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.btn--user-avatar {
+      background-color: $gray-400;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/user.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 18px;
+        height: 20px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+// start new buttons //
+
+.button {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  line-height: 13px;
+  border: none;
+  box-shadow: none;
+  outline: none !important;
+  border-radius: 2px;
+  transition: 0.2s;
+
+  &--gray {
+    color: $base-gray !important;
+
+    .button__icon::before {
+      color: rgb(126, 126, 126) !important;
+    }
+
+    &:hover {
+      background-color: rgba($base-gray, 0.15) !important;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .button__icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+
+    &::before {
+      color: $primary-black;
+    }
+  }
+
+  // start sizes //
+
+  &--small {
+    min-height: 24px;
+    padding: 2px 8px;
+  }
+
+  &--medium {
+    min-height: 36px;
+    padding: 10px 16px;
+  }
+
+  &--large {
+    min-height: 48px;
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  // end sizes //
+
+  &--error {
+    color: $base-red !important;
+
+    .button__icon::before {
+      color: $base-red !important;
+      border-color: $base-red !important;
+    }
+
+    &.button--ghost:hover {
+      background-color: rgba($base-red, 0.2) !important;
+    }
+
+    &.button--ghost:hover,
+    &.button--outlined:hover {
+      background-color: rgba($base-red, 0.2) !important;
+    }
+
+    &.button--outlined {
+      border-color: $base-red !important;
+    }
+
+    &.button--contained {
+      color: $white !important;
+      background-color: $base-red !important;
+
+      .icon::before {
+        color: $white !important;
+      }
+
+      &:hover {
+        background-color: $base-red !important;
+      }
+    }
+  }
+
+  // start contained sizes //
+
+  &--contained {
+    background-color: $primary-gold;
+
+    &:hover {
+      background-color: $gold-dark;
+    }
+  }
+
+  // end contained sizes //
+
+  // start outlined sizes //
+
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid $primary-gold;
+    color: $primary-gold;
+
+    .button__icon::before {
+      color: $primary-gold;
+    }
+
+    &:hover {
+      background-color: rgba($gold-dark, 0.15);
+    }
+  }
+
+  // end outlined sizes //
+
+  // start ghost sizes //
+
+  &--ghost {
+    padding: 2px 8px;
+    background-color: transparent;
+    color: $primary-gold;
+
+    .button__icon::before {
+      color: $primary-gold;
+    }
+
+    &:hover {
+      background-color: rgba($gold-dark, 0.15);
+    }
+  }
+
+  // end ghost sizes //
+
+  // start styles for disabled buttons //
+
+  &--disabled {
+    > * {
+      pointer-events: none !important;
+    }
+
+    opacity: 0.4;
+    cursor: not-allowed !important;
+  }
+
+  // end styles for disabled buttons //
+}
+
+.button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+}
+
+// end new buttons //
+
+// start filter list //
+
+.filter-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__button {
+    margin-right: 8px;
+    color: $base-gray;
+
+    &--active {
+      color: $primary-gold;
+
+      &:hover {
+        background-color: rgba($primary-gold, 0.15);
+      }
+    }
+
+    &:hover {
+      background-color: rgba($base-gray, 0.15);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// end filter list //

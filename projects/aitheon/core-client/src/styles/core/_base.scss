@@ -1,0 +1,30 @@
+@import 'variables';
+
+body {
+  min-width: 1350px !important;
+
+  .ck.ck-editor__editable_inline {
+
+    ::-moz-selection {
+      background: rgba(#dcbc65, 0.4);
+    }
+
+    ::selection {
+      background: rgba(#dcbc65, 0.4);
+    }
+  }
+}
+
+.container-fluid {
+  &.padding-left {
+    padding-left: 90px !important;
+  }
+}
+
+.container {
+  max-width: 1200px !important;
+}
+
+.fixed-top {
+	z-index: 3060 !important;
+}

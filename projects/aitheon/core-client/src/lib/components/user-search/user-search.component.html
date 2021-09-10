@@ -1,0 +1,28 @@
+  <div class="search-wrapper">
+    <ng-select 
+    [items]="searchResults$ | async" 
+    placeholder="Search" 
+    [typeahead]="searchInput$" 
+    [loading]="loading"
+    [(ngModel)]="selected" 
+    [groupBy]="groupByFn"
+    [groupValue]="groupValueFn"
+    (change)="resultSelected($event)"
+    notFoundText='No results found'
+    class="custom">
+      <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+        <div *ngIf="item.searchType === 'Users'">
+          <span class="user-pic mr-2" [ngStyle]="{'background-image': 'url('+ (item?.profile.avatarUrl || defaultAvatar) +')'}"></span>
+          {{ item.profile.firstName }} {{ item.profile.lastName }}
+        </div>
+        <div *ngIf="item.searchType === 'Organizations'">
+          <i class="fa fa-building-o org-icon"></i>
+          {{ item.name }}
+        </div>
+      </ng-template>
+      <ng-template ng-optgroup-tmp let-item="item">
+        <span style="vertical-align: middle;">{{ item.name }}</span>
+      </ng-template>
+    </ng-select>
+    <span></span>
+  </div>

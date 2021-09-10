@@ -1,0 +1,445 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+.design-system {
+  min-height: 100vh;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1000;
+
+  .card {
+    background: transparent;
+  }
+
+  .nav-pills .nav-link.active {
+    border-color: transparent;
+  }
+
+  .nav-pills {
+    position: sticky;
+    top: 7rem;
+      
+    .nav-link {
+      padding-left: 72px;
+      cursor: pointer;
+    }
+  }
+
+  .nav {
+    background: $gray-100;
+
+    .nav-link {
+      background: $gray-100;
+    }
+
+    .nav-link-arrow {
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        background: url("/assets/img/icons/arrow.svg") center center no-repeat;
+        width: 8px;
+        height: 6px;
+        top: 50%;
+        right: 25px;
+        transform: translateY(-50%);
+        transition: 0.15s ease-out;
+      }
+    }
+
+    .rotate {
+      &:after {
+        top: 42%;
+        transform: rotate(180deg);
+        transition: 0.15s ease-out;
+      }
+    }
+  }
+
+  .nav-sub {
+    transition: 0.3s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    padding-left: 15px;
+  }
+
+  .show {
+    opacity: 1;
+    height: auto;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-tabs {
+    background: transparent !important;
+    border-bottom: 2px solid $gray-500;
+  }
+
+  .nav-item {
+    margin-bottom: -2px;
+  }
+
+  .nav-link {
+    background: transparent !important;
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      color: $primary-gold;
+      border-bottom: 2px solid $primary-gold;
+      font-weight: normal;
+    }
+  }
+
+  // start styles for markup end elements design system //
+
+  .tab-content {
+    padding: 64px 0;
+  }
+
+  .tab-block {
+    width: 100%;
+    max-width: 930px;
+    margin: 0 auto;
+
+    // start text elements //
+
+    &__title1,
+    &__title2,
+    &__title3,
+    &__title4 {
+      margin: 0;
+      padding: 0;
+      color: $white;
+      letter-spacing: 0;
+      line-height: 1.33;
+    }
+
+    &__title1 {
+      margin-bottom: 30px;
+      font-size: 48px;
+    }
+
+    &__title2 {
+      margin-bottom: 25px;
+      font-size: 32px;
+    }
+
+    &__title3 {
+      font-size: 24px;
+    }
+
+    &__title4 {
+      font-size: 16px;
+    }
+
+    p {
+      margin-bottom: 0;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.43;
+      letter-spacing: 0.2px;
+      color: $gray-600;
+    }
+
+    // end text elements //
+
+    // end elements //
+
+    figure {
+      margin-bottom: 20px;
+
+      img {
+        width: 100%;
+      }
+
+      figcaption {
+        font-size: 12px;
+        color: $gray-600;
+        padding-bottom: 10px;
+      }
+    }
+
+    hr {
+      margin: 40px 0 60px 0;
+      background-color: $gray-500;
+    }
+
+    // end elements //
+
+    // start marcup //
+
+    &__inputs-1-col,
+    &__inputs-2-col,
+    &__inputs-3-col,
+    &__inputs-4-col {
+      display: grid;
+      grid-column-gap: 5%;
+      padding-bottom: 100px;
+
+      &.pb0 {
+        padding-bottom: 0;
+      }
+    }
+
+    &__inputs-1-col {
+      grid-template-columns: 1fr;
+    }
+
+    &__inputs-2-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__inputs-3-col {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &__inputs-4-col {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    // end marcup //
+  }
+
+  // start new templates //
+
+  .title-1,
+  .title-2,
+  .title-3 {
+    padding: 0;
+    color: $white;
+    letter-spacing: 0;
+  }
+
+  .title-1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    letter-spacing: 0;
+  }
+
+  .title-2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    letter-spacing: 0;
+  }
+
+  .title-3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    letter-spacing: 0;
+  }
+
+  .paragraph {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: $gray-600;
+  }
+}
+
+// start actual elements for core-client
+
+.design-system .card-body .container {
+  max-width: 929px !important;
+  width: 100% !important;
+}
+
+.img-wrap {
+
+  &__img {
+    width: 100%;
+  }
+}
+
+.divider {
+  margin: 64px 0;
+  background-color: $gray-500;
+}
+
+.sizes-table {
+
+  p { margin-bottom: 0; }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 128px 71px 71px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+  }
+
+  &__container {
+    background-color: #3d7ef7;
+
+    &.container-128 {
+      width: 128px;
+      height: 128px;
+    }
+
+    &.container-96 {
+      width: 96px;
+      height: 96px;
+    }
+
+    &.container-64 {
+      width: 64px;
+      height: 64px;
+    }
+
+    &.container-56 {
+      width: 56px;
+      height: 56px;
+    }
+
+    &.container-48 {
+      width: 48px;
+      height: 48px;
+    }
+
+    &.container-32 {
+      width: 32px;
+      height: 32px;
+    }
+
+    &.container-24 {
+      width: 24px;
+      height: 24px;
+    }
+
+    &.container-16 {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.container-8 {
+      width: 8px;
+      height: 8px;
+    }
+
+    &.container-4 {
+      width: 4px;
+      height: 4px;
+    }
+  }
+}
+
+// end actual elements for core-client
+
+// start actual fonts styling
+
+.h1,
+.h2,
+.h3,
+.h4,
+.subtitle,
+.body,
+.links,
+.captions {
+  padding: 0;
+  color: $white;
+  letter-spacing: 0;
+  font-weight: 400;
+
+  &__white {
+    color: $white;
+  }
+
+  &__gray-600 {
+    color: $gray-600;
+  }
+
+  &__primary-dark {
+    color: $primary-gold;
+  }
+
+  &__base-red {
+    color: $base-red !important;
+  }
+}
+
+.h1 {
+  font-size: 48px;
+  line-height: 1.08;
+}
+
+.h2 {
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.h3 {
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.h4 {
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+}
+
+.body {
+  font-size: 14px;
+  line-height: 1.42;
+  letter-spacing: 0.2;
+}
+
+.links {
+  color: $primary-gold;
+  font-size: 14px;
+  line-height: inherit;
+  letter-spacing: 0.2px;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.button-l,
+.button-s-m {
+  color: $primary-gold;
+  font-size: 14px;
+  line-height: 1.42;
+  font-weight: 600;
+  letter-spacing: 0.5;
+  text-transform: uppercase;
+}
+
+.button-s-m {
+  font-size: 12px;
+  line-height: 1.66;
+}
+
+.captions,
+.overline {
+  font-size: 12px;
+  color: $gray-600;
+  line-height: 1.66;
+  letter-spacing: 0.3px;
+}
+
+.overline {
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+// end styles for markup end elements design system //
+
+// start paragraph, captions, overline color for dark theme //
+
+.dark {
+  .body,
+  .captions,
+  .overline {
+    color: $gray-600;
+  }
+}
+
+// end paragraph, captions, overline color for dark theme //

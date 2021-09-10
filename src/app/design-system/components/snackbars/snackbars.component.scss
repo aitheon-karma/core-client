@@ -1,0 +1,42 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+.snackbar {
+  position: relative;
+  min-height: 36px;
+  width: 344px;
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: flex-start;
+  align-items: center;
+  color: $white;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+  line-height: 20px;
+  border-radius: 2px;
+  background: $lightcoal-gray;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__button { margin-left: 8px; }
+
+  &--actions { padding-right: 4px; }
+
+  &__close {
+    margin-left: 4px;
+    cursor: pointer;
+  }
+
+  &__icon { margin-right: 4px; }
+
+  &--full-width {
+    width: 100%;
+  }
+}

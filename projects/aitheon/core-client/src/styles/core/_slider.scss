@@ -1,0 +1,230 @@
+@import "variables";
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent !important;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: $primary-gold;
+  cursor: pointer;
+  margin-top: -7px;
+}
+
+input[type="range"]:disabled::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #8c8c8c;
+  cursor: pointer;
+  margin-top: -7px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 3px;
+  background: #232323;
+  border: none;
+  border-radius: 3px;
+}
+
+.npn-slider {
+  margin-top: 4rem;
+
+  .slider {
+    padding: 0 !important;
+  }
+
+  .bar {
+    height: 3px !important;
+    border: none !important;
+    border-radius: 5px;
+    background: #232323 !important;
+    box-shadow: none !important;
+
+    .filler {
+      border: none !important;
+
+      span {
+        background-color: $secondary-gold !important;
+      }
+    }
+
+    span {
+      background-color: #232323 !important;
+    }
+
+    .right-handle,
+    .left-handle {
+      border: none !important;
+      width: 16px !important;
+      height: 16px !important;
+      top: -6px !important;
+      background: $primary-gold !important;
+    }
+
+    .handle-tooltip {
+      border: 1px solid transparent !important;
+      color: $primary-gold !important;
+      left: -10px !important;
+
+      &:after,
+      &:before {
+        border-top-color: #232323 !important;
+      }
+    }
+  }
+}
+
+.btn.btn-link {
+  text-decoration: none;
+}
+.btn-link:focus,
+.btn-link.focus {
+  box-shadow: none;
+}
+// .ng5-slider .ng5-slider-pointer:after {
+//   content: "";
+//   width: 15px;
+//   height: 15px;
+//   top: 9px;
+//   left: 12px;
+//   border-radius: 50%;
+//   background: #dcbc65;
+// }
+// .ng5-slider .ng5-slider-pointer {
+//   width: 0px;
+//   height: 0px;
+// }
+// .ng5-slider .ng5-slider-selection {
+//   background: #edddb2;
+// }
+// .ng5-slider .ng5-slider-bubble.ng5-slider-limit {
+//   display: none;
+// }
+// .ng5-slider .ng5-slider-bar {
+//   background: #3d3d3d;
+// }
+// .ng5-slider .ng5-slider-bubble {
+//   display: none;
+// }
+
+.ng5-slider .ng5-slider-bar {
+  background: #454545 !important;
+}
+
+.ng5-slider {
+  height: auto !important;
+  margin: 0 !important;
+
+  .ng5-slider-bar {
+    height: 2px !important;
+    background: #454545 !important;
+  }
+
+  .ng5-slider-selection {
+    background: #dcbc65 !important;
+  }
+
+  .ng5-slider-pointer {
+    width: 12px !important;
+    height: 12px !important;
+    margin: 0 !important;
+    top: -5px !important;
+    background: #dcbc65 !important;
+    outline: none;
+
+    &::after {
+      width: 32px !important;
+      height: 32px !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%);
+      background: rgba(#7e7e7e, 0.15) !important;
+      opacity: 0;
+      border-radius: 50% !important;
+      transition: 0.2s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:active::after,
+    &:focus::after {
+      background: rgba(#dcbc65, 0.15) !important;
+    }
+  }
+
+  .ng5-slider-bubble {
+      display: none !important;
+  }
+
+  &--icons {
+
+    &-left {
+        padding-left: 32px;
+    }
+
+    &-right {
+        padding-right: 32px;
+    }
+
+    &-left-right {
+        padding: 0 32px;
+    }
+
+    .icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        outline: none;
+        background: transparent;
+        cursor: pointer;
+
+        &:hover::before {
+            opacity: 1;
+        }
+
+        &--left {
+            left: 0;
+        }
+
+        &--right {
+            right: 0;
+        }
+    }
+  }
+
+  &__inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    grid-column-gap: 16px;
+    padding-top: 24px;
+  }
+
+  // start styles for disabled dropdown //
+
+  &--disabled {
+    > * {
+      pointer-events: none !important;
+    }
+
+    opacity: 0.4;
+    cursor: not-allowed !important;
+  }
+
+  // end styles for disabled dropdown //
+}

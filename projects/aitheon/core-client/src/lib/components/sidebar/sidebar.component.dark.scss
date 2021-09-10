@@ -1,0 +1,19 @@
+@import '../../../styles/core/variables';
+
+:host-context(.dark) {
+    .sidebar {
+        background-color: #1f1f1f;
+        box-shadow: 0 0 2.5em rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-link {
+        font-weight: 300;
+        color: $white;
+    }
+
+    .navbar-brand {
+        .logo {
+            background-image: url(assets/img/logo-aitheon-gold.svg);
+        }
+    }
+}

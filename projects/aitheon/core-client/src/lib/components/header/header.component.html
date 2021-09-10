@@ -1,0 +1,408 @@
+<div class="test-mode" *ngIf="isTestMode">
+  Test Mode
+  <div class="test-mode__settings" dropdown>
+     <button class="btn btn-outline btn-sm pull-right" dropdownToggle><i class="fa fa-cog"></i></button>
+     <ul *dropdownMenu class="dropdown-menu" role="menu">
+       <li role="menuitem">
+         <span
+           class="dropdown-item"
+           [swal]="{ title: 'Reset to default?', text:  'All data saved after ' + testModeDate + ' will be cleared and populate with default data', type: 'warning', showCancelButton: true, confirmButtonText: 'Reset to default'}"
+           (confirm)="clearData(true)">
+             Reset to default
+         </span>
+       </li>
+       <li role="menuitem">
+         <span
+           class="dropdown-item"
+           [swal]="{ title: 'Clear data?', text: 'All data saved after ' + testModeDate + ' will be cleared', type: 'warning', showCancelButton: true, confirmButtonText: 'Clear data'}"
+           (confirm)="clearData(false)">
+           Clear
+         </span>
+       </li>
+       <li class="divider dropdown-divider"></li>
+       <li
+         role="menuitem"
+         [swal]="{ title: 'Disable test mode?', text: 'All data saved after ' + testModeDate + ' in a test mode will be deleted.', type: 'warning', showCancelButton: true, confirmButtonText: 'Disable test mode'}"
+         (confirm)="toggleTestModeModal(false)">
+         <span class="dropdown-item">Exit test mode</span></li>
+     </ul>
+   </div>
+</div>
+<nav class="navbar navbar-toggleable-md navbar-light fixed-top " [class.navbar--test-mode]="isTestMode">
+   <div class="intro-step navbar-toggler"
+        tooltip="Navigation Bar"
+        [delay]="500"
+        placement="right">
+     <button  class="navbar-toggler__button"
+              type="button"
+              aria-controls="navbarsExampleDefault"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              (click)="toggleSidebar()"
+              joyrideStep="menu-button">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+   </div>
+   <div class="row navbar__container" [class.navbar__container-creator]='navBarMenuData.length' >
+     <div class="col-6 navbar__left_section" *ngIf="!navBarMenuData.length">
+         <div class="logo-container" [class.no-border]="!serviceName">
+           <a (click)="goToDashboard()" alt="Aitheon"><div class="logo"></div></a>
+         </div>
+         <div class="navbar__service_name" *ngIf="serviceName">
+           {{ serviceName }}
+         </div>
+     </div>
+     <div class="col-6 navbar__left_section pl-5" *ngIf="navBarMenuData.length">
+       <div (click)="goHome()" class="header-logo-creator">
+           <div class="logo-mini-container" [class.no-border]="serviceName">
+             </div>
+             <div class="navbar__service_name" *ngIf="serviceName">
+               {{ serviceName }}
+             </div>
+       </div>
+       <div class="nav-bar-header">
+         <ul class="nav-bar-header__menu">
+           <li class="nav-bar-header__item" *ngFor="let item of navBarMenuData">
+             <a class="nav-link" routerLinkActive="active" [routerLink]=item.path>{{item.title}} </a>
+           </li>
+         </ul>
+       </div>
+     </div>
+   <!-- End Accout Switcher -->
+   <div class="col-6 navbar__right_section">
+        <!-- <ai-user-search></ai-user-search> -->
+         <div *ngIf="currentUser" (click)="toggleHelper()" class="">
+           <button class="button button--outlined button--medium" joyrideStep="helper-button" container="body" aria-hidden="true">
+             <span class="icon icon--help icon--gold icon--size-16px button__icon mr--8 d-inline-block"></span>
+             Help Center
+           </button>
+         </div>
+         <div class="header-hr" dropdown (click)="loadTracker()" *ngIf="activeOrganization && isProd && isApprovedEmployee">
+           <i class="hr-btn" dropdownToggle (click)="false" aria-hidden="true" tooltip="Time tracker" [delay]="500" placement="bottom"></i>
+           <ul *dropdownMenu class="dropdown-menu timer-dropdown" role="menu" style="overflow: hidden;">
+             <li role="menuitem">
+               <iframe src="/hr/employees/tracker" frameborder="0"></iframe>
+               <div class="tracker-loader" *ngIf="!isTrackerLoad">
+                 <ai-loading></ai-loading>
+               </div>
+             </li>
+           </ul>
+         </div>
+         <div *ngIf="currentUser && currentUser.sysadmin || platformRole !== 'NONE'" class="header-notifications" dropdown (onHidden)="onCloseStepConfig()">
+          <span dropdownToggle
+                (click)="getElements()"
+                class="step-settings-logo"
+                tooltip="Tour guide steps constructor"
+                [delay]="500"
+                placement="bottom"
+                joyrideStep='tour-guide-constructor'>
+          </span>
+          <ul *dropdownMenu class="dropdown-menu dropdown-notifications dropdown-menu--wide dropdown-menu--guide-tour" role="menu">
+            <div class="dropdown-menu__header d-flex justify-content-around pb-2">
+              <a  href="/platform-support"
+                  class="button button--medium button--ghost guide-button">
+                Platform Support
+              </a>
+              <a  href="/admin"
+                  *ngIf="currentUser.sysadmin"
+                  class="button button--medium button--ghost guide-button">
+                Aitheon Admin
+              </a>
+              <a  href="/build-server/"
+                  *ngIf="currentUser.sysadmin"
+                  class="button button--medium button--ghost guide-button">
+                Build Server
+              </a>
+              <a  href="/system-graph/graphs/core"
+                  *ngIf="currentUser.sysadmin || currentUser.hasCoreGraphAccess"
+                  class="button button--medium button--ghost guide-button">
+                Core Graph
+              </a>
+            </div>
+            <ng-template ngFor let-element [ngForOf]="tourSteps" let-i="index">
+              <li role="menuitem">
+                <span class="dropdown-item py-2 d-flex align-items-center justify-content-between org-invite step-item"
+                      (click)="selectStepConfig($event, element)"
+                      [class.step-selected]='element === selectedStepConfig'
+                      (mouseenter)="onStepHover(element)"
+                      (mouseleave)="onStepHoverEnd(element)">
+                    {{ element.title || element.reference }}
+                    <button
+                      *ngIf="element.step"
+                      class="button button--small button--ghost"
+                      (click)="selectElement(element)">
+                        Configure
+                    </button>
+
+                    <button
+                      *ngIf="!element.step"
+                      class="button button--small button--ghost"
+                      (click)="selectElement(element)">
+                        Set
+                    </button>
+                </span>
+              </li>
+              <li class="divider dropdown-divider m-0" *ngIf='i !== (tourSteps.length-1)'></li>
+            </ng-template>
+            <div class="empty-tour-guide" *ngIf='!tourSteps.length'>No available elements</div>
+          </ul>
+        </div>
+         <!-- <div *ngIf="currentUser" class="header-help" dropdown>
+           <i class="fa fa-question help-btn" dropdownToggle (click)="false" aria-hidden="true" ></i>
+           <ul *dropdownMenu class="dropdown-menu" role="menu">
+             <li role="menuitem">
+               <a class="dropdown-item" href="javascript://">Help</a>
+               <a class="dropdown-item" href="javascript://" (click)="showBugReport()">Bug report</a>
+             </li>
+           </ul>
+         </div> -->
+
+           <!-- Start OLD NOTIFICATION TEMPORARY COMMENTED -->
+
+           <!-- <span
+             class="badge badge-danger animated bounceIn"
+             *ngIf="notifications?.length > 0">
+               {{ notifications?.length}}
+           </span> -->
+           <!-- <ul *dropdownMenu class="dropdown-menu dropdown-notifications dropdown-menu--wide" role="menu">
+             <ng-template ngFor let-notification [ngForOf]="notifications">
+               <li role="menuitem" [ngSwitch]="notification.actionType">
+                 <span class="dropdown-item org-invite" *ngSwitchCase="'organization-invite'">
+                   {{ notification.title }}
+                   <span class="notify-actions">
+                     <button
+                       class="btn btn-medium btn-primary ripple-effect"
+                       (click)="acceptOrgInvite(notification)">
+                       Accept
+                     </button>
+                     <button
+                       class="btn btn-medium btn-link ripple-effect"
+                       (click)="declineOrgInvite(notification)">
+                       Cancel
+                     </button>
+                   </span>
+                 </span>
+                 <span
+                   class="dropdown-item org-invite"
+                   *ngSwitchCase="'hr.documents.completed'">
+                     {{ notification.title }}
+                   <span class="notify-actions">
+                     <button
+                       class="btn btn-medium btn-link ripple-effect"
+                       (click)="reviewDocuments(notification)">
+                         Review
+                     </button>
+                   </span>
+                 </span>
+                 <span class="dropdown-item org-invite" *ngSwitchCase="'CONNECTIONS.REQUEST'">
+                   {{ notification.title }}
+                   <span class="notify-actions">
+                     <button
+                       class="btn btn-medium btn-link ripple-effect"
+                       (click)="reviewConnectionHandler(notification)">
+                         Review
+                     </button>
+                   </span>
+                 </span>
+                 <span class="dropdown-item" *ngSwitchDefault>
+                   {{ notification.title }}
+                   <i class="fa fa-times ml-3 close-notification"
+                     (click)="markAsRead(notification)"
+                     aria-hidden="true"></i>
+                 </span>
+               </li>
+               <li class="divider dropdown-divider"></li>
+             </ng-template>
+             <li role="menuitem user-notifications">
+               <a
+                 class="dropdown-item"
+                 *ngIf="!isUsersModule"
+                 href="/users/notifications">
+                 See all notifications
+               </a>
+               <a
+                 class="dropdown-item"
+                 *ngIf="isUsersModule"
+                 routerLink="/notifications">
+                 See all notifications
+               </a>
+             </li>
+           </ul> -->
+
+           <!-- END OLD NOTIFICATION TEMPORARY COMMENTED -->
+
+         <div class="intro-step">
+           <div *ngIf="currentUser" class="header-user" dropdown dropdownToggle (click)="false" joyrideStep="settings-general">
+           <span class="header-user__toggle" tooltip="Profile settings" [delay]="500" placement="bottom">
+             <span *ngIf="(isAvatarOrg && activeOrganization) || (isAvatarUser && !activeOrganization)"
+                   [style.background-image]="activeOrganization ? 'url(' + orgAvatar + ')' : 'url(' + userAvatar + ')'"
+                   class="header-profile rounded-circle mr-2" alt="User image">
+             </span>
+             <span
+               *ngIf="(!isAvatarOrg && activeOrganization) || (!isAvatarUser && !activeOrganization)"
+               class="header-profile generated-avatar rounded-circle mr-2"
+               [ngStyle]="{'background-color': activeBgColor}"
+               alt="User image">{{activeOrganization ? generatedOrgAvatar : generatedUserAvatar}}
+             </span>
+             <!-- <i class="icon icon-settings ml-2"></i> -->
+             </span>
+             <ul *dropdownMenu class="dropdown-menu dropdown-settings" role="menu">
+               <!-- <li role="menuitem"><a class="dropdown-item" href="javascript://" (click)="switchTheme()"><i class="fa fa-paint-brush pr-3"></i> Switch Theme</a></li>
+               <li role="menuitem" *ngIf="!isTestMode && currentUser?.orgFeatureAccess" ><a class="dropdown-item" [swal]="{ title: 'Enable test mode?', text: 'Current organization and all users in it will enter test mode. After you exit test mode all test data will be deleted.', type: 'warning', showCancelButton: true, confirmButtonText: 'Enable test mode' }"
+                 (confirm)="toggleTestModeModal(true)"><i class="fa fa-bug pr-3"></i> Test Mode</a></li> -->
+
+              <li class="dropdown-item organization-list">
+                  <span class="dropdown-submenu-title pl-2">Organization Accounts ({{organizations?.length}})</span>
+                  <span class="organization-list-settings icon icon--plus icon--dynamic"
+                        *ngIf="currentUser?.orgFeatureAccess"
+                        (click)="organizationsLink()"
+                        tooltip='Organizations Settings'
+                        [delay]='500'
+                        placement='bottom'
+                        container="body"></span>
+                  <ul class="dropdown-submenu dropdown-submenu--grid"
+                      *ngIf="organizations?.length > 0"
+                      [class.dropdown-submenu--grid-min]="showLess">
+                    <ng-container *ngFor="let organization of authService.organizations | async; let i = index">
+                      <li class="dropdown-submenu-item org-item"
+                          [class.active]="organization?.name === activeOrganization?.name"
+                          (click)="changeAccount(organization)"
+                          [attr.data-index]="i">
+                        <span class="org-item-settings icon icon--settings icon--dynamic"
+                              (click)="navigateTo(organization, $event)"
+                              *ngIf="getIsOwner(organization)"
+                              tooltip='Organization Settings'
+                              [delay]='500'
+                              container="body"></span>
+                        <span *ngIf="organization.profile"
+                              [style.background-image]="organization.profile?.avatarUrl ? 'url(' + organization.profile.avatarUrl + ')' : ''"
+                              class="rounded-circle org-avatar"
+                              alt="User image">
+                        </span>
+                        <span *ngIf="!organization.profile"
+                              class="rounded-circle org-avatar org-avatar-list"
+                              [ngStyle]="{'background-color': getRandomColor(i)}"
+                              alt="User image">
+                              {{getOrgAvatar(organization)}}
+                        </span>
+                        <span>
+                          {{ organization.name }}
+                        </span>
+                      </li>
+                    </ng-container>
+                    </ul>
+                    <button class="btn btn-link show-more-org ml-auto mr-auto"
+                            *ngIf="showLess && organizations?.length > 3"
+                            (click)="onShowMore()">show more</button>
+                  <div  class="empty-org"
+                        *ngIf="organizations?.length <= 0">You don't have any organizations yet</div>
+              </li>
+
+              <!-- Start Devider -->
+              <li class="divider dropdown-divider m-0"></li>
+              <!-- End Devider -->
+               <li class="dropdown-item" role="menuitem">
+
+                    <span class="dropdown-submenu-title">Personal account</span>
+                    <ul class="dropdown-submenu">
+                      <li role="menuitem"
+                          [class.active]="!activeOrganization"
+                          class="dropdown-submenu-item personal-item"
+                          (click)="changeAccountToPersonal(); authService.navigateToPersonal()">
+                        <span class="personal-avatar rounded-circle"
+                              [style.background-image]="isAvatarUser ? 'url(' + userAvatar + ')' : ''">
+                          {{!isAvatarUser ? generatedUserAvatar : ''}}
+                        </span>
+                        Personal account
+                      </li>
+
+                      <!-- <li class="divider dropdown-divider"></li> -->
+
+                      <!-- <li role="menuitem" *ngIf="!isUsersModule" joyrideStep='profile-page'>
+                        <span class="dropdown-submenu-item d-flex align-items-center" (click)="goToLink('/users/profile')">
+                          <span class="icon icon--user submenu-item-icon"></span>
+                          My Social Profile
+                        </span>
+                      </li>
+                      <li class="dropdown-submenu-item" role="menuitem" *ngIf="isUsersModule" joyrideStep='profile-page'>
+                        <a class="dropdown-submenu-item-link d-flex align-items-center" routerLink="/profile">
+                          <span class="icon icon--user submenu-item-icon"></span>
+                          My Social Profile
+                        </a>
+                      </li>
+                      <li class="dropdown-submenu-item" role="menuitem">
+                        <a class="dropdown-submenu-item-link d-flex align-items-center" href="javascript://" (click)="connectionsClick.emit()">
+                          <span class="icon icon--group submenu-item-icon"></span>
+                          My Connections
+                        </a>
+                      </li> -->
+                      <li class="divider dropdown-divider"></li>
+                      <li role="menuitem" *ngIf="!isUsersModule">
+                        <span class="dropdown-submenu-item d-flex align-items-center" (click)="goToSettings()">
+                          <span class="icon icon--settings submenu-item-icon"></span>
+                          Settings
+                        </span>
+                        </li>
+                      <li class="dropdown-submenu-item" role="menuitem" *ngIf="isUsersModule">
+                        <a class="dropdown-submenu-item-link d-flex align-items-center" (click)="goToSettings()">
+                          <span class="icon icon--settings submenu-item-icon"></span>
+                          Settings
+                        </a>
+                      </li>
+                      <li role="menuitem">
+                        <span class="dropdown-submenu-item d-flex align-items-center" (click)="goToLink('/billing-manager')">
+                          <span class="icon icon--currency submenu-item-icon"></span>
+                          Billing Management
+                        </span>
+                      </li>
+                      <li role="menuitem" joyridestep='logout'>
+                      <span class="dropdown-submenu-item d-flex align-items-center" (click)="logout()" >
+                        <span class="icon icon--logout submenu-item-icon"></span>
+                        Logout
+                      </span>
+                      </li>
+                    </ul>
+
+              </li>
+             </ul>
+           </div>
+         </div>
+         <button
+           type="button"
+           *ngIf="!currentUser && !isProd"
+           (click)="showLogin()"
+           class="btn btn-link btn--login">
+             Log in
+         </button>
+    </div>
+  </div>
+  <div class="chat" *ngIf="isAitheonAdmin">
+    <button class="icon icon--chat" data-chat-trigger></button>
+  </div>
+  <div class="intro-step control-panel">
+    <div *ngIf="currentUser" (click)="toggleNotifications()" class="control-panel-icon" tooltip="Control Panel" [delay]="500"
+         placement="left" joyrideStep="panel-button">
+      <i class="notifications-btn" aria-hidden="true"></i>
+      <span class="badge badge-danger animated bounceIn" *ngIf="totalCounter">
+        {{ totalCounter < 99 ? totalCounter : '99+' }}
+      </span>
+    </div>
+  </div>
+</nav>
+
+<ai-sidebar [(opened)]="sidebarOpened"></ai-sidebar>
+<ai-dock [currentUser]="currentUser" *ngIf="currentUser"></ai-dock>
+<ai-bug-report #bugReport></ai-bug-report>
+<ai-login-dialog #loginDialog></ai-login-dialog>
+<ai-notifications [(opened)]="notificationsOpened"
+                  [sortedTasks]='sortedTasks'
+                  (remove)='onTasksRemove($event)'
+                  (changeType)='onChangeType($event)'
+                  [tasksCounter]="tasksCounter"
+                  [notificationsCounter]="notificationsCounter"></ai-notifications>
+
+<ai-payment-required #paymentRequiredModal></ai-payment-required>
+<ai-helper data-html2canvas-ignore [(opened)]="helperOpened" [errorLogs]='errorLogs'></ai-helper>
+
+<ai-tour-guide-modal #tourGuide></ai-tour-guide-modal>
+<ai-generic-modal #checkForTracker (confirm)="stopTrackerAndChangeOrg($event)"></ai-generic-modal>

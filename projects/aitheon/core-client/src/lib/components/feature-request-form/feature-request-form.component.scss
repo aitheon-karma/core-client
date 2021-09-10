@@ -1,0 +1,103 @@
+@import '../../../styles/core/variables';
+
+.feature-request {
+
+    &__header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    &__back {
+      background: none;
+      border: none;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      outline: none !important;
+      box-shadow: none !important;
+      cursor: pointer;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        background: url('assets/img/icons/arrow-left-gray.svg') center center no-repeat;
+        background-size: contain;
+        content: '';
+      }
+    }
+
+    &__title {
+      color: #fff;
+      letter-spacing: 0;
+      font-size: 18px;
+      margin-bottom: 0;
+      margin-left: 1rem;
+    }
+    
+    &__subtitle {
+        margin-top: 1rem;
+        font-size: 10px;
+        color: #7e7e7e;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+
+        &--error {
+          color: #e96058;
+        }
+    }
+
+    &__description {
+        height: 200px;
+    }
+
+    &__textarea {
+        width: 100%;
+        height: 200px;
+        padding: .5rem 1rem;
+        border: 1px solid transparent;
+        background-color: #1f1f1f;
+
+        &::-webkit-scrollbar {
+            background-color: transparent;
+            width: 5px;
+            height: 5px;
+            overflow-y: scroll;
+        }
+      
+        &::-webkit-scrollbar-thumb {
+            background-color: $gray-500;
+            border-radius: 4px;
+        }
+
+        &:hover {
+            border: 1px solid #454545;
+        }
+
+        &:focus,
+        &:focus-within {
+            border: 1px solid #dcbc65;
+
+            &::placeholder {
+                color: #454545;
+            }
+        }
+    }
+
+    &__send-btn {
+        margin-top: .5rem;
+        margin-left: auto;
+    }
+
+    &__hide {
+      display: none;
+    }
+}
+
+btn {
+  font-size: 12px;
+}

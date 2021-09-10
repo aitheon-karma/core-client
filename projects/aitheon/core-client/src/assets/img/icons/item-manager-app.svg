@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>item</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="1.44424438%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#16A085" offset="0%"></stop>
+            <stop stop-color="#F4D03F" offset="100%"></stop>
+        </linearGradient>
+        <path d="M10,0 L50,0 C55.5228475,-1.01453063e-15 60,4.4771525 60,10 L60,50 C60,55.5228475 55.5228475,60 50,60 L10,60 C4.4771525,60 -2.87635993e-15,55.5228475 0,50 L0,10 C-6.76353751e-16,4.4771525 4.4771525,-2.53818305e-15 10,0 Z" id="path-2"></path>
+        <rect id="path-4" x="10.5" y="13.5" width="43" height="30" rx="2"></rect>
+        <filter x="-16.3%" y="-16.7%" width="132.6%" height="146.7%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-6" x="8" y="16" width="43" height="31" rx="2"></rect>
+        <filter x="-14.0%" y="-19.4%" width="127.9%" height="138.7%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="1.44424438%" y1="47.7040816%" x2="100%" y2="52.2959184%" id="linearGradient-8">
+            <stop stop-color="#16A085" offset="0%"></stop>
+            <stop stop-color="#F4D03F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="1.44424438%" y1="49.21875%" x2="100%" y2="50.78125%" id="linearGradient-9">
+            <stop stop-color="#16A085" offset="0%"></stop>
+            <stop stop-color="#F4D03F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="App-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Categories" transform="translate(-641.000000, -217.000000)">
+            <g id="Item-manager-1" transform="translate(641.000000, 217.000000)">
+                <g id="Group-36">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Mask-Copy-4" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    <g id="Rectangle-Copy-31" opacity="0.5" transform="translate(32.000000, 28.500000) rotate(90.000000) translate(-32.000000, -28.500000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    </g>
+                    <g id="Rectangle-Copy-32" transform="translate(29.500000, 31.500000) rotate(90.000000) translate(-29.500000, -31.500000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    </g>
+                    <circle id="Oval" fill="url(#linearGradient-1)" cx="21.5" cy="22.5" r="3.5"></circle>
+                    <rect id="Rectangle" fill="url(#linearGradient-8)" x="28" y="21" width="14" height="3" rx="1.5"></rect>
+                    <rect id="Rectangle-Copy-15" fill="url(#linearGradient-9)" x="18" y="30" width="24" height="3" rx="1.5"></rect>
+                    <rect id="Rectangle-Copy-28" fill="url(#linearGradient-9)" x="18" y="39" width="24" height="3" rx="1.5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

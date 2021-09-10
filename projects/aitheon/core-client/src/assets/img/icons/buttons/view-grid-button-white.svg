@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>button-grid-view-active</title>
+    <desc>Created with Sketch.</desc>
+    <g id="🔘-Selects-&amp;-Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Color-&amp;-Typography_Dark-Copy" transform="translate(-434.000000, -2727.000000)" fill="#FFFFFF">
+            <g id="button-grid-view-active" transform="translate(434.000000, 2727.000000)">
+                <rect id="Rectangle" x="0" y="0" width="7" height="7" rx="1"></rect>
+                <rect id="Rectangle-Copy-7" x="9" y="0" width="7" height="7" rx="1"></rect>
+                <rect id="Rectangle-Copy-10" x="9" y="9" width="7" height="7" rx="1"></rect>
+                <rect id="Rectangle-Copy-18" x="0" y="9" width="7" height="7" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,48 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+::ng-deep .tab-container {
+  .nav-tabs {
+    background: transparent !important;
+    border-bottom: 2px solid $tundora-gray;
+  }
+
+  .nav-item {
+    margin-bottom: -2px;
+  }
+
+  .nav-link {
+    background: transparent !important;
+    border-bottom: 2px solid transparent;
+
+    span {
+        color: $base-gray;
+        font-family: ProximaNova;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.43;
+        letter-spacing: 0.2px;
+    }
+
+    &.active {
+      color: $white;
+      border-bottom: 2px solid $primary-gold-dt;
+      font-weight: normal;
+
+      span {
+        color: $primary-gold-dt;
+      }
+    }
+  }
+}
+
+.font-scale-table {
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+        grid-gap: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+// end table stayles for typography font scale //

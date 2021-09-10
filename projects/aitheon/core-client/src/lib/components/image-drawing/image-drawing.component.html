@@ -1,0 +1,19 @@
+<ng-template #imageDrawTmpl>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Highlight {{ screenshotMode }} on the screenshot</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body p-4">
+    <image-drawing  *ngIf="screenshotImg"
+                    [src]="screenshotImg"
+                    outputMimeType="'image/jpeg'"
+                    outputQuality="0.9"
+                    (save)="save($event)"
+                    (cancel)="cancel()"
+                    [colors]="colors"
+                    [drawingSizes]="drawingSizes">
+    </image-drawing>
+  </div>
+</ng-template>

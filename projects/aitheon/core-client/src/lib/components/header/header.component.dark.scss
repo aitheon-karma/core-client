@@ -1,0 +1,37 @@
+@import '../../../styles/core/variables';
+
+:host-context(.dark) {
+
+    .header-user, .notifications-btn, .header-help .help-btn  {
+        color: #d7c68a;
+    }
+
+    .logo {
+        background-image: url("assets/img/logo-aitheon-gold.svg");
+      }
+
+      .dropdown > button {
+        background: #38383a;
+        color: #ccc;
+      }
+
+    .navbar {
+        background-color: $gray-300;
+    }
+
+    .ng-select {
+        .ng-select-container {
+            background: transparent;
+        }
+    }
+}
+
+.dropdown-menu {
+    width: 320px !important;
+    font-size: 14px;
+    top: 140% !important;
+}
+
+.dropdown-item {
+    padding: 10px 24px;
+}

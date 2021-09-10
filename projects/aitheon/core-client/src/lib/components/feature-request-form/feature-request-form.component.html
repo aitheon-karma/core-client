@@ -1,0 +1,55 @@
+<form novalidate [formGroup]="featureRequestForm" (ngSubmit)="onSubmit()">
+  <div class="feature-request">
+    <div class="feature-request__header">
+      <button class="feature-request__back" (click)="helperMode()"></button>
+      <h2 class="feature-request__title">Thank you for helping us get better!</h2>
+    </div>
+    <h3 class="feature-request__subtitle"
+        [class.feature-request__hide]="submitted && featureRequestForm.get('service').hasError('required')">Service</h3>
+    <h3 class="feature-request__subtitle feature-request__subtitle--error"
+        *ngIf="submitted && featureRequestForm.get('service').hasError('required')">Service is required</h3>
+    <div class="feature-request__microservice-select">
+      <ng-select  class="dropdown dropdown--simple dropdown--contained"
+                  placeholder="Choose service"
+                  formControlName="service"
+                  [items]="services"
+                  [searchable]="false"
+                  bindLabel="name">
+      </ng-select>
+    </div>
+    <h3 class="feature-request__subtitle"
+        [class.feature-request__hide]="submitted && featureRequestForm.get('title').hasError('required')">Title</h3>
+    <h3 class="feature-request__subtitle feature-request__subtitle--error"
+        *ngIf="submitted && featureRequestForm.get('title').hasError('required')">Title is required</h3>
+    <div class="input-wrap input-wrap--contained input-wrap--small">
+      <input class="input-wrap__input" type="text" autocomplete="off" placeholder="Feature title" formControlName="title">
+    </div>
+    <h3 class="feature-request__subtitle"
+        [class.feature-request__hide]="submitted && featureRequestForm.get('text').hasError('required')">Description</h3>
+    <h3 class="feature-request__subtitle feature-request__subtitle--error"
+        *ngIf="submitted && featureRequestForm.get('text').hasError('required')">Feature description is required</h3>
+    <div class="feature-request__description">
+      <textarea class="feature-request__textarea"
+                rows="8"
+                type="text"
+                autocomplete="off"
+                placeholder="What do you want to tell us?"
+                formControlName="text"></textarea>
+      <small *ngIf="submitted && featureRequestForm.get('text').hasError('required')" class="text-danger">
+
+      </small>
+    </div>
+    <h3 class="feature-request__subtitle">Attachment</h3>
+    <ai-file-upload formControlName="images"
+                    [userId]="userId" 
+                    [serviceKey]="serviceKey">
+    </ai-file-upload>
+    <div class="row m-0 align-item-center justify-content-between">
+        <button class="feature-request__screen-btn btn btn-link my-2 pl-0" *ngIf="!isScreenshotAdded" (click)="downloadImage()">Add screen capture</button>
+        <ai-loading class="my-2" *ngIf="loadingScreenshot"></ai-loading>
+        <button class="feature-request__send-btn btn btn-primary btn-medium">send</button>
+      </div>
+  </div>
+</form>
+
+<ai-image-drawing [screenshotImg]='screenshotImg' [mode]="'feature'" (onSave)='onDrawingSave($event)' (onCancel)='onDrawCancel()' #imageDrawing></ai-image-drawing>

@@ -1,0 +1,175 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h3>Forms & Input Fields</h3>
+        <br>
+        <h4>Form Fields</h4>
+        <div class="row">
+          <div class="col-4">
+            <h5>STATIC</h5>
+            <div class="input">
+              <input type="text" autocomplete="off">
+              <label class="input-text">First name</label>
+              <label class="error-message">Use only letters and numbers</label>
+            </div>
+          </div>
+          <div class="col-4">
+            <h5>SUCCESS</h5>
+            <div class="input success">
+              <input type="text" autocomplete="off" value="something">
+              <label class="input-text">First name</label>
+              <label class="error-message">Use only letters and numbers</label>
+            </div>
+          </div>
+          <div class="col-4">
+            <h5>ERROR</h5>
+            <div class="input error">
+              <input type="text" autocomplete="off">
+              <label class="input-text">First name</label>
+              <label class="error-message">Use only letters and numbers</label>
+            </div>
+          </div>
+        </div>
+        <br>
+        <h4>Input Fields</h4>
+        <h5>Search</h5>
+        <div class="row m-0 my-4">
+          <div class="col-3 p-0">
+            <div class="search">
+              <input type="text" autocomplete="off" placeholder="Search">
+            </div>
+          </div>
+          <div class="col-3 p-0">
+            <div class="search disabled">
+              <input type="text" autocomplete="off" placeholder="Search" disabled>
+            </div>
+          </div>
+          <div class="col-3">
+          </div>
+          <div class="col-3">
+          </div>
+        </div>
+        <h5>Text field</h5>
+        <div class="row m-0 my-4">
+          <div class="col-3 p-0">
+            <div class="text-field">
+              <input type="text" autocomplete="off" placeholder="Your comment">
+            </div>
+          </div>
+          <div class="col-3 p-0">
+              <div class="text-field disabled">
+                <input type="text" autocomplete="off" placeholder="Your comment" disabled>
+              </div>
+            </div>
+        </div>
+        <h5>Textarea</h5>
+        <div class="row m-0 my-4">
+          <div class="col-3 p-0">
+            <div class="textarea">
+              <textarea type="text" type="text" rows="3" placeholder="Write desription here"></textarea>
+            </div>
+          </div>
+          <div class="col-3 p-0">
+              <div class="textarea disabled">
+                  <textarea type="text" rows="3" placeholder="Write desription here" disabled></textarea>
+              </div>
+            </div>
+        </div>
+        <h5>Textarea with attachment</h5>
+        <div class="row m-0 my-4">
+          <div class="col-3 p-0">
+            <div class="textarea textarea__attachment">
+              <textarea type="text" rows="2" placeholder="Write desription here"></textarea>
+            </div>
+          </div>
+          <div class="col-3 p-0">
+              <div class="textarea textarea__attachment disabled">
+                  <textarea type="text" rows="2" placeholder="Write desription here" disabled></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="row m-0 my-4">
+          <div class="col-3 p-0">
+            <div class="textarea textarea__attachment textarea__attachment-loading ">
+              <textarea type="text" rows="2" placeholder="Write desription here"></textarea>
+              <div class="loading-file">
+                <div class="loading-file__name">
+                  {{ fileName }}
+                </div>
+                <div class="cancel-loading"></div>
+                <div class="progress-loading">
+<!--                   <ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1"
+                    [speed]="400" [showSpinner]="false" [direction]="'leftToRightIncreased'"
+                    [color]="'#dcbc65'" [trickleSpeed]="250" [thick]="false" [ease]="'linear'"></ng-progress> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <h4>Numbered Fields</h4>
+        <div class="row my-4">
+          <div class="col-3">
+            <div class="number-field">
+              <label class="label-avtice" >$</label>
+              <input type="text" currencyMask [(ngModel)]="priceOne" [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }" />
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="number-field number-field--disabled">
+              <label class="label-avtice" >$</label>
+              <input type="text" currencyMask [(ngModel)]="priceTwo" [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }"  disabled/>
+            </div>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col-3">
+            <div class="number-field">
+              <label class="label-avtice" >$</label>
+              <input type="text" currencyMask [(ngModel)]="priceThree" [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }" />
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="number-field number-field--disabled">
+              <label class="label-avtice" >$</label>
+              <input type="text" currencyMask [(ngModel)]="priceFour" [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }" disabled/>
+            </div>
+          </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-3">
+                <div class="number-field">
+                  <label class="label-avtice" >$</label>
+                  <input type="text" currencyMask [(ngModel)]="priceFive" [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }" />
+                  <ngx-select-dropdown 
+                    tabindex="0"
+                    (change)="changeValue($event)" 
+                    [multiple]="false"
+                    [(ngModel)]="multiSelect" 
+                    [config]="config_02"
+                    [options]="options">
+                  </ngx-select-dropdown>
+                </div>
+            </div>
+            <div class="col-3">
+              <div class="number-field number-field--disabled">
+                  <label class="label-avtice" >$</label>
+                  <input type="text" currencyMask [(ngModel)]="priceSix" [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }" disabled />
+                  <ngx-select-dropdown 
+                    tabindex="0"
+                    (change)="changeValue($event)" 
+                    [multiple]="false"
+                    [(ngModel)]="multiSelect"
+                    [config]="config_02"
+                    [options]="options"
+                    [disabled]="true">
+                  </ngx-select-dropdown>
+              </div>
+            </div>
+          </div>
+      </div>
+      <br><br><br><br><br><br><br><br><br>
+      <div class="end p-2">This Is the end</div>
+    </div>
+  </div>
+</div>

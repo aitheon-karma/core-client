@@ -1,0 +1,28 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+.avatars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 120px;
+  padding-bottom: 100px;
+
+  &__size {
+    display: grid;
+    grid-template-columns: 128px 71px 71px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+  
+    p:not([class]) {
+      padding-bottom: 0;
+      color: $white;
+      font-size: 12px;
+      line-height: 1.67;
+      letter-spacing: 0.3px;
+    }
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="261" height="156" viewBox="0 0 261 156">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#2B2B2B" d="M0 0h261v156H0z"/>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="14" letter-spacing=".2" transform="translate(24 24)">
+            <tspan x="0" y="101">Body font regular 14</tspan>
+        </text>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="10" letter-spacing="1" transform="translate(24 24)">
+            <tspan x="0" y="9">OVERLINE</tspan>
+        </text>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="48" transform="translate(24 24)">
+            <tspan x="0" y="64">H1 Title 48</tspan>
+        </text>
+        <path fill="#479CFF" d="M24 40h220v4H24zM24 112h220V96H24z"/>
+        <text fill="#479CFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="217" y="36">$4-sp</tspan>
+        </text>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="209" y="107">$16-sp</tspan>
+        </text>
+    </g>
+</svg>

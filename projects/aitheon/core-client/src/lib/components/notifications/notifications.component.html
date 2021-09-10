@@ -1,0 +1,462 @@
+<div class="notifications-container">
+  <aside class="notifications-sidebar">
+    <div class="notifications-sidebar__top">
+      <div class="notifications-sidebar__navbar">
+        <h3 class="notifications-sidebar__title">Control Panel</h3>
+        <!--        <div class="notifications-sidebar__clear-all" title="Clear all notifications"-->
+        <!--             (click)="onRemoveTasks($event, 'ALL')" *ngIf="tabType==='NOTIFICATIONS'"></div>-->
+        <!--        <i class="notifications-sidebar__close" (click)="close()" *ngIf="opened"></i>-->
+        <div class="d-flex">
+          <span class="icon icon--clear-all icon--dynamic d-inline-block mr--24"
+                *ngIf="tabType==='NOTIFICATIONS'"
+                title="Clear all notifications"
+                (click)="onRemoveTasks($event, 'ALL')">
+          </span>
+          <span class="icon icon--close icon--dynamic"
+                (click)="close()"
+                *ngIf="opened">
+          </span>
+        </div>
+      </div>
+      <div class="notifications-sidebar__tabs">
+        <ul class="notifications-sidebar__nav">
+          <li class="notifications-sidebar__nav-item"
+              [class.notifications-sidebar__nav-item--active]="tabType==='NOTIFICATIONS'"
+              (click)="goToTab('NOTIFICATIONS')">
+            Notifications
+            <span class="notifications-sidebar__counter"
+                  *ngIf="notificationsCounter > 0">
+              {{ notificationsCounter }}
+            </span>
+          </li>
+          <li class="notifications-sidebar__nav-item"
+              [class.notifications-sidebar__nav-item--active]="tabType==='TASKS'"
+              (click)="goToTab('TASKS')">
+            Tasks
+            <span class="notifications-sidebar__counter" *ngIf="tasksCounter" [class.notifications-sidebar__counter--gray]="tasksCounter && !tasksCounter.assigned">
+              {{ tasksCounter && tasksCounter.assigned ? tasksCounter.assigned: tasksCounter.unassigned }}
+            </span>
+          </li>
+          <li class="notifications-sidebar__nav-item"
+              [class.notifications-sidebar__nav-item--active]="tabType==='NOTES'"
+              (click)="goToTab('NOTES')">
+            Notes
+          </li>
+        </ul>
+        <div *ngIf="tabType==='TASKS'"
+             class="notifications-sidebar__tasks-buttons">
+          <!-- <button class="notifications-sidebar__create-task-button btn btn-link"
+                  (click)="showTaskDialog()">
+            Create task
+          </button> -->
+          <button class="notifications-sidebar__collapse-all-button btn btn-link"
+                  *ngIf="true"
+                  (click)="collapseAll()"
+                  [disabled]="!isSomeOpened">
+            Collapse All
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="notifications-sidebar__body">
+      <div class="notifications-sidebar__wrap">
+        <div class="mt-4"
+             *ngIf="loading">
+          <ai-loading></ai-loading>
+        </div>
+        <div class="notifications-sidebar__empty"
+             *ngIf="!loading && sortedTasksNames && !sortedTasksNames.length && tabType==='NOTIFICATIONS'">
+          <div class="notifications-sidebar__empty-icon notifications-sidebar__empty-icon--notifications"></div>
+          <div class="notifications-sidebar__empty-text">No notifications yet</div>
+        </div>
+        <div class="notifications-sidebar__empty"
+             *ngIf="!loading && sortedTasksNames && !sortedTasksNames.length && tabType==='TASKS'">
+          <div class="notifications-sidebar__empty-icon notifications-sidebar__empty-icon--notifications"></div>
+          <div class="notifications-sidebar__empty-text">No tasks yet</div>
+        </div>
+        <div *ngIf="!loading">
+
+          <div class="notifications__header-wrapper mb-3"
+               *ngFor="let service of sortedTasksNames; trackBy: trackByItem">
+            <div class='notifications__header mb-2 d-flex justify-content-between align-items-center'>
+              <h3 class="notifications__title">{{sortedTasks[service].serviceName}}</h3>
+              <button class="btn btn-link notifications__collapse-btn"
+                      *ngIf="sortedTasks[service].isOpened || this.sortedTasks[service].isUnassignedTasksOpened"
+                      (click)="toggleClose(service, $event)">Collapse
+              </button>
+              <!-- <div>
+                <span class="notifications__task-icon"
+                      *ngIf="(sortedTasks[service].tasks.length + sortedTasks[service].unassignedTasks.length) > 1"
+                      [class.notifications__task-icon--reverse]='!sortedTasks[service].isOpened'
+                      (click)="toggleClose(service, $event)"></span>
+              </div> -->
+            </div>
+
+            <ul class="notifications-sidebar__list notifications"
+                [class.notifications__status--open]="sortedTasks[service].isOpened"
+                *ngIf="!(!sortedTasks[service].isOpened && !sortedTasks[service].tasks.length) &&
+                      sortedTasks[service].isTasksOpened">
+              <li class="notification_list__card notification"
+                  *ngFor="let task of sortedTasks[service].tasks; trackBy: trackById"
+                  [class.two-tasks]="sortedTasks[service].tasks.length == 2 && !sortedTasks[service].isOpened"
+                  [class.more-tasks]="sortedTasks[service].tasks.length > 2 && !sortedTasks[service].isOpened"
+                  (click)="(sortedTasks[service].isOpened || sortedTasks[service].tasks.length === 1) ?
+                            toggleTaskDetails(task, $event) : toggleOpen(service, $event)">
+                <div class="notification__title">
+                  <i class="service-icon {{ 'service-icon ' +
+                          (sortedTasks[service].service ?.iconClass ? sortedTasks[service].service.iconClass :
+                          (sortedTasks[service].service ?._id | slug)) }}"></i>
+                  {{ sortedTasks[service].serviceName }}
+                  <span [class.notification__tab]="tabType==='NOTIFICATIONS'|| !sortedTasks[service].isOpened"
+                        class="notification__date"
+                        *ngIf="tabType==='NOTIFICATIONS'">
+                  {{task.createdAt | notifyDate}}
+                </span>
+                  <!-- <span [class.notification__tab]="tabType==='NOTIFICATIONS'|| sortedTasks[service].isOpened"
+                        class="notification__open-icon"
+                        *ngIf="sortedTasks[service].isOpened"></span> -->
+                  <i [class.notification__tab]="tabType==='NOTIFICATIONS' || !sortedTasks[service].isOpened"
+                     class="notification__close-task icon icon--close icon--dynamic"
+                     (click)="onRemoveTasks($event, 'ONE', task._id)"
+                     *ngIf="(sortedTasks[service].isOpened || sortedTasks[service].tasks.length===1 ||
+                            sortedTasks[service].unassignedTasks.length>1) && tabType==='NOTIFICATIONS'"></i>
+                  <div class="notification__details-action"
+                       *ngIf="tabType==='TASKS'"
+                       (click)="toggleTaskDetails(task, $event)">
+                  <span class="notification__details-title"
+                        *ngIf="!(task._id == activeTaskId)">Details</span>
+                    <span class="notification__details-title"
+                          *ngIf="task._id == activeTaskId">Hide</span>
+                    <span class="notifications__task-icon ml-2"
+                          [class.notifications__task-icon--reverse]="!(task._id == activeTaskId)"></span>
+                  </div>
+                </div>
+                <div class="notification__description"
+                     *ngIf="tabType==='NOTIFICATIONS'">
+                <div maxlength="10"
+                     [innerHTML]="task.description"
+                     class="notification__description-text">
+                </div>
+                </div>
+                <div class="notification__task-title" *ngIf="tabType==='TASKS'">
+                     <span (click)="goToProject(task.project._id, task._id)"> {{ task.name }}</span>
+                </div>
+                <div class="notification__description"
+                     *ngIf="tabType==='TASKS' && task._id == activeTaskId && task.description">
+                <div [innerHTML]="task.description"
+                     class="notification__description-text">
+                </div>
+                </div>
+                <div class="notification__details-section"
+                     *ngIf="tabType==='TASKS' && task._id == activeTaskId">
+                  <hr class="notification__hr">
+                  <div class="notification__section"
+                       *ngIf="task.finishDate">
+                    <label class="notification__label">Due Date:</label>
+                    <span class="notification__info">{{ task.finishDate | date }}</span>
+                  </div>
+                  <div class="notification__section">
+                    <label class="notification__label">Project:</label>
+                    <span class="notification__info btn-link" *ngIf="task.project"
+                          (click)="goToProject(task.project._id)">{{task.project.name}}</span>
+                    <span class="notification__info" *ngIf="!task.project">-</span>
+                  </div>
+                  <div class="notification__section notification__section--attachments"
+                       *ngIf="task.files.length > 0">
+                    <label class="notification__label mb--8">Attachments:</label>
+                    <div class="notification__attachments">
+                      <div class="notification__file-container"
+                           *ngFor="let data of task.files"
+                           (click)="onPreviewFileOpen(data, $event)">
+                        <img
+                          src="{{ imageTypes.includes(data.contentType) ? data.signedUrl : 'assets/img/icons/files.svg' }}"
+                          height="100%">
+                        <video class="notification__video"
+                               *ngIf="videoTypes.includes(data.contentType)"
+                               src="{{ data.signedUrl }}"></video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="notification__buttons-wrap"
+                     *ngIf="task.action?.name === 'organization-invite'">
+                <span class="notification__decline"
+                      (click)="declineOrgInvite(task)">Decline</span>
+                  <span class="notification__accept"
+                        (click)="acceptOrgInvite(task)">Accept</span>
+                </div>
+                <div class="notification__bottom-section">
+                <span class="notification__review ml-auto btn btn-link"
+                      *ngIf="((task.action?.name !== 'organization-invite' && task.action && task.action.redirect) && tabType==='NOTIFICATIONS' && sortedTasks[service].isOpened) ||
+                      (task.action?.name !== 'organization-invite' && task.action && task.action.redirect) && tabType==='NOTIFICATIONS' && sortedTasks[service].tasks.length === 1"
+                      (click)="reviewNotification(service, $event, task)">
+                  {{ task?.action?.data?.label || 'review' }}
+                </span>
+                  <div class="notification__timer"
+                       *ngIf="tabType==='TASKS'">
+                  <span class="notification__start-timer icon icon--play icon--active"
+                        *ngIf="!task.taskRunning"
+                        (click)="toggleStartTask(task, $event)"></span>
+                    <span class="notification__pause-timer icon icon--pause icon--active"
+                          *ngIf="task.taskRunning"
+                          (click)="toggleStartTask(task, $event)"></span>
+                    <span class="notification__time"><ai-timer [timeSeconds]="task.taskTime ? task.taskTime : 0"
+                                                               [running]="task.taskRunning"></ai-timer></span>
+                  </div>
+                  <!-- <button class="notification__go-task-button btn btn-link"
+                          *ngIf="tabType==='TASKS'">
+                    Go to task
+                  </button> -->
+                  <button class="btn btn-link notification__done-btn"
+                          (click)="markAsDone(task); sortedTasks[task.service].isOpened = false; sortedTasks[task.service].isUnassignedTasksOpened = false"
+                          *ngIf="(tabType==='TASKS' && sortedTasks[service].isOpened && sortedTasks[service].tasks.length > 1) ||
+                          (tabType==='TASKS' && sortedTasks[service].tasks.length === 1)">
+                    Mark as done
+                  </button>
+
+                </div>
+              </li>
+            </ul>
+            <div *ngIf="tabType==='TASKS' && sortedTasks[service].tasks.length > 1 && !sortedTasks[service].isOpened"
+                 class="notifications__subheader mt-4"
+                 (click)="toggleOpen(service, $event)">
+            <span class="notifications__subtitle">
+                  {{ sortedTasks[service].tasks.length - 1 }} more tasks assigned to you</span>
+              <div>
+              <span class="notifications__task-icon ml-2"
+                    [class.notifications__task-icon--reverse]='sortedTasks[service].isTasksOpened'></span>
+              </div>
+            </div>
+            <div class='notifications__subheader my-2'
+                 [class.mt-0]="sortedTasks[service].tasks.length == 0"
+                 *ngIf="(sortedTasks[service].unassignedTasks.length > 0) && tabType==='TASKS'"
+                 (click)="toggleUnassignedTasksClose(service, $event)">
+            <span class="notifications__subtitle">
+              Unassigned ({{ sortedTasks[service].unassignedTasks.length }})
+            </span>
+              <div>
+              <span class="notifications__task-icon ml-2"
+                    [class.notifications__task-icon--reverse]='!sortedTasks[service].isUnassignedTasksOpened'></span>
+              </div>
+            </div>
+            <ul class="notifications-sidebar__list notifications"
+                [class.notifications__status--open]="sortedTasks[service].isUnassignedTasksOpened"
+                *ngIf="sortedTasks[service].isUnassignedTasksOpened || !sortedTasks[service].tasks.length">
+              <li class="notification_list__card notification"
+                  *ngFor="let task of sortedTasks[service].unassignedTasks; trackBy: trackById"
+                  [class.two-tasks]="sortedTasks[service].unassignedTasks.length == 2 && !sortedTasks[service].isUnassignedTasksOpened"
+                  [class.more-tasks]="sortedTasks[service].unassignedTasks.length > 2 && !sortedTasks[service].isUnassignedTasksOpened"
+                  (click)="(sortedTasks[service].isUnassignedTasksOpened || sortedTasks[service].unassignedTasks.length === 1) ?
+                            toggleTaskDetails(task, $event) : toggleUnassignedTasksClose(service, $event)">
+                <div class="notification__title">
+                  <i class="service-icon {{ 'service-icon ' +
+                          (sortedTasks[service].service ?.iconClass ?
+                          sortedTasks[service].service ?.iconClass :
+                          (sortedTasks[service].service._id | slug)) }}"></i>
+                  {{ sortedTasks[service].serviceName }}
+                  <span [class.notification__tab]="tabType==='NOTIFICATIONS'|| !sortedTasks[service].isOpened"
+                        class="notification__date"
+                        *ngIf="tabType==='NOTIFICATIONS'">
+                  {{task.createdAt | notifyDate}}
+                </span>
+                  <!-- <span [class.notification__tab]="tabType==='NOTIFICATIONS'|| sortedTasks[service].isOpened"
+                        class="notification__open-icon"
+                        *ngIf="sortedTasks[service].isOpened"></span> -->
+                  <i [class.notification__tab]="tabType==='NOTIFICATIONS' || !sortedTasks[service].isOpened"
+                     class="notification__close-task icon icon--close icon--dynamic"
+                     (click)="onRemoveTasks($event, 'ONE', task._id)"
+                     *ngIf="(sortedTasks[service].isOpened ||
+                            sortedTasks[service].tasks.length===1 ||
+                            sortedTasks[service].unassignedTasks.length>1) &&
+                            tabType==='NOTIFICATIONS'"></i>
+                  <div class="notification__details-action"
+                       *ngIf="tabType==='TASKS'"
+                       (click)="toggleTaskDetails(task, $event)">
+                  <span class="notification__details-title"
+                        *ngIf="!(task._id == activeTaskId)">Details</span>
+                    <span class="notification__details-title"
+                          *ngIf="task._id == activeTaskId">Hide</span>
+                    <span class="notifications__task-icon ml-2"
+                          [class.notifications__task-icon--reverse]="!(task._id == activeTaskId)"></span>
+                  </div>
+                </div>
+                <div class="notification__task-title"
+                     *ngIf="tabType==='TASKS'">
+                     <span (click)="goToProject(task.project._id, task._id)"> {{ task.name }}</span>
+                </div>
+                <div class="notification__description" *ngIf="task._id == activeTaskId">
+                  <div [innerHTML]="task.description"
+                       class="notification__description-text">
+                  </div>
+                </div>
+                <div class="notification__details-section"
+                     *ngIf="tabType==='TASKS' && task._id == activeTaskId">
+                  <hr class="notification__hr">
+                  <div class="notification__section"
+                       *ngIf="task.notifyDate">
+                    <label class="notification__label">Due Date:</label>
+                    <span class="notification__info">{{ task.finishDate | date }}</span>
+                  </div>
+                  <div class="notification__section">
+                    <label class="notification__label">Project:</label>
+                    <span class="notification__info btn-link" *ngIf="task.project"
+                          (click)="goToProject(task.project._id)">{{task.project.name}}</span>
+                    <span class="notification__info" *ngIf="!task.project">-</span>
+                  </div>
+                  <div class="notification__section notification__section--attachments"
+                       *ngIf="task.files.length > 0">
+                    <label class="notification__label mb--8">Attachments:</label>
+                    <div class="notification__attachments">
+                      <div class="notification__file-container"
+                           *ngFor="let data of task.files"
+                           (click)="onPreviewFileOpen(data, $event)">
+                        <img
+                          src="{{ imageTypes.includes(data.contentType) ? data.signedUrl : 'assets/img/icons/files.svg' }}"
+                          height="100%">
+                        <video class="notification__video"
+                               *ngIf="videoTypes.includes(data.contentType)"
+                               src="{{ data.signedUrl }}"></video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="notification__bottom-section">
+                  <!-- <button class="notification__go-task-button btn btn-link"
+                          *ngIf="tabType==='TASKS'">
+                    Go to task
+                  </button> -->
+                  <button class="notification__assign-button btn btn-link ml-auto"
+                          (click)="assignToMe($event, task, service)">
+                    Assign to me
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Notes -->
+        <div *ngIf="!loading && tabType==='NOTES'" class="notes">
+          <div class="notes__add-note pointer" (click)="initNewNoteForm($event)">
+            <span class="icon icon--plus icon--size-24px mr--8"></span>New Note
+          </div>
+          <div class="notes__new-note"
+               *ngIf="newNoteForm">
+            <form [formGroup]="newNoteForm">
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1">
+                  <ai-note [required]="true"
+                           class="w-100"
+                           formControlName="note">
+                  </ai-note>
+                </div>
+              </div>
+            </form>
+            <div class="notes__new-note-save-info">
+              Save note: <span>Shift</span> + <span>Enter</span>
+            </div>
+          </div>
+          <form [formGroup]="notesForm"
+                *ngIf="notesForm">
+            <div *ngFor="let note of userNotes; let i = index; trackBy: trackById;"
+                 formArrayName="notes"
+                 class="notes__note">
+              <div class="d-flex flex-nowrap"
+                   [formGroupName]="i">
+                <ai-note [required]="true"
+                         class="w-100"
+                         (createTask)="createTaskDialog($event, note)"
+                         [note]="note"
+                         (removeAssignedItem)="removeNoteAssignedItem($event)"
+                         [taskOrReminderInProgress]="selectedNote && selectedNote._id === note._id"
+                         (openReminder)="openReminder($event, note)"
+                         (removeReminderDate)="removeReminderDate(note)"
+                         (removeNote)="removeNote(note)"
+                         formControlName="text">
+                </ai-note>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /Notes -->
+      </div>
+    </div>
+  </aside>
+  <div class="notifications-container__backdrop" (click)="close()" *ngIf="opened"></div>
+</div>
+
+<!-- <ai-task-dialog #taskDialog (onCreateTask)="goToTab('TASKS')"></ai-task-dialog> -->
+<ai-generic-modal #clockedInInfo (confirm)="doClockIn($event)"></ai-generic-modal>
+<ai-generic-modal #stopStartedTask (confirm)="onConfirmMarkAsDone($event)"
+                  (additionalConfirm)="pauseTask($event)"></ai-generic-modal>
+
+<!-- Reminder Modal -->
+<ng-template #reminderModal>
+  <div class="modal-header d-flex justify-content-between">
+    <h4 class="modal-title">Reminder</h4>
+    <button type="button" class="icon icon--close icon--size-24px" aria-label="Close"
+            (click)="closeReminderModal()"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="reminderForm" *ngIf="reminderForm">
+      <div class="date-container mb--16">
+        <label [hidden]="reminderSubmitted && this.reminderForm.get('reminderDate').invalid">
+          Choose Date
+        </label>
+        <label class="error-text"
+               *ngIf="reminderSubmitted && this.reminderForm.get('reminderDate').invalid">
+          Date field is required
+        </label>
+        <div class="input-wrap input-wrap--contained input-wrap--date-contained"
+             [class.input-wrap--error]="reminderSubmitted && this.reminderForm.get('reminderDate').invalid">
+          <input name="tracker-start-time"
+                 placeholder="Select Start time"
+                 formControlName="reminderDate"
+                 type="text"
+                 class="input-wrap__input"
+                 #dp="bsDatepicker"
+                 bsDatepicker
+                 readonly
+                 [minDate]="minDate"
+                 [maxDate]="maxDate"
+                 [bsConfig]="dateConfig">
+        </div>
+      </div>
+      <label [hidden]="reminderSubmitted && (this.reminderForm.get('reminderTime').hasError('required'))"
+             class="mb-0">
+        Choose time
+      </label>
+      <label class="error-text mb-0"
+             *ngIf="reminderSubmitted && this.reminderForm.get('reminderTime').hasError('required')">
+        Time field is required
+      </label>
+      <div class="timepicker-wrap">
+        <timepicker
+          [class.error]="reminderSubmitted && this.reminderForm.get('reminderTime').hasError('required')"
+          (click)="onValueChange()"
+          [formControlName]="'reminderTime'">
+        </timepicker>
+      </div>
+      <div class="form__textarea-container textarea-wrap textarea-wrap--contained">
+        <textarea class="textarea-wrap__textarea"
+                  formControlName="description"
+                  placeholder="Add description"
+                  rows="3"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer d-flex">
+    <button class="button button--medium button--ghost mr-2 m-0" (click)="closeReminderModal()">close</button>
+    <button class="button button--medium button--contained m-0"
+            (click)="saveReminder()">
+      {{ openedReminder ? 'update' : 'set' }} reminder
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #loadingView>
+  <div class="mt-3">
+    <ai-loading *ngIf="loading" class="text-center d-block"></ai-loading>
+  </div>
+</ng-template>
+
+<ai-file-viewer *ngIf="filesReceived" [files]="filesArray" (onCloseViewer)="onCloseViewer()"></ai-file-viewer>

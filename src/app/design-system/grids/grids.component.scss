@@ -1,0 +1,18 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+.grid-info {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+
+  &__captions {
+    display: block;
+    padding-bottom: 8px;
+  }
+}
+
+.video-block {
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+}

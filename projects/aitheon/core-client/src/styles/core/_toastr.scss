@@ -1,0 +1,74 @@
+@import 'variables';
+
+
+.toast-container .toast { 
+    padding-right: 30px;
+
+    .toast-close-button {
+        position: absolute !important;
+        right: 12px !important;
+        top: 6px !important;
+        line-height: 26px !important;
+    }
+}
+
+.toast {
+    background: $gray-450 !important;
+    opacity: 0.98 !important;
+    box-shadow: none !important;
+    min-width: 300px !important;
+    height: 75px !important;
+    font-family: $font-family-sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.toast-error {
+    color: $gray-500;
+    font-size: 14px;
+
+    &:before {
+        content: '\00d7';
+        color: $secondary-red;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+    } 
+}
+
+.toast-success {
+    color: $gray-500;
+    font-size: 14px;
+
+    &:before {
+        content: '';
+        color: $secondary-green;
+        position: absolute;
+        left: 20px;
+        top: 35%;
+        width: 8px;
+        height: 16px; 
+        border: solid $secondary-green;
+        border-width: 0 2px 2px 0; 
+        transform: rotate(45deg);
+    } 
+}
+
+.toast-close-button {
+    text-shadow: none !important;
+    font-size: 26px !important;
+    font-weight: 300 !important;
+    // position: absolute;
+    // right: 10px;
+    // top: 0;
+    outline: none !important;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within { 
+        color: #f1f1f1 
+    }
+}

@@ -1,0 +1,420 @@
+<ng-template #taskDialogTmpl>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">New task</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body py-0">
+    <div class="row task__container">
+      <div class="col-4 task__sidebar">
+        <div class="task__sidebar-conatainer">
+          <span class="task__sidebar-title">Other</span>
+          <ul class="task__list">
+            <li class="task__item" *ngFor="let other of others" (click)="selectOther(other.value)"
+              [class.task__item--active]='selectedOther === other.value'>{{other.label}}</li>
+          </ul>
+        </div>
+        <div class="task__sidebar-conatainer" *ngIf="selectedOther === 'SERVICE'">
+          <span class="task__sidebar-title">Calendar</span>
+          <ul class="task__list">
+            <li class="task__item" 
+                *ngFor="let type of taskTypes" 
+                (click)="selectType(type.value)"
+                [class.task__item--active]='selectedType === type.value'>{{type.label}}</li>
+          </ul>
+        </div>
+      </div>
+      <div  class="col-8 task__form-container" 
+            *ngIf="selectedOther">
+        <div class="task__form form">
+          <div *ngIf="selectedOther == 'SERVICE'; else mechbot">
+            <form class="task"
+                  novalidate 
+                  [formGroup]="taskForm" 
+                  (ngSubmit)="onSubmit()">
+              <div  class="form__bank-name input-wrap input-wrap--ghost input-wrap--small"
+                    [class.ghostFocus]="ghostFocus" 
+                    #ghostInput 
+                    autocomplete="off">
+                <span class="form__error form__error--name"
+                      *ngIf="submitted && taskForm.get('name') && taskForm.get('name').hasError('required')">
+                  Enter task name
+                </span>
+                <input  class="input-wrap__input" 
+                        formControlName="name" 
+                        placeholder="Enter task name" 
+                        autocomplete="off"
+                        type="text" 
+                        (focus)="ghostFocus=true" 
+                        (blur)="ghostFocus=false">
+              </div>
+
+              <div  class="form__type" 
+                    *ngIf="selectedOther === 'SERVICE'">
+                <label class="d-block form__type-label">
+                  Choose Service
+                </label>
+                <ngx-select-dropdown  tabindex="0" 
+                                      [multiple]="false" 
+                                      formControlName="service"
+                                      [config]="{ placeholder: 'Select service'}" 
+                                      [options]="services"
+                                      [class.error-dropdown]="submitted && taskForm.get('type') && taskForm.get('type').hasError('required')">
+                </ngx-select-dropdown>
+                <span class="form__error form__error--dropdown"
+                      *ngIf="submitted && taskForm.get('service') && taskForm.get('service').hasError('required')">
+                  You need to select service
+                </span>
+              </div>
+
+              <div  class="form__type" 
+                    *ngIf="selectedOther === 'SERVICE' && activeOrganization">
+                <label class="d-block form__type-label">Assign To</label>
+                <ngx-select-dropdown  tabindex="0" 
+                                      [multiple]="true" 
+                                      formControlName="assigned"
+                                      [config]="{ placeholder: 'No user selected', displayKey:'fullName'}"
+                                      [options]="users"
+                                      [class.error-dropdown]="submitted && taskForm.get('assigned') && taskForm.get('assigned').hasError('required')">
+                </ngx-select-dropdown>
+                <span class="form__error form__error--dropdown"
+                  *ngIf="submitted && taskForm.get('assigned') && taskForm.get('assigned').hasError('required')">
+                  Task needs to be assigned
+                </span>
+              </div>
+
+              <div class="form__type" *ngIf="selectedOther !== 'SERVICE'">
+                <label class="d-block form__type-label">Assign to device</label>
+                <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="assignedToDevice"
+                  [config]="{ placeholder: 'Select device', displayKey:'name'}" [options]="devices"
+                  [class.error-dropdown]="submitted && taskForm.get('assignedToDevice') && taskForm.get('assignedToDevice').hasError('required')">
+                </ngx-select-dropdown>
+                <span class="form__error form__error--dropdown"
+                      *ngIf="submitted && taskForm.get('assignedToDevice') && taskForm.get('assignedToDevice').hasError('required')">
+                  Task needs to be assigned
+                </span>
+              </div>
+
+              <div class="form__group">
+                <label>Due Date</label>
+                <div class="form__dropdown--date">
+                  <input  type="text" 
+                          class="form__date-input" 
+                          id="date" 
+                          placeholder="Choose Date" 
+                          bsDatepicker
+                          formControlName="finishDate" 
+                          [bsConfig]="{showWeekNumbers: false, dateInputFormat: 'DD-MM-YYYY'}" />
+                </div>
+              </div>
+
+              <div class="form__type">
+                <label class="d-block form__type-label">Set time(optional)</label>
+                <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="dueTime"
+                  [config]="{ placeholder: 'Select time', displayKey:'name'}" [options]="hours">
+                </ngx-select-dropdown>
+              </div>
+
+              <div class="form__type">
+                <label class="d-block form__type-label">Expected effort</label>
+                <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="effortMin"
+                  [config]="{ placeholder: 'From'}" [options]="effortHours"
+                  [class.error-dropdown]="submitted && taskForm.get('effortMin') && taskForm.get('effortMin').hasError('required')">
+                </ngx-select-dropdown>
+              </div>
+
+
+              <div class="form__type">
+                <label class="d-block form__type-label">Expected effort</label>
+                <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="effortMax"
+                  [config]="{ placeholder: 'To'}" [options]="effortHours"
+                  [class.error-dropdown]="submitted && taskForm.get('effortMax') && taskForm.get('effortMax').hasError('required')">
+                </ngx-select-dropdown>
+              </div>
+              <div class="form__group">
+                <label class="input-text">Enter description</label>
+                <div class="textarea w-100">
+                  <textarea class="w-100" type="text" type="text" rows="3"
+                    placeholder="Describe task details or add notes" formControlName="description"></textarea>
+                </div>
+                <label class="error-message"
+                  *ngIf="submitted && taskForm.get('description') && taskForm.get('description').hasError('required')">Description
+                  is required</label>
+              </div>
+
+              <div class="upload-files__upload-button-section">
+                <label>Attachment</label>
+                <div ng2FileDrop [uploader]="driveUploader?.uploader" class="upload-files__drop-zone">
+                  <div class="upload-files__upload-button-wrapper">
+                    <div class="fileContainer download-button upload-files__file-container">
+                      <input type="file" [accept]="allowedMimeType.toString()" ng2FileSelect
+                        [uploader]="driveUploader?.uploader" multiple />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ai-drive-uploader [autoUpload]="true" #driveUploader (success)="onSuccessUpload($event)"
+                [oganizationId]="activeOrganization._id" [service]="serviceKey"></ai-drive-uploader>
+              <!-- Error -->
+              <div class="row" *ngIf="error">
+                <div class="col">
+                  <div class="alert alert-danger">{{ error }}</div>
+                </div>
+              </div>
+              <!-- End Error -->
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 task__footer">
+        <button class="btn btn-link mr-2 task__button" (click)="hide()">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-medium mr-2 task__button"
+          (click)="createTask()">Create</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #mechbot>
+  <!-- Display Mechbot fields -->
+  <form [formGroup]="mechbotForm">
+
+    <!-- <div class="input">
+      <input type="text" autocomplete="off" formControlName="name">
+      <label class="input-text">Name</label>
+      <small *ngIf="submitted && mechbotForm.get('name').hasError('required')" class="text-danger">
+        Name is required
+      </small>
+    </div> -->
+
+
+    <div class="form__type">
+      <label class="d-block form__type-label">Task</label>
+      <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="task"
+        [config]="{ placeholder: 'Select Task'}" (change)="onTaskSelected($event)" [options]="taskOptions"
+        [class.error-dropdown]="submitted && mechbotForm.get('task') && mechbotForm.get('task').hasError('required')">
+      </ngx-select-dropdown>
+    </div>
+
+    <div class="form__type">
+      <label class="d-block form__type-label">Service: SMART_INFRASTRUCTURE </label>
+      <!-- <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="service"
+          [config]="{ placeholder: 'Select service'}" [options]="services"
+          [class.error-dropdown]="submitted && mechbotForm.get('service') && mechbotForm.get('service').hasError('required')">
+        </ngx-select-dropdown>
+        <span class="form__error form__error--dropdown"
+          *ngIf="submitted && mechbotForm.get('service') && mechbotForm.get('service').hasError('required')">You need
+          to
+          select service</span> -->
+    </div>
+
+    <div class="form__type">
+      <label class="d-block form__type-label">Choose Infrastructure</label>
+      <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="system" [config]="systemOptionsConfig"
+        (change)="onSystemSelect($event)" [options]="systemOptions">
+      </ngx-select-dropdown>
+      <span class="form__error form__error--dropdown"
+        *ngIf="submitted && mechbotForm.get('system').hasError('required')">You need
+        to
+        select system</span>
+    </div>
+
+    <div class="form__type" *ngIf="mechbotForm.value.system != '' ">
+      <!-- <label class="d-block form__type-label">Sub-system Type</label> -->
+      <label class="d-block form__type-label">Sub-system Type : Group Robo</label>
+      <!-- <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="subsystemType"
+        [config]="systemOptionsConfig" (change)="onSubsystemTypeSelect($event)" [options]="systemTypeOptions">
+      </ngx-select-dropdown>
+      <span class="form__error form__error--dropdown"
+        *ngIf="submitted && mechbotForm.get('subsystemType').hasError('required')">You need
+        to
+        select system type</span> -->
+    </div>
+
+    <div class="form__type">
+      <label class="d-block form__type-label">Choose Sub-system </label>
+      <ngx-select-dropdown tabindex="0" [multiple]="false" formControlName="assignedToSystem"
+        [config]="systemOptionsConfig" (change)="onSubsystemSelect()" [options]="assignToSystemOption">
+      </ngx-select-dropdown>
+      <span class="form__error form__error--dropdown"
+        *ngIf="submitted && mechbotForm.get('subsystemType').hasError('required')">You need
+        to
+        select system type</span>
+    </div>
+
+    <!-- From station for Move Robot -->
+    <div class="form__type" *ngIf="mechbotForm.value.task == 'Move Robot'">
+      <label class="d-block form__type-label">From</label>
+      <ngx-select-dropdown tabindex="0" *ngIf="!loadingFromSystem else loadingView" [multiple]="false"
+        formControlName="fromStation" [config]="systemOptionsConfig"
+        (change)="this.loadingToSystem = true; filterToSystemOptions();" [options]="fromStationOptions"
+        [class.error-dropdown]="submitted && mechbotForm.get('fromStation') && mechbotForm.get('fromStation').hasError('required')">
+      </ngx-select-dropdown>
+    </div>
+    <!-- To station for Move Robot -->
+    <div class="form__type" *ngIf="mechbotForm.value.task == 'Move Robot'">
+      <label class="d-block form__type-label">To</label>
+      <ngx-select-dropdown tabindex="0" *ngIf="!loadingToSystem else loadingView" [multiple]="false"
+        formControlName="toStation" [config]="systemOptionsConfig"
+        (change)="this.loadingFromSystem = true; filterFromSystemOptions(); " [options]="toStationOptions"
+        [class.error-dropdown]="submitted && mechbotForm.get('toStation') && mechbotForm.get('toStation').hasError('required')">
+      </ngx-select-dropdown>
+    </div>
+    <div class="form__type" *ngIf="mechbotForm.value.task == 'Move Robot'">
+      <label class="input-text">Enter description</label>
+      <div class="textarea w-100">
+        <textarea class="w-100" type="text" type="text" rows="3" placeholder="Describe task details"
+          formControlName="description"></textarea>
+      </div>
+      <label class="error-message"
+        *ngIf="submitted && mechbotForm.get('description') && mechbotForm.get('description').hasError('required')">Description
+        is required</label>
+    </div>
+  </form>
+  <hr class="subSystem-form__hr">
+  <!-- Select Position Type for Custom move Robot -->
+  <div class="mt-3" *ngIf="( mechbotForm.value.task == 'Custom Move Robot')">
+    <!-- Add Button for Position -->
+    <label>Positions</label>
+
+    <div class="p-10" *ngFor="let pos of positionArray;let i = index">
+      <!-- Position type -->
+      <div class="form__type" *ngIf="mechbotForm.value.task == 'Custom Move Robot'">
+
+        <label class="d-block form__type-label">Choose Position Type
+          <label class="delete-button pull-right" *ngIf="positionArray.length > 1" (click)="removePosition(i)"><i
+              class="fa fa-times" aria-hidden="true"></i></label>
+        </label>
+
+        <ngx-select-dropdown tabindex="0" [multiple]="false" [(ngModel)]="pos.positionType"
+          [config]="positionTypeConfig" [options]="positionTypeOptions">
+        </ngx-select-dropdown>
+
+      </div>
+
+      <!-- Station Entry/Exit -->
+      <div class="form__type" *ngIf="pos.positionType == 'Station Entry' || pos.positionType == 'Station Exit'">
+        <label class="d-block form__type-label">Choose Station</label>
+        <ngx-select-dropdown tabindex="0" *ngIf="!loadingFromSystem else loadingView" [multiple]="false"
+          [(ngModel)]="pos.stations" [config]="stationConfig"
+          (change)="this.loadingToSystem = true; filterToSystemOptions();" [options]="fromStationOptions">
+        </ngx-select-dropdown>
+      </div>
+
+      <!-- Goto Pose  -->
+      <div *ngIf="pos.positionType == 'Goto Pose'">
+        <!-- pose -->
+        <div class="entry-pose mt-3">
+          <!-- <button class="btn btn-primary btn-medium pull-right" (click)="addPoseButton()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button> -->
+          <label>Pose</label>
+          <button class="btn btn-primary btn-medium pull-right" (click)="addPoses(i)">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+          <div class="mt-2 pl-1 pr-1" *ngFor="let control of pos.poses; let j = index">
+            <div class="content" *ngIf="!toggle">
+              <!-- Sequence  -->
+
+              <div class=" mt-2 subSystem-form__port-section">
+                <div class="row mt-3">
+                  <div class="col-2">
+                    <label class="subSystem-form__label">Sequence </label>
+                    <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                      <div class="custom-placeholder">S</div>
+                      <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                        [(ngModel)]="control.sequence">
+                    </div>
+                  </div>
+                  <div class="col-2 ml-4">
+                    <label class="subSystem-form__label">Velocity</label>
+                    <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                      <div class="custom-placeholder">V</div>
+                      <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                        [(ngModel)]="control.velocity">
+                    </div>
+                  </div>
+                </div>
+                <label class="delete-button pull-right" *ngIf="pos.poses.length > 1 && !lockForm"
+                  (click)="removePose(i,j)"><i class="fa fa-times" aria-hidden="true"></i></label>
+              </div>
+
+              <!-- Rotation  -->
+              <div class="subSystem-form__section">
+                <label class="subSystem-form__label">Rotation</label>
+
+                <div class="subSystem-form__port-section">
+                  <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                    <div class="custom-placeholder">X</div>
+                    <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                      [(ngModel)]="control.rotation.poseRotationX">
+                  </div>
+                  <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                    <div class="custom-placeholder">Y</div>
+                    <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                      [(ngModel)]="control.rotation.poseRotationY">
+                  </div>
+                  <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                    <div class="custom-placeholder">Z</div>
+                    <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                      [(ngModel)]="control.rotation.poseRotationZ">
+                  </div>
+                  <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                    <div class="custom-placeholder">W</div>
+                    <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                      [(ngModel)]="control.rotation.poseRotationW">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Translation  -->
+              <div class="subSystem-form__section">
+                <label class="subSystem-form__label">Translation</label>
+                <div class="subSystem-form__port-section">
+                  <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                    <div class="custom-placeholder">X</div>
+                    <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                      [(ngModel)]="control.translation.poseTranslationX">
+                  </div>
+                  <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                    <div class="custom-placeholder">Y</div>
+                    <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                      [(ngModel)]="control.translation.poseTranslationY">
+                  </div>
+                  <div class="subSystem-form__location input-wrap input-wrap--small axis">
+                    <div class="custom-placeholder">Z</div>
+                    <input class="input-wrap__input" type="number" mask="0*.00" autocomplete="off" placeholder="0"
+                      [(ngModel)]="control.translation.poseTranslationZ">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div *ngIf="pose.controls.length!=i+1" class="clearfix"></div>-->
+            <hr class="subSystem-form__hr" *ngIf="(pos.poses.length > 0 && j != pos.poses.length-1)">
+          </div>
+        </div>
+      </div>
+      <hr class="subSystem-form__hr" *ngIf="(positionArray.length > 0 && i != positionArray.length-1)">
+    </div>
+    <button class="btn btn-primary btn-medium pull-right mt-3 btn-font" (click)="addPositionArray()">
+      <i class="fa fa-plus" aria-hidden="true"></i> <span>Add Position</span>
+    </button>
+  </div>
+
+  <!-- poses array for Custom Move Robot -->
+
+
+
+</ng-template>
+
+
+<ng-template #loadingView>
+  <ai-loading class="p-3 text-center"></ai-loading>
+</ng-template>
+
+
+<ng-template #pose>
+
+</ng-template>

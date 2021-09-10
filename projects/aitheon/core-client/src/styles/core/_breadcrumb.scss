@@ -1,0 +1,37 @@
+@import 'variables';
+
+.breadcrumb {
+    background: transparent;
+    padding: 20px 0px;
+    margin: 0px;
+
+    li.breadcrumb-item {
+        font-size: 14px;
+        padding-left: 0px;
+        color: $primary-gold;
+
+        a {
+            color: #838383;
+        }
+
+        &:before {
+            padding-left: 3px;
+            padding-right: 3px;
+            content: '/';
+            color: #838383;
+        }
+
+        &.active {
+            &:before {
+                color: $primary-gold;
+            }
+        }
+
+        &:first-child {
+            &:before {
+                padding-left: 0px;
+                content: '//';
+            }
+        }
+    }
+}

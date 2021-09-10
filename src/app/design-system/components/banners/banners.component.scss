@@ -1,0 +1,118 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+.banner {
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  grid-column-gap: 16px;
+  align-items: center;
+  min-height: 36px;
+  padding: 5px 16px;
+  color: $white;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  box-shadow: 0px 2px 6px 0px rgba(31, 31, 31, 0.4);
+  background: $lightcoal-gray;
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__close {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    border-radius: 50%;
+    transition: 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba($gray-600, 0.15);
+    }
+  }
+
+  .button {
+    min-height: 24px;
+    margin-left: 48px;
+    color: $base-black;
+
+    &--ghost {
+      padding: 0 8px;
+      background-color: transparent;
+      color: $primary-gold;
+
+      path {
+        fill: $primary-gold !important;
+      }
+
+      &:hover {
+        background-color: rgba($gold-dark, 0.15);
+      }
+    }
+
+    &--contained {
+      background-color: $primary-gold;
+
+      &:hover {
+        background-color: $gold-dark;
+      }
+    }
+  }
+
+  // carry over in media when will be done adaptive & remove --mob //
+
+  &--mob {
+    justify-content: flex-start;
+
+    .banner__content {
+      justify-content: flex-start;
+    }
+
+    .banner__icon {
+      order: 1;
+      margin-left: 16px;
+      margin-right: 0;
+    }
+  }
+
+  &__icon {
+    margin-right: 16px;
+  }
+
+  &--warning,
+  &--error {
+    .icon::before {
+      color: $white;
+    }
+
+    .banner__close:hover,
+    .icon--dynamic:hover::after {
+      background: rgba($white, 0.15) !important;
+    }
+
+    .button {
+      color: $white;
+
+      &:hover {
+        background: rgba($white, 0.15) !important;
+      }
+    }
+  }
+
+  &--warning {
+    background: $base-orange;
+  }
+
+  &--error {
+    background: $base-red;
+  }
+}

@@ -1,0 +1,43 @@
+// contains size and index
+@import '../../projects/aitheon/core-client/src/styles/core/variables';
+// colors and theme related staff
+@import '../../projects/aitheon/core-client/src/styles/themes/default/variables';
+
+.org-nav {
+    height: 40px;
+    background-color: #2b2b2b;
+    margin: 0 -1rem;
+    position: fixed;
+    top: 65px;
+    right: 0px;
+    left: 0;
+    z-index: 1001;
+
+    &__items {
+        display: flex;
+        list-style: none;
+        list-style-type: none;
+        align-items: center;
+        height: 100%;
+    }
+  
+    &__item {
+        &:not(:first-child) {
+            margin-left: 2rem;
+        }
+    }
+  
+    &__link {
+        color: #8c8c8c;
+  
+        &:hover {
+            color: #dcbc65;
+            text-decoration: none;
+        }
+  
+        &--active {
+            color: #dcbc65;
+            text-decoration: none;
+        }
+    }
+  }

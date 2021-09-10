@@ -1,0 +1,176 @@
+@import 'variables';
+
+.chips,
+.labels {
+  .chip,
+  .label {
+    margin-right: 8px;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.chip {
+  position: relative;
+  display: inline-block;
+  height: 24px;
+  padding: 2px 12px;
+  color: $white;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 18px;
+  border: 1px solid $lightcoal-gray;
+  transition: 0.2s;
+
+  &__more {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 240px;
+    background-color: $lightcoal-gray;
+    border-radius: 2px;
+    box-shadow: 0px 2px 6px 0px rgba(31, 31, 31, 0.4);
+
+    .item {
+      text-align: left;
+      border-bottom: 1px solid $tundora-gray;
+
+      &:hover { background-color: transparent; }
+    }
+  }
+
+  &--contained {
+    background: $lightcoal-gray;
+
+    &:hover {
+      background: $tundora-gray;
+      border-color: $tundora-gray;
+    }
+
+    &.chip--active:hover { border-color: $primary-gold; }
+  }
+
+  &--outlined {
+    background: transparent;
+
+    &:hover {
+      background: rgba($base-gray, .15);
+    }
+  }
+
+  &--active {
+    border-color: $primary-gold;
+  }
+
+  &--error {
+    border-color: $base-red;
+
+    &:hover { border-color: $base-red; }
+  }
+
+  &--icon-left {
+    padding-left: 28px;
+  }
+
+  &--icon-right {
+    padding-right: 24px;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: translate(0);
+  }
+
+  &__icon-wrap--left,
+  &__icon-wrap--right {
+    position: absolute;
+    top: 3px;
+  }
+
+  &__icon-wrap--left {
+    left: 4px;
+  }
+
+  &__icon-wrap--right {
+    right: 4px;
+  }
+
+  // start styles for disabled chips //
+
+  &--disabled {
+    > * {
+      pointer-events: none !important;
+    }
+
+    background: $lightcoal-gray;
+    opacity: 0.4;
+    cursor: not-allowed !important;
+
+    &:hover {
+      background: $lightcoal-gray;
+    }
+  }
+
+  // end styles for disabled chips //
+}
+
+.label {
+  position: relative;
+  display: inline-block;
+  height: 24px;
+  padding: 2px 12px;
+  color: $white;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 18px;
+  background: transparent;
+  transition: 0.2s;
+
+  &--icon-left {
+    padding-left: 24px;
+  }
+
+  &--icon-right {
+    padding-right: 24px;
+  }
+
+  &--purple {
+    background-color: $base-purple;
+  }
+
+  &--orange {
+    background-color: $base-orange;
+  }
+
+  &--yellow {
+    background-color: $base-yellow;
+  }
+
+  &--red {
+    background-color: $base-red;
+  }
+
+  &--blue {
+    background-color: $base-blue;
+  }
+
+  &--green {
+    background-color: $base-green;
+  }
+
+  &--pink {
+    background-color: $base-violet;
+  }
+}

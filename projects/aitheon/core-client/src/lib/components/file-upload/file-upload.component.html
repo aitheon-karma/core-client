@@ -1,0 +1,23 @@
+<div class="row m-0 upload__upload-section upload-files">
+  <div class="upload-files__upload-button-section d-flex">
+    <div ng2FileDrop
+        [uploader]="driveUploader?.uploader" class="upload-files__drop-zone">
+      <div class="upload-files__upload-button-wrapper" tooltip="Upload documents, images or videos \n Max file size: 10 MB" [delay]='300'>
+        <div class="fileContainer download-button upload-files__file-container">
+          <span class="upload-files__placeholder">Drop files to attach, or <span class="upload-files__placeholder--gold">browse</span></span>
+          <input type="file" [accept]="allowedMimeType.toString()" ng2FileSelect [uploader]="driveUploader?.uploader" multiple />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="upload-files__file-row col-12 p-0 mb-3" target= "_blank" *ngIf="items.length > 0">
+    <div class="upload-files__drop-image-container" (click)="openFile(data.signedUrl)" *ngFor="let data of items; let i = index">
+      <img  src="{{ imageTypes.includes(data.contentType) ? data.signedUrl : 'assets/img/icons/files.svg' }}" height="100%">
+      <video  class="upload-files__video"
+              *ngIf="videoTypes.includes(data.contentType)"
+              src="{{ data.signedUrl }}"></video>
+      <span class="upload-files__file-name">{{ data.name }}</span>
+    </div>
+  </div>
+</div>
+<ai-drive-uploader #driveUploader (afterAddingFile)="onBeforeUpload($event)" (success)="onSuccessUpload($event)" [service]="serviceKey" [autoUpload]="false"></ai-drive-uploader>

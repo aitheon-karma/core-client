@@ -1,0 +1,7 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+.list-icons__item {
+  &--active {
+    border-color: $primary-gold;
+  }
+}

@@ -1,0 +1,45 @@
+<ng-template #loginDialogTmpl>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Login</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="loginDialogRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="mb-3" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12">
+          <!-- Email -->
+          <div 
+            class="input" 
+            [class.error]="submitted && loginForm.get('email').hasError('required')" 
+            >
+              <input type="text" name="email" autocomplete="off" formControlName="email">
+              <label class="input-text">Enter Email</label>
+              <label class="error-message">Email is required</label>
+          </div>
+
+          <div 
+            class="input" 
+            [class.error]="submitted && loginForm.get('password').hasError('required')" 
+            >
+              <input type="password" name="password" autocomplete="off" formControlName="password">
+              <label class="input-text">Enter password</label>
+              <label class="error-message">Password is required</label>
+          </div>
+
+          <!-- Error -->
+          <div class="row" *ngIf="error">
+            <div class="col">
+              <div class="alert alert-danger">{{ error }}</div>
+            </div>
+          </div>
+          <!-- End Error -->
+        </div>
+        <div class="col-12" >
+          <button type="submit" class="btn btn-primary mr-2">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

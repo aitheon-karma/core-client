@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>camera</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="117.692718%" y2="111.015449%" id="linearGradient-1">
+            <stop stop-color="#9B3CB7" offset="0%"></stop>
+            <stop stop-color="#FF396F" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="14" y="37" width="3" height="13" rx="1"></rect>
+        <filter x="-116.7%" y="-19.2%" width="333.3%" height="153.8%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-4" x="3" y="5" width="26" height="19" rx="1"></rect>
+        <filter x="-13.5%" y="-13.2%" width="126.9%" height="136.8%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="App-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Categories" transform="translate(-1041.000000, -786.000000)">
+            <g id="camera" transform="translate(1041.000000, 786.000000)">
+                <path d="M10,0 L50,0 C55.5228475,-1.01453063e-15 60,4.4771525 60,10 L60,50 C60,55.5228475 55.5228475,60 50,60 L10,60 C4.4771525,60 -2.87635993e-15,55.5228475 0,50 L0,10 C-6.76353751e-16,4.4771525 4.4771525,-2.53818305e-15 10,0 Z" id="Mask" fill="url(#linearGradient-1)"></path>
+                <path d="M60,25 L60,50.7727931 C60,54.9249033 57.4694581,58.4859738 53.8665038,59.9978751 L43,38.5994715 L47.9828259,28.5115762 L60,25 Z" id="Combined-Shape" fill="#000000" opacity="0.100000001"></path>
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+                <rect id="Rectangle" fill="#FFFFFF" x="20" y="24" width="3" height="17"></rect>
+                <g id="Group-16" transform="translate(12.000000, 10.000000)">
+                    <path d="M29.2968175,15.9734204 L33.2968175,15.9734204 C33.8491022,15.9734204 34.2968175,16.4211356 34.2968175,16.9734204 L34.2968175,26.9734204 C34.2968175,27.5257051 33.8491022,27.9734204 33.2968175,27.9734204 L29.2968175,27.9734204 L29.2968175,27.9734204 L29.2968175,15.9734204 Z" id="Rectangle" fill="#FFFFFF" transform="translate(31.796817, 21.973420) rotate(25.000000) translate(-31.796817, -21.973420) "></path>
+                    <g id="Rectangle" transform="translate(16.000000, 14.500000) rotate(25.000000) translate(-16.000000, -14.500000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    </g>
+                </g>
+                <polygon id="Rectangle-Copy-4" fill="#FFFFFF" transform="translate(18.469736, 41.014151) rotate(68.000000) translate(-18.469736, -41.014151) " points="17.2231477 36.9656399 20.1536819 36.808462 19.5780581 45.21984 16.7857894 45.1442886"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

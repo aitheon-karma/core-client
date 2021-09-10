@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-12">
+    <h2>USE ONLY FOR HELP IN REFACTORING AND SEARCHING</h2>
+    <div class="card">
+      <div class="card-body">
+        <p>Vertical/horizontal forms and all controls</p>
+        <input type="text" class="form-control">
+        <br>
+        <div class="input-style">
+          <small *ngIf="false" class="text-danger"> <!-- value in *ngIf change to checkError -->
+             Email is required
+          </small>
+          <input type="text" placeholder="Enter Email" autocomplete="off" formControlName="email">
+          <label>Enter Email</label>
+        </div>
+
+        <hr>
+        <p>classic checkbox example</p>
+          <div class="checkbox-style">
+            <input type="checkbox" id="terms" formControlName="">
+            <label for="terms">I agree to the <a href="/privacy" target="blank">Privacy Policy</a></label>
+          </div>
+        <hr>
+
+        <p>switch example</p>
+        <div class="switch ">
+          <input id="switchExample" name="switchExample" class="cmn-toggle cmn-toggle-round" type="checkbox">
+          <label for="switchExample"></label> 
+        </div>
+        <label for="switchExamplex">Checkbox</label> 
+
+        <div class="switch switch--small ml-3">
+          <input id="switchExample" name="switchExample" class="cmn-toggle cmn-toggle-round" type="checkbox">
+          <label for="switchExample"></label>
+        </div>
+        <label for="switchExample">Small checkbox</label> 
+      </div>
+    </div>
+  </div>
+</div>

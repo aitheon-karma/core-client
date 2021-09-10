@@ -1,0 +1,143 @@
+@import "variables";
+
+.checkbox {
+  cursor: pointer;
+
+  &--minus .checkbox__input:checked::before  {
+    content: "\e963";
+  }
+
+  &__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    background: transparent;
+    color: $white;
+    top: 3px;
+    height: 16px;
+    width: 16px;
+    border-radius: 2px;
+    border: solid 1px $gray-500;
+    cursor: pointer;
+    margin-right: 7px;
+    outline: none;
+    transition: 0.15s ease-in-out;
+
+    // start active zone //
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      z-index: 10;
+      cursor: pointer;
+      background: rgba($base-gray, 0.15);
+      opacity: 0;
+      transition: 0.2s;
+    }
+
+    // end active zone //
+
+    &:focus,
+    &:hover {
+      border: 1px solid $base-gray;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:checked {
+      background-color: $primary-gold;
+      border: solid 1px $primary-gold;
+
+      &:before {
+        position: absolute;
+        content: "\e996";
+        font-size: 14px;
+        line-height: 14px;
+        left: 50%;
+        top: 50%;
+        font-family: "icon-font";
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #1f1f1f;
+        transform: translate(-50%, -50%);
+        background-repeat: no-repeat;
+      }
+
+      &::after {
+        background: rgba($primary-gold-dt, 0.15);
+      }
+
+      &:focus,
+    &:hover {
+      border: 1px solid $primary-gold-dt;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+    }
+
+    &:disabled {
+      background-color: $gray-200;
+      border: solid 1px $gray-200;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: 7px;
+        height: 2px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: url("/assets/img/icons/disabled.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &:checked:disabled {
+      background-color: $gray-200;
+      border: solid 1px $gray-200;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: 11px;
+        height: 11px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: url("/assets/img/icons/checked.svg");
+        background-repeat: no-repeat;
+        opacity: 0.1;
+      }
+    }
+  }
+
+  &__label {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &--disabled {
+    > * {
+      pointer-events: none !important;
+    }
+
+    opacity: 0.4;
+    cursor: not-allowed !important;
+  }
+}

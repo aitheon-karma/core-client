@@ -1,0 +1,94 @@
+<ng-template #tourGuideModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">New element step</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="tourGuideRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="mb-3" novalidate [formGroup]="tourGuideForm" (ngSubmit)="onSubmit()" *ngIf="tourGuideForm">
+      <div class="row">
+        <div class="col-12">
+
+          <p>
+              Selector: {{ selectedTour.reference }}<br>
+              Path: {{path}}
+          </p>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Title" formControlName="title">
+            <small *ngIf="submitted && tourGuideForm.get('title').hasError('required')" class="text-danger">
+              Tile is required
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label>Select action on this element</label>
+            <select formControlName="action" class="form-control" placeholder="Select an action">
+              <option *ngFor="let action of tourGuideActions" [value]="action">{{action}}</option>
+            </select>
+            <button class="btn btn-link" *ngIf="tourGuideForm.controls['action'].value" (click)="tourGuideForm.controls['action'].reset()">Clear</button>
+          </div>
+
+          <div class="form-group">
+            <label>Select parent element</label>
+            <select formControlName="parent" class="form-control" placeholder="Select parent">
+              <option *ngFor="let parent of parents" [value]="parent._id">{{parent.title}}</option>
+            </select>
+            <button class="btn btn-link" *ngIf="tourGuideForm.controls['parent'].value" (click)="tourGuideForm.controls['parent'].reset()">Clear</button>
+          </div>
+
+          <div class="form-group">
+            <label>Select a step</label>
+            <select formControlName="step" class="form-control" placeholder="Select a step">
+              <option *ngFor="let step of avalableSteps" [value]="step">Step {{step}}</option>
+            </select>
+
+            <small *ngIf="submitted && tourGuideForm.get('step').hasError('required')" class="text-danger">
+              Step is Required
+            </small>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Description" formControlName="description">
+            <small *ngIf="submitted && tourGuideForm.get('description').hasError('required')" class="text-danger">
+              Description is required
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <label>Select a video</label>
+            <select formControlName="video" class="form-control" placeholder="Select a video">
+            <option *ngFor="let video of videos" [value]="video._id">{{video.video.name}}</option>
+            </select>
+
+          </div>
+
+          <div class="form-group">
+              <select formControlName="stepPosition" class="form-control" placeholder="Select a step">
+                <option [value]="tourPositions.BOTTOM">  {{ tourPositions.BOTTOM | titlecase}}</option>
+                <option [value]="tourPositions.TOP">  {{ tourPositions.TOP | titlecase}}</option>
+                <option [value]="tourPositions.LEFT">  {{ tourPositions.LEFT | titlecase}}</option>
+                <option [value]="tourPositions.RIGHT"> {{ tourPositions.RIGHT | titlecase}} </option>
+              </select>
+
+              <small *ngIf="submitted && tourGuideForm.get('stepPosition').hasError('required')" class="text-danger">
+                Step position is Required
+              </small>
+            </div>
+          <!-- Error -->
+          <div class="row" *ngIf="error">
+            <div class="col">
+              <div class="alert alert-danger">{{ error }}</div>
+            </div>
+          </div>
+          <!-- End Error -->
+        </div>
+        <div class="col-12 d-flex" *ngIf="['PLATFORM_MANAGER', 'PLATFORM_ADMIN'].includes(platformRole)" >
+          <button type="submit" class="btn btn-primary mr-2"> Save</button>
+          <button type="button" *ngIf="selectedTour._id" (click)="deleteTour()" class="btn btn-primary mr-2">Delete</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

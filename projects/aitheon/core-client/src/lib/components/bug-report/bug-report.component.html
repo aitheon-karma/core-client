@@ -1,0 +1,35 @@
+<ng-template #bugReportTmpl>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Bug report</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bugReportRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="mb-3" novalidate [formGroup]="bugReportForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12">
+          <!-- Name -->
+          <div class="form-group">
+            <textarea name="text" class="form-control" placeholder="Enter description" formControlName="text" rows="5"></textarea>
+            <small *ngIf="submitted && bugReportForm.get('text').hasError('required')" class="text-danger">
+              Bug description is required
+            </small>
+          </div>
+          <!-- End Name-->
+
+          <!-- Error -->
+          <div class="row" *ngIf="error">
+            <div class="col">
+              <div class="alert alert-danger">{{ error }}</div>
+            </div>
+          </div>
+          <!-- End Error -->
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

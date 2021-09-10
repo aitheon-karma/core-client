@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="452" height="380" viewBox="0 0 452 380">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#2B2B2B" d="M0 0h452v380H0z"/>
+        <path fill="#383838" d="M49 96h355v260H49zM49 24h355v48H49z"/>
+        <path fill="#479CFF" d="M49 72h355v24H49z"/>
+        <path fill="#454545" d="M65 148h323v56H65z"/>
+        <path fill="#7E7E7E" d="M77 160h32v32H77zM117 165h183v9H117zM117 178h63v9h-63z"/>
+        <path fill="#454545" d="M65 211h323v56H65z"/>
+        <g fill="#7E7E7E">
+            <path d="M77 223h32v32H77zM117 228h183v9H117zM117 241h63v9h-63z"/>
+        </g>
+        <path fill="#454545" d="M65 276h323v56H65z"/>
+        <g fill="#7E7E7E">
+            <path d="M77 288h32v32H77zM117 293h183v9H117zM117 306h63v9h-63z"/>
+        </g>
+        <path fill="#479CFF" d="M65 203h323v8H65zM65 131h323v16H65zM65 267h323v8H65z"/>
+        <text fill="#7E7E7E" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="207" y="49">Header</tspan>
+        </text>
+        <text fill="#7E7E7E" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="65" y="123">Title</tspan>
+        </text>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="56" y="85">$24-sp</tspan>
+        </text>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="81" y="142">$16-sp</tspan>
+        </text>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="66" y="211">$8-sp</tspan>
+        </text>
+        <text fill="#FFF" font-family="ProximaNova-Regular, Proxima Nova" font-size="12">
+            <tspan x="73" y="274">$8-sp</tspan>
+        </text>
+    </g>
+</svg>

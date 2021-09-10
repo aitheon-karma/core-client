@@ -1,0 +1,234 @@
+.ai-note {
+  width: 370px;
+  max-width: 90%;
+  padding-top: 16px;
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  &__tooltip {
+    display: flex;
+    align-content: space-around;
+    position: absolute;
+    background: #181818;
+    padding: 6px 8px;
+    border-radius: 2px;
+    z-index: 4000;
+  }
+
+  &__tooltip-container {
+    margin: 0 16px;
+    width: 370px;
+    position: relative;
+  }
+
+  &__tooltip-items {
+    min-width: 260px;
+    display: flex;
+    align-content: space-around;
+    position: relative;
+  }
+
+  &__triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #181818;
+  }
+
+  &__tooltip-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    cursor: pointer;
+    padding-right: 3px;
+    border-radius: 2px;
+    transition: all .2s;
+
+    &:hover {
+      background-color: rgba(#6C757D, 0.15);
+    }
+  }
+
+  &__reminder {
+    display: inline-block;
+    font-size: 14px;
+    color: #7e7e7e;
+    margin-right: 8px;
+
+    &--white {
+      font-size: 14px;
+      color: #fff;
+      margin-right: 0;
+    }
+  }
+
+  &__separator {
+    border-right: 1px solid #7e7e7e;
+    height: 18px;
+    margin-top: 3px;
+    margin-right: 16px;
+  }
+
+  &__link {
+    font-size: 14px;
+    color: #dcbc65;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  &__actions {
+    display: flex;
+    padding: 0 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  &--hide {
+    max-height: 83px;
+    min-height: 83px;
+    overflow: hidden;
+    position: relative;
+
+    &:before {
+      position: absolute;
+      width: 100%;
+      height: 24px;
+      bottom: 0;
+      left: 0;
+      z-index: 3064;
+      background: linear-gradient(-180deg, rgba(56, 56, 56, 0.4) 0%, rgb(56, 56, 56) 100%);
+      content: '';
+    }
+  }
+
+  &--show {
+    min-height: 83px;
+    max-height: none;
+  }
+
+  &__delete {
+    margin: 2px 0 2px 12px;
+    cursor: pointer;
+  }
+
+  &__hr {
+    border-top: 1px solid rgba(#7e7e7e, .4);
+    margin: 8px 0;
+  }
+
+  &__assignee-title {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    padding: 0 0 10px 16px;
+  }
+
+  &__assignee-item {
+    width: 100%;
+    min-height: 40px;
+    padding: 4px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .2s;
+
+    &--highlighted {
+      background: rgba(#7e7e7e, .15);
+    }
+
+    button {
+      display: none;
+    }
+
+    &:hover {
+      background: rgba(#7e7e7e, .15);
+
+      button {
+        display: block;
+      }
+    }
+  }
+
+  &__assignee-item-link {
+    font-weight: normal;
+    padding-left: 12px;
+    max-width: 80%;
+    position: relative;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    &:before {
+      position: absolute;
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      left: 0;
+      top: 50%;
+      bottom: 50%;
+      background: #dcbc65;
+    }
+  }
+
+  &__footer {
+    padding: 16px 16px 0 16px;
+  }
+
+  &__dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #7e7e7e;
+    margin: 0 8px;
+  }
+
+  &__tasks-info {
+    font-size: 12px;
+    color: #7e7e7e;
+    letter-spacing: 0.3px;
+  }
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 2px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  padding: 2px 6px 4px 0;
+  transition: all linear .2s;
+  user-select: none;
+
+  &--assigned {
+    border-radius: 18px;
+    border: 1px solid rgb(126, 126, 126);
+    font-size: 12px;
+    padding-left: 3px;
+    letter-spacing: -0.2px;
+
+    .icon--forecast {
+      width: 14px;
+    }
+  }
+
+  &--hovered {
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(#7e7e7e, .15)
+    }
+  }
+}

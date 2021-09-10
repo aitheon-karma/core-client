@@ -1,0 +1,71 @@
+@import 'variables';
+
+.avatar {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  color: $white;
+  background-color: $base-blue;
+
+  &--96 {
+    width: $sp96;
+    min-width: $sp96;
+    height: $sp96;
+    line-height: $sp96;
+    font-size: 24px;
+  }
+
+  &--64 {
+    width: $sp64;
+    min-width: $sp64;
+    height: $sp64;
+    line-height: $sp64;
+    font-size: 18px;
+  }
+
+  &--48 {
+    width: $sp48;
+    min-width: $sp48;
+    height: $sp48;
+    line-height: $sp48;
+    font-size: 16px;
+  }
+
+  &--40 {
+    width: $sp40;
+    min-width: $sp40;
+    height: $sp40;
+    line-height: $sp40;
+    font-size: 16px;
+  }
+
+  &--32 {
+    width: $sp32;
+    min-width: $sp32;
+    height: $sp32;
+    line-height: $sp32;
+    font-size: 12px;
+  }
+
+  &--24 {
+    width: $sp24;
+    min-width: $sp24;
+    height: $sp24;
+    line-height: $sp24;
+    font-size: 10px;
+  }
+
+  &--16 {
+    width: $sp16;
+    min-width: $sp16;
+    height: $sp16;
+    line-height: $sp16;
+    font-size: 8px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+}

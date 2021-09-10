@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>danger</title>
+    <desc>Created with Sketch.</desc>
+    <g id="⌨️-Typography" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Basic-understanding-of-typography" transform="translate(-385.000000, -1380.000000)">
+            <g id="danger" transform="translate(385.000000, 1380.000000)">
+                <circle id="Oval" fill="#E96058" cx="12" cy="12" r="12"></circle>
+                <g id="Group-5" transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(6.000000, 6.000000)" fill="#FFFFFF">
+                    <rect id="Rectangle" x="5" y="0" width="2" height="12"></rect>
+                    <rect id="Rectangle-Copy-4" transform="translate(6.000000, 6.000000) rotate(-90.000000) translate(-6.000000, -6.000000) " x="5" y="0" width="2" height="12"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

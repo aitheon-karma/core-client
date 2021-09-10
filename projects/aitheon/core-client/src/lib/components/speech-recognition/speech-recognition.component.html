@@ -1,0 +1,7 @@
+<div class="d-flex align-items-center">
+  <button class="icon icon--dynamic"
+          [class.icon--active-open]="isRecording"
+          (click)="handleToggle()" title="Voice input">
+    <span class="icon--mic" [class.icon--mic-open]="isRecording"></span>
+  </button>
+</div>

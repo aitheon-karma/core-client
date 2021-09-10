@@ -1,0 +1,190 @@
+<div>
+    <div class="ai-note__tooltip-container">
+        <div class="ai-note__tooltip"
+             [ngStyle]="position"
+             (mouseenter)="toggleHighlight()"
+             (mouseleave)="toggleHighlight()"
+             *ngIf="isOpen || isHighlightTooltipOpen">
+            <div class="ai-note__tooltip-items">
+                <div class="ai-note__triangle"
+                     [ngStyle]="trianglePosition"></div>
+                <ng-template [ngIf]="isHighlightTooltipOpen">
+                    <div class="pl--8 d-flex justify-content-between flex-grow-1">
+                        <div class="ai-note__tooltip-item"
+                             *ngIf="activeHighlight && activeHighlight.task">
+              <span class="ai-note__link pl--8 pr--8"
+                    (click)="goToTask()">{{ activeHighlight?.task?.name || 'Task'}}</span>
+                        </div>
+                        <div class="ai-note__tooltip-item pl--4 pr--4 mr--0"
+                             *ngIf="activeHighlight && activeHighlight.reminder"
+                             (click)="onOpenExistingReminder(activeHighlight)">
+                            <span class="ai-note__reminder">Remind me at</span>
+                            <span
+                                    class="ai-note__reminder--white">{{ activeHighlight.reminder?.finishDate | date : dateFormat }}</span>
+                        </div>
+                        <button class="ai-note__delete icon icon--size-24px icon--delete icon--dynamic"
+                                (click)="onRemoveAssignedItem()">
+                        </button>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]="isOpen">
+                    <div class="ai-note__tooltip-item"
+                         (click)="onOpenTaskDialog()">
+                        <span class="icon icon--task mr--4"></span>
+                        Task
+                    </div>
+                    <div class="ai-note__tooltip-item"
+                         (click)="onOpenReminder($event)">
+                        <span class="icon icon--forecast mr--4"></span>
+                        Reminder
+                    </div>
+                    <div class="ai-note__separator"></div>
+                    <div class="ai-note__tooltip-item"
+                         (click)="setSelected($event, 'bold')">
+                        <span class="icon icon--bold mr--4"></span>
+                        Bold
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between pr--16 pl--16"
+         (mousemove)="onMouseMove($event)">
+        <div class="ai-note"
+             [ngClass]="note && (showContent ? 'ai-note--show' : 'ai-note--hide')"
+             (click)="toggleShow($event,false)">
+            <ckeditor [(ngModel)]="value"
+                      (ngModelChange)="updateChanges()"
+                      [editor]="editor"
+                      #textEditor
+                      (mousedown)="focus()"
+                      [config]="editorConfig"
+                      [attr.required]="required"></ckeditor>
+        </div>
+        <ai-speech-recognition (speechFound)="handleSpeechFound($event)"
+                               class="mt--16"
+                               *ngIf="!note"
+                               (startListen)="startListen($event)">
+        </ai-speech-recognition>
+        <button class="icon icon--dynamic icon--size-24px ml--8  mt--16"
+                [ngClass]="showContent ? 'icon--chevron-up' : 'icon--chevron-down'"
+                (click)="toggleShow($event, true)"
+                *ngIf="note && showContent || note && isNoteLong">
+        </button>
+    </div>
+    <div class="ai-note__actions"
+         [class.justify-content-end]="showContent"
+         *ngIf="note">
+        <div class="d-flex flex-nowrap"
+             *ngIf="!showContent">
+            <!-- TODO: After create task modal rework -->
+            <!-- <div class="action action--hovered mr--4"
+                 *ngIf="!note.task"
+                 (click)="onOpenTaskDialog(true)">
+              <span class="icon icon--size-24px icon--task mr--4"></span>Create Task
+            </div> -->
+            <!-- <div class="action action--hovered mr-auto"
+                 *ngIf="!showContent && !note ?.reminder"
+                 (click)="onOpenReminder($event,true)">
+              <span class="icon icon--size-24px icon--forecast mr--4"></span>Create Reminder
+            </div> -->
+            <div class="action action--assigned ml-1"
+                 *ngIf="!showContent && note ?.reminder && assignedRemindersAmount === 1">
+                <span class="icon icon--size-16px icon--forecast ml--4 mr--4"></span>
+                {{ note?.reminder?.finishDate | date : dateFormat }}
+                <span class="icon icon--size-16px icon--close ml--4 action--hovered"
+                      (click)="onRemoveReminderDate($event)"></span>
+            </div>
+            <ng-template [ngIf]="note ?.reminder && note ?.task && assignedRemindersAmount > 1">
+                <ng-container *ngTemplateOutlet="amountSection"></ng-container>
+            </ng-template>
+        </div>
+        <div class="d-flex align-items-center">
+            <ai-speech-recognition (speechFound)="handleSpeechFound($event)"
+                                   *ngIf="showContent"
+                                   (startListen)="startListen($event)"></ai-speech-recognition>
+            <button class="ai-note__delete icon icon--size-24px icon--delete icon--dynamic"
+                    (click)="onRemoveNote($event)"></button>
+        </div>
+    </div>
+    <div class="pl--16 pr--16 pb--16" *ngIf="!showContent">
+        <ng-template [ngIf]="!(note ?.reminder && note ?.task && assignedRemindersAmount > 1)">
+            <ng-container *ngTemplateOutlet="amountSection"></ng-container>
+        </ng-template>
+    </div>
+    <div class="ai-note__assigned"
+         *ngIf="showContent ? assignedTasks || assignedReminders || note ?.task || note ?.reminder : false">
+        <hr class="ai-note__hr mr--16 ml--16">
+        <ng-template [ngIf]="assignedTasks || note ?.task">
+            <div class="ai-note__assignee-title">tasks</div>
+            <ul class="p--0 mb--8">
+                <li class="ai-note__assignee-item"
+                    *ngIf="note && note.task">
+                    <div class="ai-note__assignee-item-link ai-note__link"
+                         (click)="goToTask(note ?.task)">{{ note?.task?.description || '' }}</div>
+                    <button class="ai-note__delete icon icon--size-24px icon--delete icon--dynamic"
+                            (click)="onRemoveTask()"></button>
+                </li>
+                <li class="ai-note__assignee-item"
+                    [class.ai-note__assignee-item--highlighted]="isHighlightTooltipOpen && activeHighlight && activeHighlight._id === task._id"
+                    *ngFor="let task of note.assignedTasks">
+                    <div class="ai-note__assignee-item-link ai-note__link"
+                         (click)="goToTask(task.task)">{{ task.text || '' }}</div>
+                    <button class="ai-note__delete icon icon--size-24px icon--delete icon--dynamic"
+                            (click)="onRemoveAssignedItem(task)"></button>
+                </li>
+            </ul>
+        </ng-template>
+        <ng-template [ngIf]="assignedReminders || note ?.reminder">
+            <div class="ai-note__assignee-title">reminders</div>
+            <ul class="p--0">
+                <li class="ai-note__assignee-item"
+                    *ngIf="note && note.reminder">
+                    <div class="ai-note__assignee-item-link ai-note__link">{{ note.reminder?.finishDate | date : dateFormat }}</div>
+                    <button class="ai-note__delete icon icon--size-24px icon--delete icon--dynamic"
+                            (click)="onRemoveReminder()"></button>
+                </li>
+                <li class="ai-note__assignee-item"
+                    [class.ai-note__assignee-item--highlighted]="isHighlightTooltipOpen && activeHighlight && activeHighlight._id === reminder._id"
+                    *ngFor="let reminder of note.assignedReminders">
+                    <div class="ai-note__assignee-item-link ai-note__link"
+                         (click)="onOpenExistingReminder(reminder)">{{ reminder?.reminder?.finishDate | date : dateFormat }}</div>
+                    <button class="ai-note__delete icon icon--size-24px icon--delete icon--dynamic"
+                            (click)="onRemoveAssignedItem(reminder)"></button>
+                </li>
+            </ul>
+        </ng-template>
+    </div>
+    <ng-template [ngIf]="note && showContent">
+        <!-- TODO: After create task modal rework -->
+        <!-- <hr class="ai-note__hr mb--0">
+        <div class="ai-note__footer">
+          <div class="d-flex align-items-center">
+             <div class="action action--hovered mr--24"
+                 (click)="onOpenTaskDialog(true)">
+              <span class="icon icon--size-24px icon--task mr--4"></span>Create Task
+            </div>
+             <div class="action action--hovered" (click)="onOpenReminder($event,true)">
+              <span class="icon icon--size-24px icon--forecast"></span>Create Reminder
+            </div>
+          </div>
+        </div> -->
+    </ng-template>
+    <div *ngIf="note && showContent"
+         class="pl--16 pr--16 pb--16">
+        <ng-container *ngTemplateOutlet="amountSection"></ng-container>
+    </div>
+</div>
+
+<ng-template #amountSection hidden>
+    <div class="d-flex align-items-center pt--4">
+        <span *ngIf="assignedTasksAmount" class="ai-note__tasks-info">
+          {{ assignedTasksAmount + (assignedTasksAmount === 1 ? ' task' : ' tasks') + ' created' }}
+        </span>
+        <span *ngIf="assignedTasksAmount && assignedRemindersAmount"
+              class="ai-note__dot"></span>
+        <span *ngIf="assignedRemindersAmount" class="ai-note__tasks-info">
+          {{ assignedRemindersAmount + (assignedRemindersAmount === 1 ? ' reminder' : ' reminders') + ' created' }}
+        </span>
+    </div>
+</ng-template>

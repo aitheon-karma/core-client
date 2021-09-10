@@ -1,0 +1,215 @@
+@import 'variables';
+
+.service-icon {
+  position: relative;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  transition: .25s ease-in-out;
+
+  &:before {
+    content: '';
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .25s ease-in-out;
+  }
+
+
+  &.users {
+    &:before {
+      background-image: url("/assets/img/icons/dashboard-app.svg");
+    }
+  }
+
+  &.notes {
+    &:before {
+      background-image: url("/assets/img/icons/notes.svg");
+    }
+  }
+
+  &.requests {
+    &:before {
+      background-image: url("/assets/img/icons/requests.svg");
+    }
+  }
+
+  &.dashboard {
+    &:before {
+      background-image: url("/assets/img/icons/dashboard-app.svg");
+    }
+  }
+
+  &.item_manager {
+    &:before {
+      background-image: url("/assets/img/icons/item-manager-app.svg");
+    }
+  }
+
+  &.build_server {
+    &:before {
+      background-image: url("/assets/img/icons/build-server-app.svg");
+    }
+  }
+
+  &.treasury {
+    &:before {
+      background-image: url("/assets/img/icons/treasury-app.svg");
+    }
+  }
+
+  &.community {
+    &:before {
+      background-image: url("/assets/img/icons/community-app.svg");
+    }
+  }
+
+  &.device_manager {
+    &:before {
+      background-image: url("/assets/img/icons/device-manager-app.svg");
+    }
+  }
+
+  &.project_manager {
+    &:before {
+      background-image: url("/assets/img/icons/project-manager-service-app.svg");
+    }
+  }
+
+  &.camera_viewer {
+    &:before {
+      background-image: url("/assets/img/icons/camera-viewer-app.svg");
+    }
+  }
+
+  &.specialists {
+    &:before {
+      background-image: url("/assets/img/icons/specialists-app.svg");
+    }
+  }
+
+  &.procurement {
+    &:before {
+      background-image: url("/assets/img/icons/procurment-app.svg");
+    }
+  }
+
+  &.orchestrator {
+    &:before {
+      background-image: url("/assets/img/icons/orchestrator-app.svg");
+    }
+  }
+
+  &.messages {
+    &:before {
+      background-image: url("/assets/img/icons/messenger-app.svg");
+    }
+  }
+
+  &.marketplace {
+    &:before {
+      background-image: url("/assets/img/icons/marketplace-app.svg");
+    }
+  }
+
+  &.drive {
+    &:before {
+      background-image: url("/assets/img/icons/cloud-drive.svg");
+    }
+  }
+
+  &.oms {
+    &:before {
+      background-image: url("/assets/img/icons/oms-app.svg");
+    }
+  }
+
+  &.sales {
+    &:before {
+      background-image: url("/assets/img/icons/sales-app.svg");
+    }
+  }
+
+  &.logistics {
+    &:before {
+      background-image: url("/assets/img/icons/logistics-app.svg");
+    }
+  }
+
+  &.smart_infrastructure {
+    &:before {
+      background-image: url("/assets/img/icons/smart-infrastracture-app.svg");
+    }
+  }
+
+  &.warehouse_manager {
+    &:before {
+      background-image: url("/assets/img/icons/warehouse-manager-app.svg");
+    }
+  }
+
+  &.mailbox {
+    &:before {
+      background-image: url("/assets/img/icons/emailbox-app.svg");
+    }
+  }
+
+  &.hr {
+    &:before {
+      background-image: url("/assets/img/icons/hr-app.svg");
+    }
+  }
+
+  &.office {
+    &:before {
+      background-image: url("/assets/img/icons/office-app.svg");
+    }
+  }
+
+  &.creators_studio {
+    &:before {
+      background-image: url("/assets/img/icons/creatorstudio-app.svg");
+    }
+  }
+
+  &.accounting {
+    &:before {
+      background-image: url("/assets/img/icons/accounting-app.svg");
+    }
+  }
+
+  &.contacts {
+    &:before {
+      background-image: url("/assets/img/icons/contacts-app.svg");
+    }
+  }
+
+  &.billing_manager {
+    &:before {
+      background-image: url("/assets/img/icons/billing-manager-app.svg");
+    }
+  }
+
+  &.organization {
+    &:before {
+      background-image: url("/assets/img/icons/admin-app.svg");
+    }
+  }
+
+  &.notes {
+    &:before {
+      background-image: url("/assets/img/icons/notes-app.svg");
+    }
+  }
+
+  &.customer_support {
+    &:before {
+      background-image: url("/assets/img/icons/customer-support.svg");
+    }
+  }
+}

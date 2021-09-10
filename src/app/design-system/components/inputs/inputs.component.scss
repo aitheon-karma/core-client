@@ -1,0 +1,12 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+::ng-deep .tab-container {
+
+  .number-field.focus {
+      outline: 1px solid $primary-gold-dt;
+  }
+  
+  .search {
+    
+  }
+}

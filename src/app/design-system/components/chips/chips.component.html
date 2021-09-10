@@ -1,0 +1,244 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <tabset>
+          <tab heading="Chips">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <h1 class="h1 mb--24">Chips</h1>
+                  <p class="body mb--0">Chips are compact elements that represent an input, attribute, or action.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row mb--32">
+                <div class="col-12">
+                  <h3 class="h3 mb--24">Paddings and sizes</h3>
+                </div>
+                <div class="col-4">
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 1.png"
+                      alt="Paddings and sizes chips">
+                  </figure>
+                </div>
+                <div class="col-4">
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 1.png"
+                      alt="Paddings and sizes chips">
+                  </figure>
+                </div>
+                <div class="col-4">
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 1.png"
+                      alt="Paddings and sizes chips">
+                  </figure>
+                </div>
+                <div class="col-12">
+                  <h4 class="h4 mb--16">Contained</h4>
+                </div>
+                <div class="col-4">
+                  <div [ngClass]="{'chip--active': moreInfo}" class="chip chip--icon-left chip--icon-right chip--contained" (click)="toggleMoreInfo()">
+                    <div class="chip__icon-wrap--left avatar avatar--16">
+                      <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                    </div>
+                    Chip text
+                    <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    <div *ngIf="moreInfo" class="chip__more">
+                      <div class="item item--mess">
+                        <div class="item__avatar">DA</div>
+                        <div class="item-text">
+                          David Underson
+                          <div class="item__caption">example@mail.com</div>
+                        </div>
+                      </div>
+                      <button class="button button--ghost button--medium mt--8 mb--8">
+                        <span class="button__icon icon icon--open-in-new-tab icon--size-16px"></span>
+                        show profile
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="chip chip--contained">Chip text</div>
+                </div>
+                <div class="col-4">
+                  <div class="chips">
+                    <div class="chip chip--icon-left chip--icon-right chip--contained">
+                      <span class="chip__icon-wrap--left icon icon--chat icon--size-16px"></span>
+                      Message
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="chip chip--icon-left chip--icon-right chip--contained">
+                      <span class="chip__icon-wrap--left icon icon--chat icon--size-16px"></span>
+                      Mail
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-12">
+                  <h4 class="h4 mb--16">Outlined</h4>
+                </div>
+                <div class="col-4">
+                  <div class="chip chip--icon-left chip--icon-right chip--outlined">
+                    <div class="chip__icon-wrap--left avatar avatar--16">
+                      <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                    </div>
+                    Chip text
+                    <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="chip chip--outlined">Chip text</div>
+                </div>
+                <div class="col-4">
+                  <div class="chips">
+                    <div class="chip chip--icon-left chip--icon-right chip--outlined">
+                      <span class="chip__icon-wrap--left icon icon--chat icon--size-16px"></span>
+                      Message
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="chip chip--icon-left chip--icon-right chip--outlined">
+                      <span class="chip__icon-wrap--left icon icon--chat icon--size-16px"></span>
+                      Mail
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-12">
+                  <h3 class="h3 mb--24">States</h3>
+                </div>
+                <div class="col-3">
+                  <div class="body mb--48">Enabled <div class="chip ml--16">Chip text</div>
+                  </div>
+                  <div class="body">Selected <div class="chip chip--contained chip--active ml--16">Chip text</div>
+                  </div>
+                </div>
+                <div class="col-4 offset-1">
+                  <div class="body mb--24">Error <div class="chip chip--error chip--icon-right ml--16">Chip text<button
+                        class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button></div>
+                    <div class="captions captions__base-red mt--4 ml--48">check the spelling of the word</div>
+                  </div>
+                  <div class="body">Disabled <div class="chip chip--disabled ml--16">Chip text</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <h3 class="h3 mb--24">Usage</h3>
+                </div>
+              </div>
+              <div class="row mb--48">
+                <div class="col-4">
+                  <p class="body">If chips are used to manually add multiple objects, be sure to use cancel icon</p>
+                </div>
+                <div class="col-7">
+                  <div class="chips">
+                    <div class="chip chip--icon-left chip--icon-right">
+                      <div class="chip__icon-wrap--left avatar avatar--16">
+                        <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      Anna Smith
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="chip chip--icon-left chip--icon-right">
+                      <div class="chip__icon-wrap--left avatar avatar--16">
+                        <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      Mo Chun
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="chip chip--icon-left chip--icon-right">
+                      <div class="chip__icon-wrap--left avatar avatar--16">
+                        <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      Gabriel Moreira
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="chip chip--icon-left chip--icon-right">
+                      <div class="chip__icon-wrap--left avatar avatar--16">
+                        <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      Lesly Cloud
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="chip chip--icon-left chip--icon-right">
+                      <div class="chip__icon-wrap--left avatar avatar--16">
+                        <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      Victoria Lindson
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="chip chip--icon-left chip--icon-right">
+                      <div class="chip__icon-wrap--left avatar avatar--16">
+                        <img class="avatar__image" src="/assets/img/avatar.jpg" alt="">
+                      </div>
+                      Lesly Cloud
+                      <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-4">
+                  <p class="body">If chips are used to manually add multiple objects, be sure to use cancel icon</p>
+                </div>
+                <div class="col-4">
+                  <div class="chips">
+                    <div class="chip">Small</div>
+                    <div class="chip">Meddle</div>
+                    <div class="chip">Large</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="labels">
+                    <div class="label label--purple">Small</div>
+                    <div class="label label--orange">Meddle</div>
+                    <div class="label label--yellow">Large</div>
+                    <div class="label label--red">Meddle</div>
+                    <div class="label label--blue">Large</div>
+                    <div class="label label--green">Large</div>
+                    <div class="label label--pink">Large</div>
+                  </div>
+                  <div class="labels">
+                    <div class="label label--purple label--icon-right">Small
+                      <button class="chip__icon-wrap--right icon icon--white icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="label label--orange label--icon-right">Meddle
+                      <button class="chip__icon-wrap--right icon icon--white icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="label label--yellow label--icon-right">Large
+                      <button class="chip__icon-wrap--right icon icon--white icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="label label--red label--icon-right">Meddle
+                      <button class="chip__icon-wrap--right icon icon--white icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="label label--blue label--icon-right">Large
+                      <button class="chip__icon-wrap--right icon icon--white icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="label label--green label--icon-right">Large
+                      <button class="chip__icon-wrap--right icon icon--white icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                    <div class="label label--pink label--icon-right">Large
+                      <button class="chip__icon-wrap--right icon icon--white icon--cancel-circle-f icon--size-16px"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

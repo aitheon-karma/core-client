@@ -1,0 +1,36 @@
+<div  bsModal
+      #formModal="bs-modal"
+      class="modal fade confirmModal"
+      [config]="{backdrop: 'static'}"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ data?.headlineText || 'Confirm' }}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="data" class="modal-body">
+        <div>
+          {{ data?.text }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="d-flex">
+          <button *ngIf="data?.additionalConfirmText" (click)="onAdditionalConfirm()" class="btn btn-link btn-medium">
+            <span *ngIf="data?.additionalConfirmText === 'PAUSE'" class="notification__pause-timer icon icon--pause icon--active mr-2"></span>
+            {{ data?.additionalConfirmText }}
+          </button>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button [class.d-none]="data?.hideCancelButton" class="btn btn-link btn-medium" (click)="cancel()">Cancel</button>
+          <button class="btn btn-medium btn-primary" (click)="onConfirm()" type="button">{{ data?.confirmText || 'Yes'}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

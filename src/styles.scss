@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '../projects/aitheon/core-client/src/styles/themes/default/default.scss';
+
+// Tour guide
+
+* { outline: none !important; }
+
+.introjs-helperNumberLayer {
+  background: #dcbc65;
+  text-shadow: none;
+  font-family: "ProximaNova", "Roboto", "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  top: -12px;
+  left: -12px;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  line-height: 17px;
+  color: #2b2b2b;
+  border: none;
+}
+
+.introjs-helperLayer {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+}
+
+.introjs-tooltip {
+  padding: 12px;
+  background-color: #1e1e1e;
+}
+
+.introjs-arrow.top {
+  border-bottom-color: #1e1e1e !important;
+}
+
+.introjs-arrow.right {
+  border-left-color: #1e1e1e !important;
+}
+
+.introjs-arrow.left {
+  border-right-color: #1e1e1e !important;
+}
+
+.introjs-arrow.bottom {
+  border-top-color: #1e1e1e !important;
+}
+
+.introjs-arrow.right-bottom {
+  border-left-color: #1e1e1e !important;
+}
+
+.introjs-tooltiptext {
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.introjs-bullets {
+  display: none;
+}
+
+.introjs-button {
+  border: none;
+  font-size: 14px;
+  background-color: #2b2b2b;
+  color: #dcbc65;
+  text-shadow: none;
+  background-image: none !important;
+
+  &:hover {
+    border: none;
+    box-shadow: none;
+    background-image: none !important;
+  }
+}
+
+.introjs-tooltipbuttons {
+  text-align: left;
+}
+
+.introjs-prevbutton.introjs-disabled,
+.introjs-nextbutton.introjs-disabled {
+  background: #2b2b2b !important;
+  color: #7e7e7e !important;
+
+  &:hover {
+    background: #2b2b2b !important;
+    color: #7e7e7e !important;
+  }
+}
+
+.highest-modal {
+  .modal {
+    z-index: 2147483647 !important;
+  }
+}

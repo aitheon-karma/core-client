@@ -1,0 +1,25 @@
+@import "projects/aitheon/core-client/src/styles/core/variables";
+
+.card {
+  background-color: transparent;
+}
+
+::ng-deep .tab-container {
+  .nav-tabs {
+    background: transparent !important;
+    border-bottom: 2px solid $gray-500;
+  }
+
+  .nav-item { margin-bottom: -2px; }
+
+  .nav-link {
+    background: transparent !important;
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      color: $white;
+      border-bottom: 2px solid $primary-gold;
+      font-weight: normal;
+    }
+  }
+}

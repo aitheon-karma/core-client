@@ -1,0 +1,104 @@
+<div class="row design-system">
+  <nav class="col-3 px-0 design-system__nav" style="background: #1e1e1e;">
+    <!-- <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/forms">
+          Forms (DEPRECATED)
+        </a>
+      </li>
+    </ul>
+    <br> -->
+    <ul class="nav nav-pills flex-column" (click)="toggleSubNav($event)">
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="forms-inputs">Forms & Inputs (old)</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="selects-buttons">Selects & Buttons (old)</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="colors-typography">Colors & Typography (old)</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="grids">Grids</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="colors">Colors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="states">States</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="icons">Icons</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="typography">Typography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="spacing">Spacing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-link-arrow dropDown">Elements</a>
+        <ul class="nav nav-sub flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="avatars">Avatars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="elevations">Elevation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="links">Links</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="selection-controls">Selection Controls</a>
+            </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-link-arrow dropDown">Components</a>
+        <ul class="nav nav-sub flex-column">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="banners">Banners</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="chips">Chips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="hints-tooltips">Hints & tooltips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="inputs">Inputs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="buttons">Buttons</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="dialogs">Dialogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="lists">Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="sliders">Sliders</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="snackbars">Snackbars</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="tabs">Tabs</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-link-arrow dropDown">Themes</a>
+        <ul class="nav nav-sub flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="switch-themes">Switch themes</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <main class="col-9">
+    <router-outlet></router-outlet>
+  </main>
+</div>

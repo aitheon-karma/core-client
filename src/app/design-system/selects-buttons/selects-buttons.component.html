@@ -1,0 +1,284 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h3>Selects & Buttons</h3>
+        <br>
+        <h4>Selects</h4>
+        <div class="row">
+        	<div class="col-3">
+        		<h5>CHECKBOX</h5>
+		        <div class="checkbox">
+					<input type="checkbox" id="checkbox-1">
+		        	<label for="checkbox-1">Default</label>
+		        </div>
+		        <div class="checkbox">
+					<input type="checkbox" id="checkbox-2" checked>
+		        	<label for="checkbox-2">Selected</label>
+		        </div>
+		        <div class="checkbox">
+		            <input type="checkbox" id="checkbox-3" disabled>
+		        	<label for="checkbox-3">Disabled</label>
+		        </div>
+		        <div class="checkbox">
+							<input type="checkbox" id="checkbox-4" checked disabled>
+		        	<label for="checkbox-4">Disabled Selected</label>
+		        </div>
+        	</div>
+        	<div class="col-3">
+        		<h5>RADIO BUTTONS</h5>
+				<div class="radio">
+			    	<input id="radio-1" name="radio-1" type="radio">
+			    	<label for="radio-1">Default</label>
+				</div>
+				<div class="radio">
+			    	<input id="radio-2" name="radio-2" type="radio" checked>
+			    	<label for="radio-2">Selected</label>
+				</div>
+				<div class="radio">
+			    	<input id="radio-3" name="radio-3" type="radio" disabled>
+			    	<label for="radio-3">Disabled</label>
+				</div>
+				<div class="radio">
+			    	<input id="radio-4" name="radio-4" type="radio" checked disabled>
+			    	<label for="radio-4">Disabled Selected</label>
+				</div>
+        	</div>
+        	<div class="col-3">
+        		<h5>TOGGLES</h5>
+						<div class="switch-container">
+							<label class="switch">
+								<input id="switchExample" name="switchExample" type="checkbox" checked>
+								<span class="slider round"></span>
+							</label>
+							<label for="switchExample">On</label>
+						</div>
+						<div class="switch-container">
+							<label class="switch">
+								<input id="switchExample2" name="switchExample" type="checkbox">
+								<span class="slider round"></span>
+							</label>
+							<label for="switchExample2">Off</label>
+						</div>
+						<div class="switch-container">
+							<label class="switch">
+								<input id="switchExample" name="switchExample" type="checkbox" disabled>
+								<span class="slider round"></span>
+							</label>
+							<label for="switchExample">Disabled off</label>
+						</div>
+						<div class="switch-container">
+							<label class="switch">
+								<input id="switchExample" name="switchExample" type="checkbox" checked disabled>
+								<span class="slider round"></span>
+							</label>
+							<label for="switchExample">Disabled On</label>
+						</div>
+        	</div>
+        	<div class="col-3">
+        		<h5>RANGE</h5>
+        		<div class="range">
+		          <input type="range" name="points" min="0" max="10" value="3">
+		        </div>
+		        <div class="range">
+		          <input type="range" name="points" min="0" max="10" value="0" disabled>
+				</div>
+				<div class="npn-slider">
+					<npn-slider
+						[min]="1000"
+						[max]="5000"
+						[minSelected]="2000"
+						[maxSelected]="4000"
+						(onChange)="onSliderChange($event)"
+						[step]="100">
+					</npn-slider>
+				</div>
+        	</div>
+        </div>
+        <br>
+        <h4>Dropdowns</h4>
+        <div class="row">
+        	<div class="col-3">
+        		<ngx-select-dropdown
+					tabindex="0"
+        			(change)="changeValue($event)"
+        			[multiple]="false"
+        			[(ngModel)]="multiSelect"
+        			[config]="config"
+            	[options]="options">
+            	</ngx-select-dropdown>
+        	</div>
+        	<div class="col-3">
+        		<ngx-select-dropdown
+        			tabindex="0"
+        			(change)="changeValue($event)"
+        			(open)="onOpenDropdown($event)"
+        			(close)="onCloseDropdown($event)"
+        			[multiple]="true"
+        			[(ngModel)]="multiSelect"
+        			[config]="config_02"
+            		[options]="options">
+            	</ngx-select-dropdown>
+        	</div>
+        	<div class="col-3">
+        		<ngx-select-dropdown
+        			tabindex="0"
+        			(change)="changeValue($event)"
+        			[multiple]="false"
+        			[(ngModel)]="multiSelect"
+        			[config]="config_02"
+            		[options]="options">
+            	</ngx-select-dropdown>
+        	</div>
+        	<div class="col-3">
+        	</div>
+        </div>
+        <br>
+        <h4>Buttons</h4>
+        <div class="row">
+        	<div class="col-4">
+        		<h5>LARGE</h5>
+        		<button class="btn btn-primary btn--categories">Categories</button>
+        		<br>
+        		<!-- возьми ширину пока в 250px для всех больших -->
+        		<button class="btn btn-primary btn--cart-huge">Add to cart</button>
+        		<br>
+        		<button class="btn btn-primary btn--huge">Сomplete to order</button>
+        		<br><br>
+        		<button class="btn btn-primary btn--categories" disabled>Categories</button>
+        		<br>
+        		<button class="btn btn-primary btn--cart-huge" disabled>Add to cart</button>
+        		<br>
+        		<button class="btn btn-primary btn--huge" disabled>Сomplete to order</button>
+						<br><br>
+						<h5>Secondary</h5>
+						<button class="btn btn-outline btn--add-item">Add new item</button>
+        		<br>
+        		<button class="btn btn-outline btn--categories">Categories</button>
+        		<br>
+        		<button class="btn btn-outline btn--cart-huge">Add to cart</button>
+        		<br>
+        		<button class="btn btn-outline btn--huge">Сomplete to order</button>
+						<br><br>
+						<button class="btn btn-outline btn--add-item" disabled>Add new item</button>
+						<br>
+        		<button class="btn btn-outline btn--categories" disabled>Categories</button>
+        		<br>
+        		<button class="btn btn-outline btn--cart-huge" disabled>Add to cart</button>
+        		<br>
+        		<button class="btn btn-outline btn--huge" disabled>Сomplete to order</button>
+        	</div>
+        	<div class="col-4">
+        		<h5>MEDIUM</h5>
+        		<button class="btn btn-primary btn-medium btn--cart">Buy</button>
+        		<br>
+        		<button class="btn btn-primary btn-medium">Submit</button>
+        		<br>
+        		<button class="btn btn-primary btn-medium">Yes, delete</button>
+        		<br><br>
+        		<button class="btn btn-primary btn-medium btn--cart" disabled>Buy</button>
+        		<br>
+        		<button class="btn btn-primary btn-medium" disabled>Submit</button>
+        		<br>
+        		<button class="btn btn-primary btn-medium" disabled>Yes, delete</button>
+        		<br><br><br><br><br>
+        		<h5>Secondary</h5>
+        		<button class="btn btn-outline btn-medium">Ok</button>
+					<br>
+					<div class="row m-0">
+						<button class="btn btn-outline btn-medium btn--view-grid"></button>
+						<button class="btn btn-outline btn-medium btn--view-list"></button>
+					</div>
+					<br>
+					<div class="row m-0">
+						<button class="btn btn-outline btn-medium btn--view-grid active"></button>
+						<button class="btn btn-outline btn-medium btn--view-list active"></button>
+					</div>
+					<br>
+					<div class="row m-0">
+					<button class="btn btn-outline btn-medium btn--create">Create</button>
+					<button class="btn btn-outline btn-medium btn--cancel">Cancel</button>
+					</div>
+					<br>
+					<div class="row m-0">
+					<button class="btn btn-outline btn-medium btn--create">Create</button>
+					<button class="btn btn-outline btn-medium btn--cancel">Cancel</button>
+				</div>
+        	</div>
+        	<div class="col-4">
+						<h5>SMALL</h5>
+						<div class="row mx-0 my-2">
+							<button class="btn btn-ball btn--like"></button>
+							<button class="btn btn-ball btn--cart"></button>
+							<button class="btn btn-ball btn--attachment"></button>
+						</div>
+						<div class="row mx-0 my-2">
+							<button class="btn btn-ball btn--emoji"></button>
+							<button class="btn btn-ball btn--sand"></button>
+							<button class="btn btn-ball btn--add"></button>
+						</div>
+						<br>
+						<div class="row mx-0 my-2">
+							<button class="btn btn-ball-small btn--add"></button>
+							<button class="btn btn-ball-small btn--add-user"></button>
+							<button class="btn btn-ball-small btn--new-feed"></button>
+							<button class="btn btn-ball-small btn--new-article"></button>
+						</div>
+						<br><br><br>
+						<h5>Disabled</h5>
+        		<div class="row mx-0 my-2">
+								<button class="btn btn-ball btn--like" disabled></button>
+								<button class="btn btn-ball btn--cart" disabled></button>
+								<button class="btn btn-ball btn--attachment" disabled></button>
+							</div>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball btn--emoji" disabled></button>
+								<button class="btn btn-ball btn--sand" disabled></button>
+								<button class="btn btn-ball btn--add" disabled></button>
+							</div>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-small btn--add" disabled></button>
+								<button class="btn btn-ball-small btn--add-user" disabled></button>
+								<button class="btn btn-ball-small btn--new-feed" disabled></button>
+								<button class="btn btn-ball-small btn--new-article" disabled></button>
+							</div>
+							<br><br><br><br><br>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-transparent btn--search"></button>
+								<button class="btn btn-ball-transparent btn--notification"></button>
+								<button class="btn btn-ball-transparent btn--menu"></button>
+							</div>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-transparent btn--more"></button>
+								<button class="btn btn-ball-transparent btn--add-file"></button>
+								<button class="btn btn-ball-transparent btn--hint"></button>
+							</div>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-transparent btn--views"></button>
+								<button class="btn btn-ball-transparent btn--comments"></button>
+								<button class="btn btn-ball-transparent btn--share"></button>
+							</div>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-transparent btn--user-avatar"></button>
+							</div>
+							<h4>Disabled</h4>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-transparent btn--search" disabled></button>
+								<button class="btn btn-ball-transparent btn--notification" disabled></button>
+								<button class="btn btn-ball-transparent btn--menu" disabled></button>
+							</div>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-transparent btn--more" disabled></button>
+								<button class="btn btn-ball-transparent btn--add-file" disabled></button>
+							</div>
+							<div class="row mx-0 my-2">
+								<button class="btn btn-ball-transparent btn--views" disabled></button>
+								<button class="btn btn-ball-transparent btn--comments" disabled></button>
+								<button class="btn btn-ball-transparent btn--share" disabled></button>
+							</div>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

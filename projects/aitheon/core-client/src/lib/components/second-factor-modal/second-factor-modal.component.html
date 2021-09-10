@@ -1,0 +1,39 @@
+<ng-template #secondFactorTml>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">2 Factor Authentication</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="secondFactorRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="mb-3" novalidate [formGroup]="secondFactorForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12">
+          <!-- Name -->
+          <p>
+              We have sent a message to your email address with an authentication code.<br>
+              Once you receive it enter the code below to complete your action.
+          </p>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter code" formControlName="code">
+            <small *ngIf="submitted && secondFactorForm.get('code').hasError('required')" class="text-danger">
+              Code is required
+            </small>
+          </div>
+          <!-- End Name-->
+
+          <!-- Error -->
+          <div class="row" *ngIf="error">
+            <div class="col">
+              <div class="alert alert-danger">{{ error }}</div>
+            </div>
+          </div>
+          <!-- End Error -->
+        </div>
+        <div class="col-12" >
+          <button type="submit" class="btn btn-primary mr-2">Continue</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

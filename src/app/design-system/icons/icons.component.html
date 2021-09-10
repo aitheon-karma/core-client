@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <tabset>
+          <tab heading="Icons">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <h1 class="h1 mb--24">Icons</h1>
+                  <p class="body mb--8">If you need an active icon (hover states), add a class "icon--dynamic"</p>
+                  <p class="body mb--0">If you need an color icon, add a class "icon--white" or "icon--gold"</p>
+                </div>
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+                <div class="col-12">
+
+                    <h3 class="h3 mb--24">Content</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsContentArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                    </ul>
+
+                    <h3 class="h3 mb--24">Arrows</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsArrowsArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                    </ul>
+
+                    <h3 class="h3 mb--24">Information</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsInfoArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                          <li class="list-icons__item">
+                            <span class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z" fill="#E2574C"/>
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z" fill="#F4B459"/>
+                              </svg>
+                              </span>
+                              mastercard
+                          </li>
+                          <li class="list-icons__item">
+                            <span class="icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z" fill="#2394BC"/>
+                                  <path d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z" fill="#EFC75E"/>
+                                  </svg>                                  
+                            </span>
+                            visa
+                          </li>
+                    </ul>
+
+                    <h3 class="h3 mb--24">Events</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsEventsArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                    </ul>
+
+                    <h3 class="h3 mb--24">Actions</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsActionsArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                    </ul>
+
+                    <h3 class="h3 mb--24">Editing tools</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsToolsArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                    </ul>
+
+                    <h3 class="h3 mb--24">Social</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsSocialArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                    </ul>
+
+                    <h3 class="h3 mb--24">Navigation</h3>
+
+                    <ul class="list-icons mb-5" (click)="isItemActive($event)">
+                        <li *ngFor="let icon of iconsNavlArr; let i = index" class="list-icons__item">
+                            <app-icon [classIcon]="icon"></app-icon>
+                            {{ icon | slice:6:15 }}
+                          </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1326 @@
+<div class="row" click="parentClick()">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <tabset>
+          <tab heading="Contained">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <h1 class="h1 mb--24">Contained inputs</h1>
+                  <p class="body mb--0">Container inputs could be used in any case when the background color of
+                    Container is
+                    are lighter than input fill color.</p>
+                </div>
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--16">Text</h3>
+                </div>
+              </div>
+              <div class="row mb--8">
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 1.png"
+                      alt="Contained padding inputs text">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img mb--8" src="./assets/img/inputs/contained/Contained 2.png"
+                      alt="Contained inputs text">
+                    <figcaption class="img-wrap__captions captions">Input with label</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <div [class.input-wrap--error]="errorInput"
+                    class="input-wrap input-wrap--contained input-wrap--small">
+                    <input class="input-wrap__input" type="text" autocomplete="off" placeholder="Placeholder">
+                    <span class="input-wrap__icon-error icon icon--attention parent-tt">
+                      <span class="hint hint--pointer-left-bottom hint--right-bottom hint--width-240px">
+                        <p class="hint__body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--16">Date</h3>
+                  <p class="body mb--24">Has the same styles of padding as a text input</p>
+                </div>
+              </div>
+              <div class="row mb--8">
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 3.png"
+                      alt="Contained inputs date">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img mb--8" src="./assets/img/inputs/contained/Contained 3.png"
+                      alt="Contained inputs date">
+                    <figcaption class="img-wrap__captions captions">Input with label</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <div class="input-wrap input-wrap--date-contained" [class.input-wrap--date-filled]="date1.value.length">
+                    <input type="text" placeholder="Choose date" class="input-wrap__input" bsDaterangepicker
+                      [bsConfig]="{ showWeekNumbers: false, dateInputFormat: 'MMMM DD, YYYY'}" #date1 [(ngModel)]="dateValue">
+                      <div class="input-wrap--date-clear icon icon--close icon--dynamic icon--size-16px"
+                      (click)="clearDateInput($event, date)"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--16">Dropdown</h3>
+                  <p class="body mb--24">Has the same styles of padding as a text input</p>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 4.png"
+                      alt="contained dropdown inputs">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 4.png"
+                      alt="contained dropdown inputs">
+                  </figure>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Simple dropdown</h4>
+                  <ng-select class="dropdown dropdown--contained" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" [(ngModel)]="selectedName" placeholder="Select item">
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Simple dropdown with own items</h4>
+                  <ng-select class="dropdown dropdown--contained" [(ngModel)]="selectedName" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" placeholder="Select item" [searchable]="false">
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--text">{{item.name}}</div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with icons</h4>
+                  <ng-select class="dropdown dropdown--contained" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName1" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--icon-text"><span
+                              class="icon icon--size-16px {{ item.icon }}"></span>{{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--icon-text"><span
+                          class="icon icon--size-16px {{ item.icon }}"></span>{{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with avatars without image</h4>
+                  <ng-select class="dropdown dropdown--contained" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName2" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--avatar-text">
+                            <div class="item__avatar avatar avatar--16">{{ item.name | getFirstLetters }}</div>
+                            {{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">{{ item.name | getFirstLetters }}</div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with avatars image</h4>
+                  <ng-select class="dropdown dropdown--contained" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName3" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--avatar-text">
+                            <div class="item__avatar avatar avatar--16">
+                              <img class="avatar__image" [src]="item.path" alt="Avatars with photo/image">
+                            </div>
+                            {{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">
+                          <img class="avatar__image" [src]="item.path" alt="Avatars with photo/image">
+                        </div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with chips</h4>
+                  <ng-select class="dropdown dropdown--contained" [items]="namesForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName4"
+                    [closeOnSelect]="false" #select [searchable]="true">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="chip chip--icon-left chip--icon-right chip--outlined">
+                            <div class="chip__icon-wrap--left avatar avatar--16">
+                              <img class="avatar__image" [src]="item.path" alt="">
+                            </div>
+                            {{item.name}}
+                            <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"
+                              (click)="clear(item)" aria-hidden="true"></button>
+                          </div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">{{ item.name | getFirstLetters }}</div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with labels</h4>
+                  <ng-select class="dropdown dropdown--contained" [items]="labelsForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName5"
+                    [closeOnSelect]="false" #select [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="label {{ item.color }}">{{item.name}}</div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--label">
+                        <div class="item__label-marker {{ item.color }}"></div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with chips (close icon)</h4>
+                  <ng-select class="dropdown dropdown--contained" [items]="namesForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName6"
+                    [closeOnSelect]="false" #select [searchable]="true">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="chip chip--icon-right chip--outlined">
+                            {{item.name}}
+                            <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"
+                              (click)="clear(item)" aria-hidden="true"></button>
+                          </div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24 d-flex justify-content-end flex-wrap">
+                    <h4 class="h4 mb--16" style="width: 100%;">Dots dropdown</h4>
+                    <ng-select class="dropdown dropdown--dots" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" [(ngModel)]="selectedName">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--24">Dropdown with chips</h4>
+                  <p class="body mb--16">Type of dropdown information view when we pick multiple options on the list.
+                  </p>
+                  <p class="body mb--16">When picked many options – we group them into the label with a quantity of
+                    options
+                    which we are not seeing.</p>
+                  <p class="body mb--16">By click on remove - we unselect this option in a dropdown list.</p>
+                  <p class="body mb--24">Has the same styles of padding as a text input</p>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 6.png"
+                      alt="Dropdown with chips">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 7.png"
+                      alt="Dropdown with chips">
+                  </figure>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <h3 class="h3 mb--16">Search</h3>
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 8.png"
+                      alt="Contained search inputs">
+                  </figure>
+                  <div class="search-container search-container--contained"
+                    [class.search-container--filled]="search.value.length">
+                    <input type="search" placeholder="Search" class="search-container__input" #search
+                      [(ngModel)]="searchValue">
+                    <div class="search-container__button icon icon--search icon--size-16px"></div>
+                    <div class="search-container__button icon icon--close icon--dynamic icon--size-16px"
+                      (click)="clearSerchInput($event, search)"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--48">
+                <div class="col-6">
+                  <h3 class="h3 mb--48">Specific inputs</h3>
+                  <h4 class="h4 mb-8">Message input</h4>
+                  <p class="body mb--24">Inpur form for the messages ( Comment, Messanger etc)</p>
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png" alt="Message input">
+                  </figure>
+                  <div class="input-wrap input-wrap--message">
+                    <input class="input-wrap__input" type="text" autocomplete="off" placeholder="Enter message">
+                    <button class="input-wrap__button input-wrap__button--send icon icon--dynamic icon--send"></button>
+                    <button
+                      class="input-wrap__button input-wrap__button--attach icon icon--dynamic icon--attach"></button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Multiline</h4>
+                  <p class="body mb--24">Using for description</p>
+                </div>
+              </div>
+              <div class="row mb--56">
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Multiline input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Multiline input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Multiline input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Multiline input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <div class="textarea-wrap textarea-wrap--contained">
+                    <textarea class="textarea-wrap__textarea" placeholder="Some text" name="" id="" cols=""
+                      rows=""></textarea>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="textarea-wrap textarea-wrap--contained textarea-wrap--max-size">
+                    <textarea class="textarea-wrap__textarea" autosize [minRows]="1" [maxRows]="8"
+                      placeholder="Some text" [(ngModel)]="currentInputLenght" maxlength="{{ maxInputLenght }}" name=""
+                      id="" cols="" rows="" placeholder="Write some text"></textarea>
+                    <div class="textarea-wrap__size-block">
+                      <span class="textarea-wrap__min">{{ currentInputLenght.length }}</span> /
+                      <span class="textarea-wrap__max">{{ maxInputLenght }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--8">Combined input</h4>
+                  <p class="body mb--24">Combined input where we use text field + dropdown</p>
+                </div>
+              </div>
+              <div class="row mb--24">
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 11.png"
+                      alt="Combined input where we use text field + dropdown">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img mb--8" src="./assets/img/inputs/contained/Contained 11.png" alt="Inpur form for the messages ( Comment, Messanger
+                    etc)">
+                    <figcaption class="img-wrap__captions captions">Input without currency choose</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="row mb--56">
+                <div class="col-6">
+                  <div class="combined-input-wrap">
+                    <input type="text" class="combined-input-wrap__input" currencyMask [(ngModel)]="priceFive"
+                      placeholder="0.00" [options]="{
+                                    prefix: '',
+                                    thousands: '.',
+                                    decimal: ',',
+                                    align: 'left'
+                                  }" />
+                    <!-- <ngx-select-dropdown tabindex="0" [class.combined-input-wrap--active]="filledSelect"
+                          (open)="filledSelect = true" (close)="filledSelect = false" (focusout)="filledSelect = false"
+                          [multiple]="false" [(ngModel)]="multiSelect" [config]="config_02" [options]="options">
+                        </ngx-select-dropdown> -->
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div [class.input-wrap--error]="errorInput"
+                    class="input-wrap input-wrap--currency input-wrap--contained input-wrap--small">
+                    <input [showMaskTyped]="true" placeHolderCharacter="0" [showMaskTyped]="true" mask="0,000,000" class="input-wrap__input" type="text">
+                    <span class="input-wrap__icon-error icon icon--attention parent-tt">
+                      <span class="hint hint--pointer-left-bottom hint--right-bottom hint--width-240px">
+                        <p class="hint__body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--24">Phone number</h4>
+                </div>
+              </div>
+              <div class="row mb--56">
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Phone number input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Phone number input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Phone number input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png"
+                      alt="Phone number input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <div [class.input-wrap--error]="errorInput"
+                    class="input-wrap input-wrap--phone input-wrap--contained input-wrap--small">
+                    <input [showMaskTyped]="true" mask="000-000-0000" prefix="+7 " class="input-wrap__input" type="text"
+                      autocomplete="off">
+                    <span class="input-wrap__icon-error icon icon--attention parent-tt">
+                      <span class="hint hint--pointer-left-bottom hint--right-bottom hint--width-240px">
+                        <p class="hint__body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--24">Payment</h4>
+                </div>
+              </div>
+              <div class="row mb--48">
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png" alt="Payment input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <img class="img-wrap__img" src="./assets/img/inputs/contained/Contained 9.png" alt="Payment input">
+                  </figure>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 mb--24">
+                  <p class="body mb--24">Default</p>
+                  <div [ngClass]="{'input-wrap--error': false, 'input-wrap--invalid': false, 'input-wrap--master': false, 'input-wrap--visa': false}" class="input-wrap input-wrap--card input-wrap--contained input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z"
+                          fill="#2394BC" />
+                        <path
+                          d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z"
+                          fill="#EFC75E" />
+                      </svg>
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z"
+                          fill="#E2574C" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z"
+                          fill="#F4B459" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6 mb--24">
+                  <p class="body mb--24">Filled</p>
+                  <div [ngClass]="{'input-wrap--error': false, 'input-wrap--invalid': false, 'input-wrap--master': true, 'input-wrap--visa': false}"
+                    class="input-wrap input-wrap--card input-wrap--contained input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z" fill="#2394BC"/>
+                        <path d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z" fill="#EFC75E"/>
+                        </svg>  
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z" fill="#E2574C"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z" fill="#F4B459"/>
+                        </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p class="body mb--24">Error</p>
+                  <div [ngClass]="{'input-wrap--error': true, 'input-wrap--invalid': false, 'input-wrap--master': false, 'input-wrap--visa': false}"
+                    class="input-wrap input-wrap--card input-wrap--contained input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z" fill="#2394BC"/>
+                        <path d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z" fill="#EFC75E"/>
+                        </svg>  
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z" fill="#E2574C"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z" fill="#F4B459"/>
+                        </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p class="body mb--24">Invalid</p>
+                  <div [ngClass]="{'input-wrap--error': false, 'input-wrap--invalid': true, 'input-wrap--master': false, 'input-wrap--visa': false}"
+                    class="input-wrap input-wrap--card input-wrap--contained input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z" fill="#2394BC"/>
+                        <path d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z" fill="#EFC75E"/>
+                        </svg>  
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z" fill="#E2574C"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z" fill="#F4B459"/>
+                        </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Underlined">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <h1 class="h1 mb--24">Underlined inputs</h1>
+                  <p class="body mb--0">This field type can be used in registration forms, checkout forms and any other
+                    forms
+                    which include some personal or specific data such as: Name, Position, Country, Phone number etc.</p>
+                </div>
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Text</h3>
+                </div>
+              </div>
+              <div class="row mb--24">
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <figcaption class="captions mb--8">Paddings inside input</figcaption>
+                    <img class="img-wrap__img" src="./assets/img/inputs/underlined/Underlined 1.png"
+                      alt="Underlined paddings inside input">
+                  </figure>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--0">
+                    <figcaption class="captions mb--8">Font styles for text input</figcaption>
+                    <img class="img-wrap__img" src="./assets/img/inputs/underlined/Underlined 2.png"
+                      alt="Font styles for text input">
+                  </figure>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <div [class.input-wrap--error]="errorInput"
+                    class="input-wrap input-wrap--underlined input-wrap--small">
+                    <input class="input-wrap__input" type="text" autocomplete="off" placeholder="Placeholder">
+                    <label class="input-wrap__label">First name</label>
+                    <label class="input-wrap__label--error">Use only letters and numbers</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Date</h3>
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/underlined/Underlined 3.png"
+                      alt="Underlined paddings inside date input">
+                  </figure>
+                  <div class="input-wrap input-wrap--date-underlined" [class.input-wrap--date-filled]="date2.value.length">
+                    <input type="text" placeholder=" " class="input-wrap__input" bsDatepicker
+                      [bsConfig]="{ showWeekNumbers: false, dateInputFormat: 'MMMM DD, YYYY'}" #date2 [(ngModel)]="dateValue">
+                    <label class="input-wrap__label">First name</label>
+                    <div class="input-wrap--date-clear icon icon--close icon--dynamic icon--size-16px"
+                      (click)="clearDateInput($event, date)"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Dropdown</h3>
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/underlined/Underlined 4.png"
+                      alt="Underlined dropdown">
+                  </figure>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Simple dropdown</h4>
+                  <ng-select class="dropdown dropdown--underlined" [(ngModel)]="selectedName" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" placeholder="Select item" [searchable]="false">
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Simple dropdown with own items</h4>
+                  <ng-select class="dropdown dropdown--underlined" [(ngModel)]="selectedName" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" placeholder="Select item" [searchable]="false">
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--text">{{item.name}}</div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with icons</h4>
+                  <ng-select class="dropdown dropdown--underlined" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName1" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--icon-text"><span
+                              class="icon icon--size-16px {{ item.icon }}"></span>{{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--icon-text"><span
+                          class="icon icon--size-16px {{ item.icon }}"></span>{{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with avatars without image</h4>
+                  <ng-select class="dropdown dropdown--underlined" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName2" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--avatar-text">
+                            <div class="item__avatar avatar avatar--16">{{ item.name | getFirstLetters }}</div>
+                            {{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">{{ item.name | getFirstLetters }}</div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with avatars image</h4>
+                  <ng-select class="dropdown dropdown--underlined" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName3" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--avatar-text">
+                            <div class="item__avatar avatar avatar--16">
+                              <img class="avatar__image" [src]="item.path" alt="Avatars with photo/image">
+                            </div>
+                            {{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">
+                          <img class="avatar__image" [src]="item.path" alt="Avatars with photo/image">
+                        </div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with chips</h4>
+                  <ng-select class="dropdown dropdown--underlined" [items]="namesForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName4"
+                    [closeOnSelect]="false" #select [searchable]="true">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="chip chip--icon-left chip--icon-right chip--outlined">
+                            <div class="chip__icon-wrap--left avatar avatar--16">
+                              <img class="avatar__image" [src]="item.path" alt="">
+                            </div>
+                            {{item.name}}
+                            <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"
+                              (click)="clear(item)" aria-hidden="true"></button>
+                          </div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">{{ item.name | getFirstLetters }}</div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with labels</h4>
+                  <ng-select class="dropdown dropdown--underlined" [items]="labelsForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName5"
+                    [closeOnSelect]="false" #select [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="label {{ item.color }}">{{item.name}}</div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--label">
+                        <div class="item__label-marker {{ item.color }}"></div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with chips (close icon)</h4>
+                  <ng-select class="dropdown dropdown--underlined" [items]="namesForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName6"
+                    [closeOnSelect]="false" #select [searchable]="true">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="chip chip--icon-right chip--outlined">
+                            {{item.name}}
+                            <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"
+                              (click)="clear(item)" aria-hidden="true"></button>
+                          </div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Search</h3>
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/underlined/Underlined 5.png"
+                      alt="Dropdown search">
+                  </figure>
+                  <div class="search-container search-container--underlined"
+                    [class.search-container--filled]="search.value.length">
+                    <input type="search" placeholder="Search" class="search-container__input" #search
+                      [(ngModel)]="searchValue">
+                    <div class="search-container__button icon icon--search icon--size-16px"></div>
+                    <div class="search-container__button icon icon--close icon--dynamic icon--size-16px"
+                      (click)="clearSerchInput($event, search)"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Outlined">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <div class="h1 mb--24">Outlined inputs</div>
+                  <p class="body mb--0">Use outlined inputs in the case when a page hasn’t any additional color except
+                    Background.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Text</h3>
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/outlined/Outlined 1.png"
+                      alt="Outlined text inputs">
+                  </figure>
+                </div>
+
+                <div class="col-6">
+                  <div [class.input-wrap--error]="errorInput" class="input-wrap input-wrap--outlined input-wrap--small">
+                    <input class="input-wrap__input" type="text" autocomplete="off" placeholder="Placeholder">
+                    <span class="input-wrap__icon-error icon icon--attention parent-tt">
+                      <span class="hint hint--pointer-left-bottom hint--right-bottom hint--width-240px">
+                        <p class="hint__body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Dropdown</h3>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/outlined/Outlined 2.png"
+                      alt="Outlined dropdown inputs">
+                  </figure>
+                  <!-- <div class="dropdown-wrap dropdown-wrap--outlined dropdown-wrap--small"
+                    [class.dropdownOpen]="filledSelect" [class.dropdownChoise]="dropdownChoise"
+                    [class.dropdownLabelUp]="dropdownLabelUp">
+                    <p class="dropdown-wrap__label">Label</p>
+                    <ngx-select-dropdown tabindex="0" [class.dropdownOpen]="filledSelect" (open)="filledSelect = true"
+                      (close)="filledSelect = false" (focusout)="filledSelect = false" (open)="dropdownLabelUp = true"
+                      (close)="dropdownLabelUp = dropdownLabelUp" (focusout)="dropdownLabelUp = false"
+                      [multiple]="false" [(ngModel)]="multiSelect" [config]="config" [options]="optionsDropdown"
+                      (change)="isDropdownChoise($event)">
+                    </ngx-select-dropdown>
+                  </div> -->
+                </div>
+                <div class="col-6"></div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Simple dropdown</h4>
+                  <ng-select class="dropdown dropdown--outlined" [(ngModel)]="selectedName" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" placeholder="Select item" [searchable]="false">
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Simple dropdown with own items</h4>
+                  <ng-select class="dropdown dropdown--outlined" [(ngModel)]="selectedName" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" placeholder="Select item" [searchable]="false">
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--text">{{item.name}}</div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with icons</h4>
+                  <ng-select class="dropdown dropdown--outlined" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName1" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--icon-text"><span
+                              class="icon icon--size-16px {{ item.icon }}"></span>{{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--icon-text"><span
+                          class="icon icon--size-16px {{ item.icon }}"></span>{{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with avatars without image</h4>
+                  <ng-select class="dropdown dropdown--outlined" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName2" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--avatar-text">
+                            <div class="item__avatar avatar avatar--16">{{ item.name | getFirstLetters }}</div>
+                            {{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">{{ item.name | getFirstLetters }}</div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with avatars image</h4>
+                  <ng-select class="dropdown dropdown--outlined" [items]="namesForDropdown" bindLabel="name"
+                    bindValue="name" placeholder="Select items" [(ngModel)]="selectedName3" [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">
+                          <div class="item item--avatar-text">
+                            <div class="item__avatar avatar avatar--16">
+                              <img class="avatar__image" [src]="item.path" alt="Avatars with photo/image">
+                            </div>
+                            {{item.name}}
+                          </div>
+                        </span>
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">
+                          <img class="avatar__image" [src]="item.path" alt="Avatars with photo/image">
+                        </div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with chips</h4>
+                  <ng-select class="dropdown dropdown--outlined" [items]="namesForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName4"
+                    [closeOnSelect]="false" #select [searchable]="true">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="chip chip--icon-left chip--icon-right chip--outlined">
+                            <div class="chip__icon-wrap--left avatar avatar--16">
+                              <img class="avatar__image" [src]="item.path" alt="">
+                            </div>
+                            {{item.name}}
+                            <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"
+                              (click)="clear(item)" aria-hidden="true"></button>
+                          </div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        <div class="item__avatar">{{ item.name | getFirstLetters }}</div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with labels</h4>
+                  <ng-select class="dropdown dropdown--outlined" [items]="labelsForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName5"
+                    [closeOnSelect]="false" #select [searchable]="false">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="label {{ item.color }}">{{item.name}}</div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--label">
+                        <div class="item__label-marker {{ item.color }}"></div>
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="col-6 mb--24">
+                  <h4 class="h4 mb--16">Dropdown with chips (close icon)</h4>
+                  <ng-select class="dropdown dropdown--outlined" [items]="namesForDropdown" [multiple]="true"
+                    bindLabel="name" bindValue="name" placeholder="Select items" [(ngModel)]="selectedName6"
+                    [closeOnSelect]="false" #select [searchable]="true">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                        <span class="ng-value-label">
+                          <div class="chip chip--icon-right chip--outlined">
+                            {{item.name}}
+                            <button class="chip__icon-wrap--right icon icon--cancel-circle-f icon--size-16px"
+                              (click)="clear(item)" aria-hidden="true"></button>
+                          </div>
+                        </span>
+                      </div>
+                      <div class="ng-value" *ngIf="items.length > 2">
+                        <span class="ng-value-label chips-amount">+{{items.length - 2}}</span>
+                      </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--avatar-text">
+                        {{item.name}}
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Date</h3>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/outlined/Outlined 4.png"
+                      alt="Outlined date inputs">
+                  </figure>
+                  <div class="input-wrap input-wrap--date-outlined" [class.input-wrap--date-filled]="date3.value.length">
+                    <input type="text" placeholder="Choose date" class="input-wrap__input" bsDatepicker
+                      [bsConfig]="{ showWeekNumbers: false, dateInputFormat: 'MMMM DD, YYYY'}" #date3 [(ngModel)]="dateValue">
+                      <div class="input-wrap--date-clear icon icon--close icon--dynamic icon--size-16px"
+                      (click)="clearDateInput($event, date)"></div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/outlined/Outlined 5.png"
+                      alt="Outlined date inputs">
+                  </figure>
+                  <div class="input-wrap input-wrap--date-outlined" [class.input-wrap--date-filled]="date4.value.length">
+                    <input type="text" placeholder="From - To" class="input-wrap__input" bsDaterangepicker
+                      [bsConfig]="{ showWeekNumbers: false, dateInputFormat: 'MMMM DD, YYYY'}" #date4 [(ngModel)]="dateValue">
+                      <div class="input-wrap--date-clear icon icon--close icon--dynamic icon--size-16px"
+                      (click)="clearDateInput($event, date)"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Search</h3>
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/outlined/Outlined 6.png"
+                      alt="Outlined search inputs">
+                  </figure>
+                  <div class="search-container search-container--outlined"
+                    [class.search-container--filled]="search.value.length">
+                    <input type="search" placeholder="Search" class="search-container__input" #search
+                      [(ngModel)]="searchValue">
+                    <div class="search-container__button icon icon--search icon--size-16px"></div>
+                    <div class="search-container__button icon icon--close icon--dynamic icon--size-16px"
+                      (click)="clearSerchInput($event, search)"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Input without currency choose</h3>
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/outlined/Outlined 6.png"
+                      alt="Outlined search inputs">
+                  </figure>
+                  <div [class.input-wrap--error]="errorInput"
+                    class="input-wrap input-wrap--currency input-wrap--outlined input-wrap--small">
+                    <input class="input-wrap__input" type="number" placeholder="0,00">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--8">Multiline</h3>
+                  <p class="body mb--24">Using for description</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="textarea-wrap textarea-wrap--outlined">
+                    <textarea class="textarea-wrap__textarea" name="" id="" cols="" rows=""></textarea>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="textarea-wrap textarea-wrap--outlined textarea-wrap--max-size">
+                    <textarea class="textarea-wrap__textarea" placeholder="Some text" [(ngModel)]="currentInputLenght"
+                      maxlength="{{ maxInputLenght }}" name="" id="" cols="" rows=""
+                      placeholder="Write some text"></textarea>
+                    <div class="textarea-wrap__size-block">
+                      <span class="textarea-wrap__min">{{ currentInputLenght.length }}</span> /
+                      <span class="textarea-wrap__max">{{ maxInputLenght }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--24">Payment</h4>
+                </div>
+              </div>
+              <div class="row mb--64">
+                <div class="col-6 mb--24">
+                  <p class="body mb--24">Default</p>
+                  <div [ngClass]="{'input-wrap--error': false, 'input-wrap--invalid': false, 'input-wrap--master': false, 'input-wrap--visa': false}" class="input-wrap input-wrap--card input-wrap--outlined input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z"
+                          fill="#2394BC" />
+                        <path
+                          d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z"
+                          fill="#EFC75E" />
+                      </svg>
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z"
+                          fill="#E2574C" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z"
+                          fill="#F4B459" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6 mb--24">
+                  <p class="body mb--24">Filled</p>
+                  <div [ngClass]="{'input-wrap--error': false, 'input-wrap--invalid': false, 'input-wrap--master': true, 'input-wrap--visa': false}"
+                    class="input-wrap input-wrap--card input-wrap--outlined input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z" fill="#2394BC"/>
+                        <path d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z" fill="#EFC75E"/>
+                        </svg>  
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z" fill="#E2574C"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z" fill="#F4B459"/>
+                        </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p class="body mb--24">Error</p>
+                  <div [ngClass]="{'input-wrap--error': true, 'input-wrap--invalid': false, 'input-wrap--master': false, 'input-wrap--visa': false}"
+                    class="input-wrap input-wrap--card input-wrap--outlined input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z" fill="#2394BC"/>
+                        <path d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z" fill="#EFC75E"/>
+                        </svg>  
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z" fill="#E2574C"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z" fill="#F4B459"/>
+                        </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p class="body mb--24">Invalid</p>
+                  <div [ngClass]="{'input-wrap--error': false, 'input-wrap--invalid': true, 'input-wrap--master': false, 'input-wrap--visa': false}"
+                    class="input-wrap input-wrap--card input-wrap--outlined input-wrap--small">
+                    <input [showMaskTyped]="true" mask="0{4} 0{4} 0{4} 0{4}" class="input-wrap__input" type="text"
+                      autocomplete="off" placeHolderCharacter="0">
+                    <span class="icon icon--visa">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.91256 9L8.97143 14.988H10.4757L11.4163 9H9.91256ZM14.45 11.4392C13.9243 11.1737 13.6021 10.9946 13.6021 10.7231C13.6085 10.4763 13.8746 10.2235 14.4688 10.2235C14.9575 10.2109 15.3167 10.3283 15.5892 10.4452L15.7257 10.5075L15.9303 9.25464C15.6331 9.13721 15.162 9.00782 14.5801 9.00782C13.0946 9.00782 12.0486 9.7975 12.0421 10.9269C12.0298 11.7604 12.791 12.2229 13.3606 12.5003C13.9425 12.7849 14.1406 12.9694 14.1406 13.2223C14.1342 13.6105 13.6701 13.7897 13.237 13.7897C12.637 13.7897 12.3147 13.6974 11.8254 13.4811L11.6273 13.3888L11.4169 14.6908C11.7703 14.8514 12.4201 14.9928 13.0947 15C14.6734 15 15.7006 14.2223 15.7135 13.0186C15.7187 12.3583 15.3173 11.8526 14.45 11.4392ZM19.7868 9.01853H18.6229C18.2643 9.01853 17.9918 9.124 17.8365 9.50028L15.602 14.988H17.1807L17.6155 13.7999H19.3818L19.6074 14.9928H20.9998L19.7868 9.01853ZM18.0533 12.6009C18.0838 12.6039 18.6593 10.6614 18.6593 10.6614L19.1176 12.6009C19.1176 12.6009 18.3505 12.6009 18.0533 12.6009ZM6.24065 13.0683L6.0801 12.266C5.67932 10.5 4.85581 9.91729 3.90234 9.4176L5.34933 14.982H6.94096L9.30609 9.00066H7.71447L6.24065 13.0683Z" fill="#2394BC"/>
+                        <path d="M5.60357 9.69881C5.51395 9.28503 5.22815 9.00596 4.83999 9H3.01876L3 9.10041C4.42069 9.51634 5.61315 10.7962 6 12L5.60357 9.69881Z" fill="#EFC75E"/>
+                        </svg>  
+                    </span>
+                    <span class="icon icon--master">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 18C11.3137 18 14 15.3137 14 12C14 8.68629 11.3137 6 8 6C4.68629 6 2 8.68629 2 12C2 15.3137 4.68629 18 8 18Z" fill="#E2574C"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0005 6C19.3142 6 22.0005 8.68629 22.0005 12C22.0005 15.3137 19.3142 18 16.0005 18C14.8291 18 13.7361 17.6643 12.8125 17.0839C14.1601 15.8076 15.0005 14.002 15.0005 12C15.0005 9.99804 14.1601 8.19237 12.8128 6.91653C13.7361 6.33567 14.8291 6 16.0005 6Z" fill="#F4B459"/>
+                        </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="h4 mb--24">Phone number</h4>
+                </div>
+              </div>
+              <div class="row mb--64">
+              <div class="col-6">
+                <div [class.input-wrap--error]="errorInput"
+                  class="input-wrap input-wrap--phone input-wrap--outlined input-wrap--small">
+                  <input [showMaskTyped]="true" mask="000-000-0000" prefix="+7 " class="input-wrap__input" type="text"
+                    autocomplete="off">
+                  <span class="input-wrap__icon-error icon icon--attention parent-tt">
+                    <span class="hint hint--pointer-left-bottom hint--right-bottom hint--width-240px">
+                      <p class="hint__body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <h4 class="h4 mb--24">Amount input</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div [class.input-wrap--error]="errorInput"
+                  class="input-wrap input-wrap--currency input-wrap--outlined input-wrap--small">
+                  <input [showMaskTyped]="true" placeHolderCharacter="0" [showMaskTyped]="true" mask="0,000,000" class="input-wrap__input" type="text">
+                  <span class="input-wrap__icon-error icon icon--attention parent-tt">
+                    <span class="hint hint--pointer-left-bottom hint--right-bottom hint--width-240px">
+                      <p class="hint__body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            </div>
+          </tab>
+          <tab heading="Ghost">
+            <div class="container">
+              <div class="row">
+                <div class="h1 mb--0">Ghost inputs</div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <hr class="divider">
+                </div>
+              </div>
+              <div class="row mb--96">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Text</h3>
+                  <p class="body mb--24">Text ghost inputs could be used when needed accent attention on one field. By
+                    default
+                    cursor always active for quick entering of information.</p>
+                  <figure class="img-wrap">
+                    <img class="img-wrap__img" src="./assets/img/inputs/ghost/ghost 1.png" alt="Ghost text inputs">
+                  </figure>
+                  <div [class.input-wrap--error]="errorInput" class="input-wrap input-wrap--ghost">
+                    <input class="input-wrap__input" type="text" autocomplete="off" placeholder="Enter project name">
+                    <span class="input-wrap__icon icon icon--edit"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="h3 mb--24">Dropdown</h3>
+                  <figure class="img-wrap mb--24">
+                    <img class="img-wrap__img" src="./assets/img/inputs/ghost/ghost 2.png" alt="Ghost dropdown inputs">
+                  </figure>
+
+                  <ng-select class="dropdown dropdown--ghost" [(ngModel)]="selectedName" [items]="namesForDropdown"
+                    bindLabel="name" bindValue="name" placeholder="Select item" [searchable]="false">
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class="item item--text">{{item.name}}</div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

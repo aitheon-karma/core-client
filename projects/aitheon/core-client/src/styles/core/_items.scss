@@ -1,0 +1,411 @@
+@import 'variables';
+
+// start items //
+
+.ng-select {
+
+  .item {
+    display: grid;
+    align-items: center;
+    position: relative;
+    min-height: 36px;
+    height: auto;
+    padding: 8px 16px;
+    color: $white;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    transition: 0.2s;
+    background: rgba($mineshaft-gray, 0.15);
+  
+    &:hover {
+      background: rgba($base-gray, 0.15);
+    }
+  
+    &--icon-text,
+    &--icon-text-action {
+      grid-template-columns: 16px 1fr;
+      grid-column-gap: 16px;
+  
+      svg {
+        width: 100%;
+        height: auto;
+        fill: $gray-600;
+      }
+    }
+  
+    &--avatar-text {
+      min-height: 48px;
+      grid-template-columns: 32px 1fr;
+      grid-column-gap: 16px;
+    }
+  
+    &--label {
+      min-height: 36px;
+      grid-template-columns: 8px 1fr;
+      grid-column-gap: 16px;
+    }
+  
+    &__label-marker {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $base-purple;
+    }
+  
+    &__avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      overflow: hidden;
+      text-align: center;
+      color: $white;
+      background-color: $base-blue;
+      width: 100%;
+      height: 100%;
+      line-height: 32px;
+      font-size: 16px;
+  
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  
+    &--icon-text-action,
+    &--icon-text-not-action {
+      min-height: 48px;
+      grid-template-columns: 24px 1fr 24px;
+      grid-column-gap: 16px;
+      padding: 12px 16px;
+    }
+  
+    &__button {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      outline: none;
+      transition: 0.2s;
+  
+      svg {
+        width: 100%;
+        height: auto;
+      }
+  
+      &:hover {
+        cursor: pointer;
+        background: rgba($gray-600, 0.15);
+      }
+    }
+  
+    &--icon-text-not-action { grid-template-columns: 24px 1fr; }
+  
+    &--sublist { padding-left: 56px; }
+  
+    &--switcher {
+      grid-template-columns: 1fr 28px;
+      grid-column-gap: 16px;
+  
+      .switch {
+        width: 100%;
+        margin-bottom: 0;
+      }
+  
+      input:checked + .slider:before {
+        -webkit-transform: translateX(18px);
+        -ms-transform: translateX(18px);
+        transform: translateX(18px);
+      }
+    }
+  
+    &--subtitle {
+      min-height: 56px;
+      grid-template-columns: 1fr;
+  
+      .item__caption {
+        font-size: 12px;
+        font-weight: normal;
+        letter-spacing: 0.3px;
+        line-height: 20px;
+        color: $gray-600;
+      }
+    }
+  
+    &--mess,
+    &--mess-time,
+    &--mess-time-unread {
+      min-height: 56px;
+      grid-template-columns: 40px 1fr;
+      grid-column-gap: 16px;
+  
+      .item__caption {
+        display: block;
+        font-size: 12px;
+        font-weight: normal;
+        letter-spacing: 0.3px;
+        line-height: 20px;
+        color: $gray-600;
+      }
+    }
+  
+    &--mess-pin,
+    &--mess-time-unread {
+      min-height: 56px;
+      grid-template-columns: 40px 1fr;
+      grid-column-gap: 16px;
+      padding-right: 8px;
+  
+      .item__caption {
+        display: grid;
+        grid-template-columns: 1fr 16px;
+        grid-column-gap: 16px;
+        font-size: 12px;
+        font-weight: normal;
+        letter-spacing: 0.3px;
+        line-height: 20px;
+        color: $gray-600;
+      }
+  
+      .item__button {
+        width: 16px;
+        height: 16px;
+  
+        &:hover { background: transparent; }
+      }
+    }
+  
+    &--mess-time,
+    &--mess-time-unread {
+  
+      .title-time {
+        display: grid;
+        grid-template-columns: 1fr 52px;
+        grid-column-gap: 16px;
+      }
+  
+      .item__time {
+        color: $gray-600;
+        font-size: 12px;
+        font-weight: normal;
+        letter-spacing: 0.3px;
+        line-height: 20px;
+        text-align: right;
+        text-transform: uppercase;
+      }
+  
+      .item__button {
+        display: block;
+        height: 16px;
+        width: 16px;
+        color: #000000;
+        font-size: 10px;
+        font-weight: normal;
+        letter-spacing: 0.25px;
+        line-height: 16px;
+        text-align: center;
+        background: $primary-gold;
+  
+        &:hover { background: $primary-gold; }
+      }
+    }
+  }
+  
+  // end items //
+}
+
+.tab-block__inputs-1-col {
+  margin-bottom: 20px;
+}
+
+// start contacts list //
+
+.contacts-list {
+  position: relative;
+  max-height: 240px;
+  max-width: 330px;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 8px 0;
+  list-style: none;
+  border-radius: 2px;
+  background: $mineshaft-gray;
+  overflow: auto;
+
+  &--dropdown { overflow: auto; }
+
+  &__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-column-gap: 16px;
+    align-items: center;
+    padding: 8px 16px;
+    transition: 0.2s;
+    text-decoration: none;
+
+    &:hover {
+      background: rgba($gray-600, 0.15);
+
+      .contacts-list__button {
+        opacity: 1;
+
+        &:hover {
+          cursor: pointer;
+          background: rgba($gray-600, 0.15);
+        }
+      }
+
+      .dropdown--dots { opacity: 1; }
+    }
+
+    &[role="link"]:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__img-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__name {
+    margin-bottom: 0 !important;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    color: $white;
+  }
+
+  &__description {
+    margin-bottom: 0 !important;
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 0.3px;
+    line-height: 20px;
+    color: $gray-600;
+  }
+
+  .dropdown--dots {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: .2s;
+    opacity: 0;
+
+    .ng-arrow-wrapper::after { opacity: 0; }
+
+    &:hover { .ng-arrow-wrapper::after { opacity: 1; } }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    display: block;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    overflow: hidden;
+    background: rgba($gray-600, 0);
+    transform: translateY(-50%);
+    transition: .2s;
+    opacity: 0;
+    text-align: center;
+
+    .contacts-list__icon {
+      line-height: 32px;
+    }
+  }
+}
+
+// end contacts list //
+
+// start Bulleted List //
+
+.bull-list {
+  padding-left: 0;
+  list-style-type: none;
+
+  &__item,
+  &__sub-item {
+    position: relative;
+    padding-left: 12px;
+    color: $gray-600;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 0;
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: $gray-600;
+    }
+  }
+
+  &__sub-list {
+    padding-left: 4px;
+    list-style: none;
+  }
+
+  &__sub-item::before {
+    border: 1px solid $gray-600;
+    background: transparent;
+  }
+
+  &--num {
+    counter-reset: section;
+
+    .bull-list__item {
+      padding-left: 0px;
+    }
+
+    .bull-list__item::before,
+    .bull-list__sub-item::before {
+      counter-increment: section;
+      content: counters(section, ".") "." !important;
+      position: relative;
+      top: 0;
+      display: inline-block;
+      min-width: 32px;
+      width: auto;
+      height: auto;
+      margin-right: 8px;
+      color: $gray-600;
+      font-size: 14px;
+      font-weight: normal;
+      letter-spacing: 0.2px;
+      line-height: 20px;
+      background: none;
+      border: none;
+    }
+  }
+}
+// end Bulleted List //

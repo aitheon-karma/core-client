@@ -1,0 +1,71 @@
+<ng-template #sectionFormTmpl>
+  <div class="modal-wrap modal-wrap--medium">
+    <form action=""
+          [formGroup]="createSectionForm"
+          novalidate
+          *ngIf="createSectionForm">
+      <div class="modal-wrap__header">
+        <h3 class="modal-wrap__title">{{ groupId ? 'Update' : 'Create' }} section</h3>
+        <div class="modal-wrap__icon icon icon--close icon--dynamic"
+             (click)="close()"></div>
+      </div>
+      <div class="modal-wrap__body">
+        <div [class.input-wrap--error]="errorInput"
+             class="input-wrap input-wrap--ghost mb--24">
+          <input class="input-wrap__input"
+                 type="text"
+                 autocomplete="off"
+                 placeholder="Enter section name"
+                 formControlName="nameServiceList">
+          <span class="input-wrap__icon icon icon--edit"></span>
+        </div>
+        <p class="overline pb--8">Services list</p>
+        <ul *ngIf="servicesArray.length"
+            class="services-list">
+          <li class="services-list__item"
+              *ngFor="let serviceGroup of servicesArray.controls">
+            <div class="checkbox"
+                 [formGroup]="serviceGroup"
+            >
+              <input class="checkbox__input"
+                     type="checkbox"
+                     id="{{ serviceGroup.get('_id').value }}"
+                     tabindex="1"
+                     formControlName="checked">
+              <label class="checkbox__label"
+                     for="{{ serviceGroup.get('_id').value }}"
+                     *ngIf="serviceGroup.get('_id').value !== 'USERS' && serviceGroup.get('_id').value !== 'ADMIN'">
+                <i class="{{  'service-icon ' +  (serviceGroup.get('_id').value | slug) }}"></i>
+                {{ serviceGroup.get('name').value }}
+              </label>
+              <label class="checkbox__label" for="{{ serviceGroup.get('_id').value }}"
+                     *ngIf="serviceGroup.get('_id').value === 'USERS'">
+                <i class="service-icon dashboard"></i>
+                Dashboard
+              </label>
+              <label class="checkbox__label" for="{{ serviceGroup.get('_id').value }}"
+                     *ngIf="serviceGroup.get('_id').value === 'ADMIN'">
+                <i class="service-icon organization"></i>
+                Admin service
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-wrap__footer">
+        <button class="modal-wrap__button button button--ghost button--medium button--error"
+                (click)="remove()"
+                *ngIf="groupId">remove
+        </button>
+        <button class="modal-wrap__button button button--ghost button--medium"
+                (click)="close()">cancel
+        </button>
+        <button class="modal-wrap__button button button--contained"
+                [disabled]="!(createSectionForm.get('checkedServices').value && createSectionForm.valid)"
+                (click)="onSubmit()">
+          {{groupId ? 'Update' : 'Create'}}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="10px" viewBox="0 0 18 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>icon / 24-cont / actions / clear-all-24</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M5,13 L19,13 L19,11 L5,11 L5,13 Z M3,17 L17,17 L17,15 L3,15 L3,17 Z M7,7 L7,9 L21,9 L21,7 L7,7 Z" id="path-1"></path>
+    </defs>
+    <g id="Control-Panel-last-version" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="24-Notifications-/-01-Sidebar-/-24_01_Services_01-Notifications" transform="translate(-1299.000000, -33.000000)">
+            <g id="icon-/-24-cont-/-actions-/-clear-all-24" transform="translate(1296.000000, 26.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="Colors-/-Dark-Theme-/-Grayscale-/-Filled-/-$base-gray" mask="url(#mask-2)" fill="#7E7E7E" fill-rule="evenodd">
+                    <rect id="Dark-Theme-/-Grayscale-/-Filled-/-$base-gray" x="0" y="0" width="24" height="24" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

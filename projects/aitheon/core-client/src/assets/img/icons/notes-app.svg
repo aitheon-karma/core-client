@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>icon / 64-cont services / Notice</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="1.44424438%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#2575FC" offset="0%"></stop>
+            <stop stop-color="#6A11CB" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon-/-64-cont-services-/-Notice" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10,0 L54,0 C59.5228475,-1.01453063e-15 64,4.4771525 64,10 L64,54 C64,59.5228475 59.5228475,64 54,64 L10,64 C4.4771525,64 6.76353751e-16,59.5228475 0,54 L0,10 C-6.76353751e-16,4.4771525 4.4771525,1.01453063e-15 10,0 Z" id="Rectangle-6-Copy-4" fill="url(#linearGradient-1)"></path>
+        <g id="Group" transform="translate(4.446305, 7.206561)" fill="#FFFFFF">
+            <polygon id="Path-3" opacity="0.699999988" transform="translate(20.522359, 31.306963) rotate(45.000000) translate(-20.522359, -31.306963) " points="12 11.0358322 29.0447173 11.0358322 29.0447173 43.0439795 20.5113839 51.5780941 12 43.0439795"></polygon>
+            <path d="M27.7870362,14.0404143 L27.7870362,46.0485616 L19.2756522,54.5614143 L19.2756522,14.0404143 L27.7870362,14.0404143 Z" id="Combined-Shape" transform="translate(23.531344, 34.300914) rotate(45.000000) translate(-23.531344, -34.300914) "></path>
+            <path d="M48.5471346,5 C49.6517041,5 50.5471346,5.8954305 50.5471346,7 L50.5471346,14.6 L33.4804679,14.6 L33.4804679,7 C33.4804679,5.8954305 34.3758984,5 35.4804679,5 L48.5471346,5 Z" id="Combined-Shape" opacity="0.699999988" transform="translate(42.013801, 9.800000) rotate(45.000000) translate(-42.013801, -9.800000) "></path>
+            <path d="M32.231839,9.99187108 L32.2309949,18.8421066 C32.2308911,18.8337071 32.230839,18.8252952 32.230839,18.8168711 L32.230839,10.0168711 L32.231839,9.99187108 Z M47.2975056,8.01687108 C48.4020751,8.01687108 49.2975056,8.91230158 49.2975056,10.0168711 L49.2975056,17.6168711 L40.763839,17.6168711 L40.763839,8.01687108 L47.2975056,8.01687108 Z" id="Combined-Shape-Copy" transform="translate(45.030672, 12.816871) rotate(45.000000) translate(-45.030672, -12.816871) "></path>
+        </g>
+    </g>
+</svg>

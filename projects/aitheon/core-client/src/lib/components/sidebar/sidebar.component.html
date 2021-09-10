@@ -1,0 +1,98 @@
+<div class="sidebar-container">
+  <aside class="sidebar">
+    <div class="sidebar__navbar-brand">
+      <a href="/users/dashboard" class="button button--ghost button--medium button-go-dashboard">Go to Dashboard</a>
+      <span class="sidebar__icon-close icon icon--close icon--dynamic" (click)="close()" *ngIf="opened"></span>
+
+      <div class="sidebar__header-buttons">
+        <!-- Button to add editing of the list (s) of services -->
+        <button class="button button--ghost button--medium button--gray" *ngIf="!editStateSidebar"
+                (click)="editStateSidebar = true">
+          <span class="button__icon icon icon--parameters icon--size-16px"></span>
+          edit
+        </button>
+
+        <!-- Button to create a new list of services -->
+        <button class="button button--medium button--ghost" *ngIf="editStateSidebar && services && services.length"
+                (click)="showCreateSection($event, {name: '', services: []})">
+          <span class="button__icon icon icon--plus icon--size-16px"></span>
+          create section
+        </button>
+      </div>
+    </div>
+
+    <!-- Services list container -->
+    <div class="list-services-wrap list-services-wrap--open" *ngFor="let group of serviceGroups">
+      <div class="mb-2 d-flex justify-content-between mb--0">
+        <div class="sidebar__title"
+             (click)="openServicesList($event)">
+          {{ group.name }}
+          <span class="sidebar__quantity-services"> ({{ group.services.length }})</span>
+          <button class="icon icon--arrow-drop-down icon--dynamic ml--auto"
+                  *ngIf="!editStateSidebar"></button>
+          <button class="icon icon--edit icon--size-16px icon--dynamic ml--auto"
+                  (click)="showCreateSection($event, group)"
+                  *ngIf="editStateSidebar"></button>
+        </div>
+      </div>
+      <ul class="sidebar__list-services">
+        <li class="sidebar__item-service" *ngFor="let service of group.services">
+          <a class="sidebar__link-service" href="{{ service.url }}" (click)="hide()"
+             *ngIf="service._id !== 'USERS' && service._id !== 'ADMIN'">
+            <i class="{{ 'service-icon ' + (service ?.iconClass ? service.iconClass : (service._id | slug)) }}"></i>
+            <span class="sidebar__name-service">{{ service.name }}</span>
+          </a>
+          <!-- <a class="sidebar__link-service" href="/users" (click)="hide()" *ngIf="service._id === 'USERS'">
+            <i class="service-icon dashboard"></i>
+            <span class="sidebar__name-service">Dashboard</span>
+          </a> -->
+          <!-- <a class="sidebar__link-service" href="/admin" (click)="hide()" *ngIf="service._id === 'ADMIN'">
+            <i class="service-icon organization"></i>
+            <span class="sidebar__name-service">Aitheon Admin</span>
+          </a> -->
+        </li>
+      </ul>
+    </div>
+
+    <div class="list-services-wrap list-services-wrap--open"
+         *ngIf="services && services.length"
+         [class.list-services-wrap--open]="serviceGroups.length == 0">
+      <div class="mb-2 d-flex justify-content-between mb--0">
+        <div class="sidebar__title"
+             (click)="openServicesList($event)">
+          General
+          <span class="sidebar__quantity-services"> ({{ services?.length }})</span>
+          <button class="icon icon--arrow-drop-down icon--dynamic ml--auto"></button>
+        </div>
+      </div>
+
+      <ul class="sidebar__list-services">
+        <li class="sidebar__item-service" *ngFor="let service of services">
+          <a class="sidebar__link-service" href="{{ service.url }}" (click)="hide()"
+             *ngIf="service._id !== 'USERS' && service._id !== 'ADMIN'">
+            <i class="{{ 'service-icon ' + (service ?.iconClass ? service.iconClass : (service._id | slug)) }}"></i>
+            <span class="sidebar__name-service">{{ service.name }}</span>
+          </a>
+          <!-- <a class="sidebar__link-service" href="/admin" (click)="hide()" *ngIf="service._id === 'ADMIN'">
+            <i class="service-icon organization"></i>
+            <span class="sidebar__name-service">Aitheon Admin</span>
+          </a>
+          <a class="sidebar__link-service" href="/users" (click)="hide()" *ngIf="service._id === 'USERS'">
+            <i class="service-icon dashboard"></i>
+            <span class="sidebar__name-service">Dashboard</span>
+          </a> -->
+        </li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <div class="sidebar-footer" *ngIf="editStateSidebar">
+    <button class="button button--medium button--ghost" (click)="closeEditMode()">exit edit mode</button>
+  </div>
+  <div class="sidebar__backdrop" (click)="close()" *ngIf="opened"></div>
+</div>
+
+<ai-create-section-form #createSection (onSave)="onGroupSave($event)" (onUpdate)='onUpdateGroup($event)'
+                        (onRemove)='onRemoveGroup($event)' [services]='services'
+                        [allServices]='allServices'></ai-create-section-form>

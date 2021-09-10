@@ -1,0 +1,50 @@
+<span class="icon {{classIcon}}" [ngClass]='{"icon--white": whiteIcon, "icon--orange": orangeIcon, "icon--red": redIcon, "icon--green": greenIcon, "icon--black": blackIcon, "icon--dynamic": iconDynamic, "icon--active": iconActive, "icon--active-open": iconActiveOpen, "icon--size-16px": sizeIcon}'></span>
+<div class="list-icons__choise-element choise-element">
+    <div class="choise-element__state">
+
+      <div class="checkbox ml--8 mb--8" [ngClass]="{'checkbox--disabled': stateCheckbox || checkboxDynamic}">
+        <input (click)="addClassState($event)" class="checkbox__input mr--16 dynamic" type="checkbox" tabindex="1">
+        <label class="checkbox__label">icon--dynamic</label>
+      </div>
+      <div class="checkbox ml--8 mb--8" [ngClass]="{'checkbox--disabled': stateCheckbox || checkboxActive}">
+        <input (click)="addClassState($event)" class="checkbox__input mr--16 active" type="checkbox" tabindex="1">
+        <label class="checkbox__label">icon--active</label>
+      </div>
+      <div class="checkbox ml--8 mb--8" [ngClass]="{'checkbox--disabled': stateCheckbox || checkboxActiveOpen}">
+        <input (click)="addClassState($event)" class="checkbox__input mr--16 active-open" type="checkbox" tabindex="1">
+        <label (click)="check($event)" class="checkbox__label">icon--active-open</label>
+      </div>
+
+      <div class="checkbox ml--8 mb--8">
+          <input (click)="addSizeIcon()" class="checkbox__input mr--16" type="checkbox" tabindex="1">
+          <label (click)="check($event)" class="checkbox__label">icon--size-16px</label>
+        </div>
+
+      <div class="list-icons__colors-list" [ngClass]="{'list-icons__colors-list--disabled': stateIcon}">
+        <div class="list-icons__color white" (click)="setColor($event)">
+          <span *ngIf="whiteIcon" class="icon icon--tick icon--size-16px"></span>
+        </div>
+        <div class="list-icons__color orange" (click)="setColor($event)">
+          <span *ngIf="orangeIcon" class="icon icon--tick icon--size-16px"></span>
+        </div>
+        <div class="list-icons__color red" (click)="setColor($event)">
+          <span *ngIf="redIcon" class="icon icon--tick icon--size-16px"></span>
+        </div>
+        <div class="list-icons__color green" (click)="setColor($event)">
+          <span *ngIf="greenIcon" class="icon icon--tick icon--size-16px"></span>
+        </div>
+        <div class="list-icons__color black" (click)="setColor($event)">
+            <span *ngIf="blackIcon" class="icon icon--tick icon--size-16px"></span>
+          </div>
+      </div>
+      <div class="choise-element__name mt--16">
+        <span class="choise-element__icon-copy icon-copy" (click)="copyValue($event)"
+          (mouseout)="resetCopy()">
+          <div class="choise-element__tooltip-copy">
+            <span>{{tooltipText}}</span>
+          </div>
+        </span>
+        <input type="text" value="icon {{classIcon}}" class="choise-element__content-copy">
+      </div>
+    </div>
+  </div>

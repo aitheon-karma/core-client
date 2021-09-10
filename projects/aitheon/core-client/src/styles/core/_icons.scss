@@ -1,0 +1,454 @@
+@import "variables";
+
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  max-height: 24px;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  line-height: 24px;
+  border: none;
+  background: transparent center/auto no-repeat;
+  transition: 0.2s;
+  outline: none !important;
+
+  &::before {
+    display: block;
+    height: 100%;
+    width: 100%;
+    font-family: "icon-font";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal !important;
+    color: $gray-600;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($primary-gold, 0.15);
+    opacity: 0;
+    transition: 0.1s;
+  }
+
+  *::-moz-selection {
+    background-color: transparent;
+  }
+
+  *::selection {
+    background-color: transparent;
+  }
+
+  // stale for clickable icon
+
+  &--dynamic:hover {
+    cursor: pointer;
+
+    &::after {
+      background-color: rgba($gray-600, 0.15);
+      opacity: 1;
+    }
+  }
+
+  // style for active icon
+
+  &--active {
+
+    &::before { color: $primary-gold; }
+
+    &::after {
+      background-color: rgba($primary-gold, 0.15) !important;
+    }
+  }
+
+  &--active-open {
+    &::before { color: $primary-gold; }
+
+    &::after {
+      opacity: 1;
+      background-color: rgba($primary-gold, 0.15) !important;
+    }
+  }
+
+  // style for active icon
+
+  // start styles for disabled icon //
+
+  &--disabled {
+    > * { pointer-events: none !important; }
+
+    opacity: 0.4;
+    cursor: not-allowed !important;
+  }
+
+  // end styles for disabled icon //
+
+  &--size-16px {
+    width: 16px;
+    height: 16px;
+    max-height: 16px;
+    font-size: 16px;
+    line-height: 16px;
+
+    &::after {
+      content: "";
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // colors for icon
+
+  &--white::before { color: $white; }
+
+  &--orange::before { color:$base-orange }
+
+  &--red::before { color:$base-red }
+
+  &--green::before { color:$base-green }
+
+  &--gold::before { color: $primary-gold; }
+
+  &--black::before { color: $black; }
+
+  // icons //
+ 
+  &--add-company:before { content: "\e900"; }
+
+  &--add-deal:before { content: "\e901"; }
+
+  &--add-photo:before { content: "\e902"; }
+
+  &--add-sub-task:before { content: "\e903"; }
+
+  &--align-center:before { content: "\e904"; }
+
+  &--align-left:before { content: "\e905"; }
+
+  &--align-right:before { content: "\e906"; }
+
+  &--archive:before { content: "\e907"; }
+
+  &--arrow-down:before { content: "\e908"; }
+
+  &--arrow-drop-down:before { content: "\e909"; }
+
+  &--arrow-drop-left:before { content: "\e90a"; }
+
+  &--arrow-drop-right:before { content: "\e90b"; }
+
+  &--arrow-drop-up:before { content: "\e90c"; }
+
+  &--arrow-left:before { content: "\e90d"; }
+
+  &--arrow-next:before { content: "\e90e"; }
+
+  &--arrow-prev:before { content: "\e90f"; }
+
+  &--arrow-right:before { content: "\e910"; }
+
+  &--arrow-up:before { content: "\e911"; }
+
+  &--article:before { content: "\e912"; }
+
+  &--assignment:before { content: "\e913"; }
+
+  &--attach:before { content: "\e914"; }
+
+  &--attention:before { content: "\e915"; }
+
+  &--block:before { content: "\e916"; }
+
+  &--board:before { content: "\e917"; }
+
+  &--bold:before { content: "\e918"; }
+
+  &--bookmark:before { content: "\e919"; }
+
+  &--bullet-list:before { content: "\e91a"; }
+
+  &--calendar:before { content: "\e91b"; }
+
+  &--cancel-circle-f:before { content: "\e91c"; }
+
+  &--cancel-circle-o:before { content: "\e91d"; }
+
+  &--cart:before { content: "\e91e"; }
+
+  &--chat:before { content: "\e91f"; }
+
+  &--chevron-down:before { content: "\e920"; }
+
+  &--chevron-left:before { content: "\e921"; }
+
+  &--chevron-right:before { content: "\e922"; }
+
+  &--chevron-up:before { content: "\e923"; }
+
+  &--clear-all:before { content: "\e924"; }
+
+  &--clock:before { content: "\e925"; }
+
+  &--close:before { content: "\e926"; }
+
+  &--closed-folder:before { content: "\e927"; }
+
+  &--cloud:before { content: "\e928"; }
+
+  &--code:before { content: "\e929"; }
+
+  &--collapse-content:before { content: "\e92a"; }
+
+  &--comment:before { content: "\e92b"; }
+
+  &--company:before { content: "\e92c"; }
+
+  &--contacts:before { content: "\e92d"; }
+
+  &--control-panel:before { content: "\e92e"; }
+
+  &--create-add:before { content: "\e92f"; }
+
+  &--create-column:before { content: "\e930"; }
+
+  &--cryptocurrency:before { content: "\e931"; }
+
+  &--currency:before { content: "\e932"; }
+
+  &--date:before { content: "\e933"; }
+
+  &--debit-card-wrong:before { content: "\e934"; }
+
+  &--debit-card:before { content: "\e935"; }
+
+  &--delete:before { content: "\e936"; }
+
+  &--dice:before { content: "\e937"; }
+
+  &--done-all:before { content: "\e938"; }
+
+  &--done-success:before { content: "\e939"; }
+
+  &--download:before { content: "\e93a"; }
+
+  &--drag:before { content: "\e93b"; }
+
+  &--duplicate:before { content: "\e93c"; }
+
+  &--edit:before { content: "\e93d"; }
+
+  &--emoji:before { content: "\e93e"; }
+
+  &--epic:before { content: "\e93f"; }
+
+  &--expand-content:before { content: "\e940"; }
+
+  &--file:before { content: "\e941"; }
+
+  &--filter:before { content: "\e942"; }
+
+  &--flag:before { content: "\e943"; }
+
+  &--font-size:before { content: "\e944"; }
+
+  &--font:before { content: "\e945"; }
+
+  &--forecast:before { content: "\e946"; }
+
+  &--forward:before { content: "\e947"; }
+
+  &--full-screen-exit:before { content: "\e948"; }
+
+  &--full-screen:before { content: "\e949"; }
+
+  &--gantt:before { content: "\e94a"; }
+
+  &--globus:before { content: "\e94b"; }
+
+  &--grid-view:before { content: "\e94c"; }
+
+  &--group:before { content: "\e94d"; }
+
+  &--help:before { content: "\e94e"; }
+
+  &--hide:before { content: "\e94f"; }
+
+  &--hierarchy-tree:before { content: "\e950"; }
+
+  &--history:before { content: "\e951"; }
+
+  &--home:before { content: "\e952"; }
+
+  &--image:before { content: "\e953"; }
+
+  &--inbox:before { content: "\e954"; }
+
+  &--info:before { content: "\e955"; }
+
+  &--italic:before { content: "\e956"; }
+
+  &--label:before { content: "\e957"; }
+
+  &--libra:before { content: "\e958"; }
+
+  &--like-filled:before { content: "\e959"; }
+
+  &--like:before { content: "\e95a"; }
+
+  &--link:before { content: "\e95b"; }
+
+  &--list-view:before { content: "\e95c"; }
+
+  &--lock:before { content: "\e95d"; }
+
+  &--logout:before { content: "\e95e"; }
+
+  &--lunch:before { content: "\e95f"; }
+
+  &--menu:before { content: "\e960"; }
+
+  &--message:before { content: "\e961"; }
+
+  &--mindmap:before { content: "\e962"; }
+
+  &--minus-for-checkboxes:before { content: "\e963"; }
+
+  &--minus:before { content: "\e964"; }
+
+  &--more:before { content: "\e965"; }
+
+  &--mute:before { content: "\e966"; }
+
+  &--new-article:before { content: "\e967"; }
+
+  &--new-file:before { content: "\e968"; }
+
+  &--new-folder:before { content: "\e969"; }
+
+  &--new-post:before { content: "\e96a"; }
+
+  &--new-user:before { content: "\e96b"; }
+
+  &--node:before { content: "\e96c"; }
+
+  &--notification:before { content: "\e96d"; }
+
+  &--numbered-list:before { content: "\e96e"; }
+
+  &--open-folder:before { content: "\e96f"; }
+
+  &--open-in-new-tab:before { content: "\e970"; }
+
+  &--open-mail:before { content: "\e971"; }
+
+  &--parameters:before { content: "\e972"; }
+
+  &--pause:before { content: "\e973"; }
+
+  &--phone:before { content: "\e974"; }
+
+  &--pin:before { content: "\e975"; }
+
+  &--play:before { content: "\e976"; }
+
+  &--plus:before { content: "\e977"; }
+
+  &--print:before { content: "\e978"; }
+
+  &--question-help:before { content: "\e979"; }
+
+  &--redo:before { content: "\e97a"; }
+
+  &--refresh:before { content: "\e97b"; }
+
+  &--remove-formatting-list:before { content: "\e97c"; }
+
+  &--reply-all:before { content: "\e97d"; }
+
+  &--reply:before { content: "\e97e"; }
+
+  &--repost:before { content: "\e97f"; }
+
+  &--scan:before { content: "\e980"; }
+
+  &--search:before { content: "\e981"; }
+
+  &--send:before { content: "\e982"; }
+
+  &--settings:before { content: "\e983"; }
+
+  &--shapes:before { content: "\e984"; }
+
+  &--share:before { content: "\e985"; }
+
+  &--show:before { content: "\e986"; }
+
+  &--skip:before { content: "\e987"; }
+
+  &--sound:before { content: "\e988"; }
+
+  &--spam:before { content: "\e989"; }
+
+  &--split-mode:before { content: "\e98a"; }
+
+  &--star-filled:before { content: "\e98b"; }
+
+  &--star-half-fill:before { content: "\e98c"; }
+
+  &--star:before { content: "\e98d"; }
+
+  &--sticker:before { content: "\e98e"; }
+
+  &--storage:before { content: "\e98f"; }
+
+  &--subtask:before { content: "\e990"; }
+
+  &--switch:before { content: "\e991"; }
+
+  &--table-sort:before { content: "\e992"; }
+
+  &--task:before { content: "\e993"; }
+
+  &--text-area-responsive:before { content: "\e994"; }
+
+  &--text-color:before { content: "\e995"; }
+
+  &--tick:before { content: "\e996"; }
+
+  &--timer:before { content: "\e997"; }
+
+  &--treasury:before { content: "\e998"; }
+
+  &--underline-text:before { content: "\e999"; }
+
+  &--undo:before { content: "\e99a"; }
+
+  &--unlink:before { content: "\e99b"; }
+
+  &--unlock:before { content: "\e99c"; }
+
+  &--unread:before { content: "\e99d"; }
+
+  &--update:before { content: "\e99e"; }
+
+  &--upload:before { content: "\e99f"; }
+
+  &--user:before { content: "\e9a0"; }
+
+  &--widget:before { content: "\e9a1"; }
+
+  &--zoom-in:before { content: "\e9a2"; }
+
+  &--zoom-out:before { content: "\e9a3"; }
+
+}

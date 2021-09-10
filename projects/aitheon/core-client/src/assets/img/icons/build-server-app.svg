@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+    <defs>
+        <linearGradient id="b" x1="12.227%" x2="83.257%" y1="-31.593%" y2="132.324%">
+            <stop offset="0%" stop-color="#EF33F2"/>
+            <stop offset="100%" stop-color="#3544DC"/>
+        </linearGradient>
+        <path id="a" d="M10 0h40c5.523 0 10 4.477 10 10v40c0 5.523-4.477 10-10 10H10C4.477 60 0 55.523 0 50V10C0 4.477 4.477 0 10 0z"/>
+        <path id="e" d="M7 14.77L10.782 11l13.34 13.295 3.834 3.77-3.834 3.769-13.34 13.295L7 41.359l13.34-13.295z"/>
+        <filter id="d" width="166.8%" height="141%" x="-33.4%" y="-14.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+        </filter>
+        <linearGradient id="h" x1=".792%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#FFF" stop-opacity=".144"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </linearGradient>
+        <path id="g" d="M31.51 41h18.98c.827 0 1.16.093 1.487.267.326.174.582.43.756.756.174.326.267.66.267 1.486v.982c0 .826-.093 1.16-.267 1.486-.174.326-.43.582-.756.756-.326.174-.66.267-1.486.267H31.509c-.826 0-1.16-.093-1.486-.267a1.817 1.817 0 0 1-.756-.756c-.174-.326-.267-.66-.267-1.486v-.982c0-.826.093-1.16.267-1.486.174-.326.43-.582.756-.756.326-.174.66-.267 1.486-.267z"/>
+        <filter id="f" width="158.3%" height="333.3%" x="-29.2%" y="-83.3%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="c" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="url(#b)" xlink:href="#a"/>
+        <g fill-rule="nonzero" mask="url(#c)">
+            <use fill="#000" filter="url(#d)" xlink:href="#e"/>
+            <use fill="#FFF" xlink:href="#e"/>
+        </g>
+        <g mask="url(#c)" opacity=".3">
+            <use fill="#000" filter="url(#f)" xlink:href="#g"/>
+            <use fill="url(#h)" xlink:href="#g"/>
+        </g>
+    </g>
+</svg>

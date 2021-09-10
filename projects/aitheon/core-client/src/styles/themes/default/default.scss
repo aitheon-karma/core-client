@@ -1,0 +1,69 @@
+@import './variables';
+
+// override default bootstrap variables
+
+body.default {
+    color: #545454;
+    background: $white;
+    font-family: $font-family-sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-top: 85px;
+    
+    a {
+        color: $black;
+        //text-decoration: underline;
+    }
+}
+
+.alert-danger {
+    color: $white;
+    background-color: #d9534f;
+    border-color: #d9534f;
+    outline: none;
+    border-radius: 2px;
+    font-weight: 300;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+#toast-container {
+
+    .toast {
+        color: $white;
+        outline: none;
+        border-radius: 2px;
+        font-weight: 300;
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+        font-weight: 300;
+        padding: 15px 15px 10px 50px;
+
+        .toast-close-button {
+            top: -1rem;
+            text-shadow: none;
+            top: -.8rem;
+        }
+    }
+
+    .toast-title {
+        font-weight: 500;
+    }
+
+    >.toast-error {
+        background-color: #d9534f;
+        border-color: #d9534f;
+    }
+
+    >.toast-success {
+        background-color: #5cb85c;
+        border-color: #5cb85c;
+    }
+}
+
+.user-pic--big {
+    height: 120px;
+    width: 120px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: inline-block;
+}

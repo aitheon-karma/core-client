@@ -1,0 +1,13 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon / 24-cont / actions / full-screen-24">
+<path id="Shape" fill-rule="evenodd" clip-rule="evenodd" d="M7 10H5V5H10V7H7V10ZM5 14H7V17H10V19H5V14ZM17 17H14V19H19V14H17V17ZM14 7V5H19V10H17V7H14Z" fill="#7E7E7E"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="14" height="14">
+<path id="Shape_2" fill-rule="evenodd" clip-rule="evenodd" d="M7 10H5V5H10V7H7V10ZM5 14H7V17H10V19H5V14ZM17 17H14V19H19V14H17V17ZM14 7V5H19V10H17V7H14Z" fill="white"/>
+</mask>
+<g mask="url(#mask0)">
+<g id="Colors / Dark-Theme / Grayscale / Filled / $base-gray">
+<rect id="Dark-Theme / Grayscale / Filled / $base-gray" width="24" height="24" rx="2" fill="#7E7E7E"/>
+</g>
+</g>
+</g>
+</svg>
